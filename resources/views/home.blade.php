@@ -1,4 +1,5 @@
 <?php   
+/*
 include 'connection.php';
 
   session_start();
@@ -13,7 +14,7 @@ include 'connection.php';
   $line = mysqli_fetch_array($result);
   $views=$line['view_self'];
   $path=$line['pro_pic'];
-
+*/
  ?>
  
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ include 'connection.php';
   <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="css/introjs.min.css"  media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="animate.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
 
     <title>Yearbook</title>
 <script>
@@ -96,15 +97,19 @@ include 'connection.php';
           </style>
     </head>
     <body>
-<div class="container-fluid"><?php  include "nav.php" ?><div>
+<div class="container-fluid"><?php // include "nav.php" 
+?><div>
   <div id="modal1" class="modal">
     <div class="modal-content center">
       <form action="motosave.php" method="post" enctype="multipart/form-data">
       <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;" onchange="readURL(this);">
-        <img src="<?php if ($line['pro_pic']&&$line['pro_pic']!='NULL') {   echo $line['pro_pic'];} else { echo 'ind/shot.jpg';} ?>" alt="" class="circle responsive-img" id="OpenImgUpload" style="cursor: pointer;width: 180px;height: 180px;">
+        <img src="<?php/* if ($line['pro_pic']&&$line['pro_pic']!='NULL') {   echo $line['pro_pic'];} else { echo 'ind/shot.jpg';}*/ ?>" alt="" class="circle responsive-img" id="OpenImgUpload" style="cursor: pointer;width: 180px;height: 180px;">
         <div class="input-field col s12 l12 m12">
           <label for="motto">Caption (Max 50 characters)</label>
-          <textarea name="motto" id="icon_prefix2" required class="materialize-textarea" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50"><?php if (!empty(trim($line['view_self']))&&$line['view_self']!='NULL') {    echo $line['view_self'];}else {echo 'Enter Your Caption Here';} ?></textarea>
+          <textarea name="motto" id="icon_prefix2" required class="materialize-textarea" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50">
+            <?php /*if (!empty(trim($line['view_self']))&&$line['view_self']!='NULL') {    echo $line['view_self'];}else {echo 'Enter Your Caption Here';} */?>
+              
+            </textarea>
         </div>
         <input type="submit" name="save" value="Save" class="waves-effect waves-light btn" style="width: 150px;" id="imgsave">
         </form>
@@ -122,17 +127,17 @@ include 'connection.php';
 <button class="modal-trigger waves-effect waves-light btn col l5 m12 s12" href="#modal1" style=" padding-top: 0;padding-left: 25px;padding-right: 25px;">Upload Profile Picture and Caption</button>
 <div align="center" class="row">
 <div class=""><a class="modal-trigger" href="#modal1">
-<img src="<?php if ($line['pro_pic']&&$line['pro_pic']!='NULL') { echo $line['pro_pic']; } else { echo 'ind/your.jpg'; } ?>" class="circle" width="200px" height="200px" data-step="1" data-intro="Click on image to Upload Profile pic and Caption"> </a>
+<img src="<?php/* if ($line['pro_pic']&&$line['pro_pic']!='NULL') { echo $line['pro_pic']; } else { echo 'ind/your.jpg'; } */?>" class="circle" width="200px" height="200px" data-step="1" data-intro="Click on image to Upload Profile pic and Caption"> </a>
 </div>
- <h4> <?php echo $line['name'] ?> </h4>
+ <h4> <?php /*echo $line['name'] */?> </h4>
  <h5>"
-          <?php 
+          <?php /*
           if (($line['view_self']!='NULL')&&!empty($line['view_self'])) {
           echo $line['view_self'];
            }else{
             echo "Upload your Caption for the Yearbook";
            }
-          ?> "
+          */?> "
   </h5>
 </div>
 
@@ -141,7 +146,7 @@ include 'connection.php';
   <div class="col l4 m4 s6">
   <a class='dropdown-button btn' id="user" data-activates='dropdown1' style="display: none; width: 100%;height: 100%;font-size: 2px;" data-step="2" data-intro="Visit your Profile and View the Testimonials written about you">User</a>
   <ul id='dropdown1' class='dropdown-content' style="margin-top:55px;">
-        <li><a href="profile/index.php?roll=<?php echo $value1; ?>">My Profile</a></li>
+        <li><a href="profile/index.php?roll=<?php /*echo $value1;*/ ?>">My Profile</a></li>
         <li><a href="details.php?flag=1">Edit Details</a></li>
   </ul>
    </div>
@@ -169,8 +174,8 @@ With an assortment of your thoughts and snaps from various experiences through t
 
 </div>
 <script type="text/javascript">
-var back = "<?php if (!empty($views)) echo 1;else echo 0; ?>" ;
-var back2 = "<?php echo $path; ?>" ;
+var back = "<?php /*if (!empty($views)) echo 1;else echo 0;*/ ?>" ;
+var back2 = "<?php /*echo $path; */?>" ;
 $(document).ready(function() {
   $('.modal-trigger').leanModal();
   
@@ -239,7 +244,7 @@ $(document).ready(function() {
 </html>
 
 
-<?php
+<?php/*
   if($line['email']==NULL||$line['phone']==NULL){
     echo '<script>$(".upload").hide();$(".edit_button").hide();</script>';
 
@@ -251,4 +256,5 @@ $(document).ready(function() {
 if (isset($_GET['motto'])&&!empty($_GET['motto'])){
    $motto=$_GET['motto'];
 }
+*/
 ?>
