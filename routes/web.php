@@ -19,3 +19,4 @@ Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); //Just added to fix issue
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/upload_pic_moto','FileController@upload_pic_moto');
