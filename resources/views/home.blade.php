@@ -97,7 +97,9 @@ include 'connection.php';
           </style>
     </head>
     <body>
-<div class="container-fluid"><?php // include "nav.php" 
+<div class="container-fluid">
+@include('navbar');
+<?php // include "nav.php" 
 ?><div>
   <div id="modal1" class="modal">
     <div class="modal-content center">
