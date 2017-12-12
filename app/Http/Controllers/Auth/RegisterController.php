@@ -45,16 +45,25 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+
+    /*
+    -------------------------------------------------------
+    function validator()
+    -------------------------------------------------------
+        This function validates the request data
+
+    */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            
+
             'email' => 'required|string|email|max:255',
-           'email_insti' => 'required|string|email|max:255',
-             'course' => 'required',
-             'department' => 'required',
-             'dob' => 'required',
-             'phone' => 'required',
+            'email_insti' => 'required|string|email|max:255',
+            'course' => 'required',
+            'department' => 'required',
+            'dob' => 'required',
+            'phone' => 'required',
         ]);
     }
 
@@ -64,6 +73,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+     /*
+    --------------------------------------------------------------------
+    function create()
+    --------------------------------------------------------------------
+        This function is used to create a new user in model Users 
+        and add a row intable 'users' in database from the request data
+        'password' column is filled as bcrypt value of the roll no.
+        'view_self' and 'pro_pic' is kept empty
+    */
     protected function create(array $data)
     {
         return User::create([
@@ -76,10 +95,10 @@ class RegisterController extends Controller
             'course' => $data['course'],
             'department' => $data['department'],
             'phone' => $data['phone'],
-           'view_self' => '',
+            'view_self' => '',
             'pro_pic' => '',
             'rollno' => $data['rollno']
-             
+
         ]);
     }
 }

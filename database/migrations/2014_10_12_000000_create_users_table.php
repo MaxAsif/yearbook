@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->text('department');
             $table->text('dob');
-            $table->text('password');         
+            $table->text('password'); 
+            // password column is added which later will store the bcrypt value of date        
             $table->text('email_insti');
             $table->text('email');
             $table->text('HOR');

@@ -17,7 +17,14 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+    
+    /*
+    ----------------------------------------------------------------------------
+    AuthenticatesUsers 
+    ----------------------------------------------------------------------------
+        In AuthenticatesUsers function username was edited 
+        which now return the roll no of users
+    */
     use AuthenticatesUsers;
 
     /**

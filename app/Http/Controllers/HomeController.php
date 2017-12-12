@@ -21,6 +21,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     /*
+    -------------------------------------------------------
+    function index()
+    -------------------------------------------------------
+        This function returns home.blade.php files which is
+        the dashboard
+        
+    */
     public function index()
     {
         return view('home');
