@@ -156,7 +156,7 @@ body{
           <div class="col l4 m4 s6">
             <a class='dropdown-button btn' id="user" data-activates='dropdown1' style="display: none; width: 100%;height: 100%;font-size: 2px;" data-step="2" data-intro="Visit your Profile and View the Testimonials written about you">User</a>
             <ul id='dropdown1' class='dropdown-content' style="margin-top:55px;">
-              <li><a href="profile/index.php?roll=<?php /*echo $value1;*/ ?>">My Profile</a></li>
+              <li><a href="/profile_index">My Profile</a></li>
               <li><a href="details.php?flag=1">Edit Details</a></li>
             </ul>
           </div>
