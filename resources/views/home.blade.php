@@ -144,7 +144,7 @@ body{
           </h4>
           <h5>"
             <?php if (!empty(Auth::user()->view_self)) { echo Auth::user()->view_self;}
-            else{
+              else{
               echo "Upload your Caption for the Yearbook";
             }
             ?> "
@@ -156,8 +156,9 @@ body{
           <div class="col l4 m4 s6">
             <a class='dropdown-button btn' id="user" data-activates='dropdown1' style="display: none; width: 100%;height: 100%;font-size: 2px;" data-step="2" data-intro="Visit your Profile and View the Testimonials written about you">User</a>
             <ul id='dropdown1' class='dropdown-content' style="margin-top:55px;">
-              <li><a href="profile/index.php?roll=<?php /*echo $value1;*/ ?>">My Profile</a></li>
               <li><a href="/details">Edit Details</a></li>
+              <li><a href="/profile_index">My Profile</a></li>
+              
             </ul>
           </div>
           <div class="col l4 m4 s6">
@@ -187,26 +188,26 @@ body{
             /*
               This script is used to check if the profile pic and caption is uplaoded or not
               If not then triggers the modal to upload the pic and caption
-            */
-            var back = "<?php if (!empty(Auth::user()->view_self)) echo 1;else echo 0; ?>" ;
-            var back2 = "<?php echo Auth::user()->pro_pic; ?>" ;
-            $(document).ready(function() {
-              $('.modal-trigger').leanModal();
+              */
+              var back = "<?php if (!empty(Auth::user()->view_self)) echo 1;else echo 0; ?>" ;
+              var back2 = "<?php echo Auth::user()->pro_pic; ?>" ;
+              $(document).ready(function() {
+                $('.modal-trigger').leanModal();
 
-              if ( (!back)||!(back2) ) {
-                $("#modal1").openModal();
-              } else {
-              }
+                if ( (!back)||!(back2) ) {
+                  $("#modal1").openModal();
+                } else {
+                }
 
-            });
+              });
 
-          </script>
+            </script>
 
 
-          <script type="text/javascript">
-            $('.dropdown-button').dropdown({
-              inDuration: 300,
-              outDuration: 350,
+            <script type="text/javascript">
+              $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 350,
               constrainWidth: false, // Does not change width of dropdown to that of the activator
               hover: true, // Activate on hover
               gutter: 0, // Spacing from edge
@@ -216,45 +217,45 @@ body{
             });
 
 
-            $('#photo').click(function(){
-              $('#photo').submit();
-            });
-            $('#writeup').click(function(){
-              $('#writeup').submit();
-            });
-            $('#views').click(function(){
-              $('#views').submit();
-            });
-
-            $('#OpenImgUpload').click(function(){ $('#fileToUpload').trigger('click'); });
-            function readURL(input) {
-
-              if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                  $('#OpenImgUpload')
-                  .attr('src', e.target.result)
-                };
-
-                reader.readAsDataURL(input.files[0]);
-              }
-            }
-
-            $(document).ready(function() {
-              $('select').material_select();
-            });
-
-            function update(){
-              $('.edit_button').click(function(){
-                $('.edit').show();$(".upload").hide();$(".edit_button").hide();
+              $('#photo').click(function(){
+                $('#photo').submit();
               });
-            }
-          </script>
+              $('#writeup').click(function(){
+                $('#writeup').submit();
+              });
+              $('#views').click(function(){
+                $('#views').submit();
+              });
 
-        </div> </div>
-      </body>
-      </html>
+              $('#OpenImgUpload').click(function(){ $('#fileToUpload').trigger('click'); });
+              function readURL(input) {
+
+                if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+
+                  reader.onload = function (e) {
+                    $('#OpenImgUpload')
+                    .attr('src', e.target.result)
+                  };
+
+                  reader.readAsDataURL(input.files[0]);
+                }
+              }
+
+              $(document).ready(function() {
+                $('select').material_select();
+              });
+
+              function update(){
+                $('.edit_button').click(function(){
+                  $('.edit').show();$(".upload").hide();$(".edit_button").hide();
+                });
+              }
+            </script>
+
+          </div> </div>
+        </body>
+        </html>
 
 <!--
 <?php/*
