@@ -157,7 +157,7 @@ body{
             <a class='dropdown-button btn' id="user" data-activates='dropdown1' style="display: none; width: 100%;height: 100%;font-size: 2px;" data-step="2" data-intro="Visit your Profile and View the Testimonials written about you">User</a>
             <ul id='dropdown1' class='dropdown-content' style="margin-top:55px;">
               <li><a href="profile/index.php?roll=<?php /*echo $value1;*/ ?>">My Profile</a></li>
-              <li><a href="details.php?flag=1">Edit Details</a></li>
+              <li><a href="/details">Edit Details</a></li>
             </ul>
           </div>
           <div class="col l4 m4 s6">
@@ -167,7 +167,7 @@ body{
             <a class='btn' href='writeup.php' style="width: 100%;height: 100%;" data-step="4" data-intro="Share your interesting memories with us">Write Article</a>
           </div>
           <div class="col l4 m4 s6">
-            <a class='btn' href='upload.php' style="width: 100%;height: 100%;" data-step="5" data-intro="Upload some Funny photos of you and your friend">Upload Photo</a>
+            <a class='btn' href='/upload' style="width: 100%;height: 100%;" data-step="5" data-intro="Upload some Funny photos of you and your friend">Upload Photo</a>
           </div>
 
           <div class="col l4 m4 s6 offset-l4">

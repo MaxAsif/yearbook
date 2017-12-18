@@ -37,3 +37,12 @@ FileController
 */
 
 Route::post('/upload_pic_moto','FileController@upload_pic_moto');
+Route::get('/upload',function(){
+	return view('upload');
+});
+Route::post('/upload','FileController@upload');
+
+Route::get('/details',function(){
+	return view('details');
+});
+Route::post('/details','HomeController@edit');
