@@ -37,3 +37,12 @@ FileController
 */
 
 Route::post('/upload_pic_moto','FileController@upload_pic_moto');
+
+
+Route::get('/writeup','WriteupController@index');
+
+Route::post('/writeup','WriteupController@store');
+
+Route::get('/writeup/{id}','WriteupController@delete');
+
+Route::post('/updates','WriteupController@updates');
