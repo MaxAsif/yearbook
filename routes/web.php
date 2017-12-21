@@ -43,14 +43,7 @@ Route::post('/upload_pic_moto','FileController@upload_pic_moto');
 
 
 
-Route::get('/writeup','WriteupController@index');
 
-Route::post('/writeup','WriteupController@store');
-
-Route::get('/writeup/{id}','WriteupController@delete');
-
-Route::post('/updates','WriteupController@updates');
-=======
 Route::get('/upload',function(){
 	return view('upload');
 });
@@ -60,3 +53,13 @@ Route::get('/details',function(){
 	return view('details');
 });
 Route::post('/details','HomeController@edit');
+
+
+
+Route::get('/writeup','WriteupController@index');
+
+Route::post('/writeup','WriteupController@store');
+
+Route::get('/writeup/{id}','WriteupController@delete');
+
+Route::post('/updates','WriteupController@updates');
