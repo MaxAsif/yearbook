@@ -26,6 +26,8 @@ Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); //Just added to fix issue
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile_index', 'profile@index');
+
 
 
 /*
@@ -38,11 +40,3 @@ FileController
 
 Route::post('/upload_pic_moto','FileController@upload_pic_moto');
 
-
-Route::get('/writeup','WriteupController@index');
-
-Route::post('/writeup','WriteupController@store');
-
-Route::get('/writeup/{id}','WriteupController@delete');
-
-Route::post('/updates','WriteupController@updates');
