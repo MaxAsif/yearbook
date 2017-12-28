@@ -165,7 +165,7 @@ body{
             <a class='btn' href='search/' style="width: 100%;height: 100%;" data-step="3" data-intro="Search your friend and write about them">Batch Sento</a>
           </div>
           <div class="col l4 m4 s6">
-            <a class='btn' href='writeup.php' style="width: 100%;height: 100%;" data-step="4" data-intro="Share your interesting memories with us">Write Article</a>
+            <a class='btn' href='/writeup' style="width: 100%;height: 100%;" data-step="4" data-intro="Share your interesting memories with us">Write Article</a>
           </div>
           <div class="col l4 m4 s6">
             <a class='btn' href='/upload' style="width: 100%;height: 100%;" data-step="5" data-intro="Upload some Funny photos of you and your friend">Upload Photo</a>
