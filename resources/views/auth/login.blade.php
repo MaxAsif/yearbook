@@ -102,11 +102,11 @@ a:hover span {display: block; text-align: center;z-index: 1000;}
 
                     <div class="input-field col s12 l6 m12 ">                   
                         <input name="rollno" id="rollno" autofocus placeholder="Roll Number" type="text" style="margin-top: 5px;" required>
-                        <label for="rollno">Roll Number ( 14THXXXXX )</label>
+                        <label for="rollno">Roll Number (14THXXXXX)</label>
                     </div>
                     <div class="input-field col s12 l6 m12 ">                   
                         <input name="password" id="dob" placeholder="Date of Birth" pattern="\d{1,2}-\d{1,2}-\d{4}" type="text" style="margin-top: 5px;" required>
-                        <label for="dob">Date of Birth ( dd-mm-yyyy)</label>
+                        <label for="dob">Date of Birth (dd-mm-yyyy)</label>
                     </div>
                 </div>
                 <div class="row">
