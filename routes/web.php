@@ -63,3 +63,4 @@ Route::post('/writeup','WriteupController@store');
 Route::get('/writeup/{id}','WriteupController@delete');
 
 Route::post('/updates','WriteupController@updates');
+Route::post('/approve','ViewsController@approve');
