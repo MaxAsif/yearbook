@@ -191,8 +191,8 @@ html,body{
 
 <script type="text/javascript">
 function update(id){
-  var writeupedit=$("#"+id).html();
-  console.log(writeupedit);
+  var writeupedit=$("#"+id).text();
+  //console.log(writeupedit);
   $.ajax({
             type: "POST",
             url:' {{ URL::to("/updates") }} ',

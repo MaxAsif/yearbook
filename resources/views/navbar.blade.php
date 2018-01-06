@@ -1,3 +1,6 @@
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
+</head>
 <script>
  $(document).ready(function(){
    if ($(window).width()>770) {
@@ -13,23 +16,40 @@ $(".button-collapse").sideNav();
 
 <div id="nav" class="row" style="background-color: black; display: none;">
 
+ 
   <div align="left" class="col l1 s2 m2">
     <a style="margin-top:1.3em" class="waves-effect waves-light btn-large" href="/home">
       <i class="material-icons right">        
       </i>Home
     </a>
   </div>
-  <div  class="col l3 m4 s3 right-align">
+  <div  class="col l2 m4 s3 right-align">
     <a href="http://www.sac.iitkgp.ac.in">
       <img height="90" width="250" src="sac.png" alt="someimg"/>
     </a>
   </div>
-  <div  class="col l3 m4 s3 right-align">
+  <div  class="col l2 m4 s3 right-align">
     <a href="#">
       <img height="90" width="250" src="yearbook.png" alt="someimg"/>
     </a>
   </div>
-  <div align="right" class="col l3 m4 s4">
+
+
+   
+  <div align="right" class="col l3 m2 s2">
+    <a href="/profile_index" style="margin-top:1.3em" class="waves-effect waves-light btn-large"  onsubmit="read();" onload="myfunction()">
+      <i class="material-icons right"></i>
+    <i class="fa fa-globe fa-2x" aria-hidden="true"></i>
+    <span class="badge" style="background: #ff4d4d; position: relative; top: -15px; left: -8px; color:black;" id="totalnoti">
+      {{ App\views::where('read',1)
+      ->where('user',Auth::user()->name)
+      ->count()
+      }}
+    </span>
+     </a>
+  </div>
+
+  <div align="right" class="col l2 m4 s4">
     <a href="https://erp.iitkgp.ernet.in" style="margin-top:1.3em" class="waves-effect waves-light btn-large">
       Edit ERP Profile pic
       <i class="material-icons right"></i>
@@ -59,4 +79,39 @@ $(".button-collapse").sideNav();
   </div>
 </nav>
 
+<script type="text/javascript">
+
+  function read(){ 
+
+   
+  {{ 
+    
+    DB::table('views')
+    ->where('read',2)
+    ->where('user',Auth::user()->name)
+    ->update(array('read' => 0))
+
+
+  }}
+  
+  }
+
+  function myfunction(){
+    {{
+      DB::table('views')
+    ->where('read',1)
+    ->where('user',Auth::user()->name)
+    ->update(array('read' => 2))
+    }}
+  }
+function ajaxCall(){
+$.ajax({
+  url: "/totalnoti",
+  success: function( response ) {
+    $('#totalnoti').text( response );
+  }
+  
+});
+}
+</script>
 

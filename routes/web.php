@@ -64,3 +64,5 @@ Route::get('/writeup/{id}','WriteupController@delete');
 
 Route::post('/updates','WriteupController@updates');
 Route::post('/approve','ViewsController@approve');
+
+Route::post('/profile_index','profile@myread');
