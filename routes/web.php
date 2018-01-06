@@ -40,14 +40,12 @@ FileController
 
 Route::post('/upload_pic_moto','FileController@upload_pic_moto');
 
+Route::get('/upload_pic_moto','HomeController@index');
 
 
+Route::get('/upload','ImageController@index()');
 
-
-Route::get('/upload',function(){
-	return view('upload');
-});
-Route::post('/upload','FileController@upload');
+Route::post('/upload','ImageController@upload');
 
 Route::get('/details',function(){
 	return view('details');
