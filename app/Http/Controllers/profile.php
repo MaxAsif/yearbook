@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\views;
 use Auth;
+use App\User;
 
 class profile extends Controller
 {
@@ -15,4 +16,17 @@ class profile extends Controller
     	
         return view('profile_index',compact('myviews'));
     }
+
+
+     public function testimonials($roll)
+    {
+    	$mydata = User::where('rollno',$roll)->get();
+
+    	$myviews = views::where('depmate',$roll)->get();
+
+
+    	
+        return view('testimonial',compact('myviews','mydata'));
+    }
+
 }

@@ -65,7 +65,7 @@
 }
 .header{
 
-  background-image: url("2.jpg");
+  background-image: url("../2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -102,15 +102,16 @@
 
  
   <body><div class="container-fluid">
- @include('navbar');
+ @include('navbar1');
     <div>
   <div class="body">
     <div class="header">
       <div class="">
 
+         @foreach($mydata as $data) 
         <div class="row">
-          <div class="col l6 m6 s6" style="padding: 20px;"><img class="circle" width="180px"; height= "180px";  src="<?php if (!empty(Auth::user()->pro_pic)){echo Auth::user()->pro_pic; } else { echo 'ind/shot.jpg';}?>" alt="" class="circle responsive-img" id="OpenImgUpload" style="cursor: pointer;width: 180px;height: 180px;"></div>
-          <div class="col l6 m6 s6" style=""><h1 style="font-size: 30px; color: #fff;background-color: black;opacity: 0.6;padding: 10px;"><?php echo Auth::user()->name; ?></h1></div>
+          <div class="col l6 m6 s6" style="padding: 20px;"><img class="circle" width="180px"; height= "180px";  src="<?php if (!empty($data['pro_pic'])){echo '../'.$data['pro_pic']; } else { echo '../ind/shot.jpg';}?>" alt="" class="circle responsive-img" id="OpenImgUpload" style="cursor: pointer;width: 180px;height: 180px;"></div>
+          <div class="col l6 m6 s6" style=""><h1 style="font-size: 30px; color: #fff;background-color: black;opacity: 0.6;padding: 10px;"><?php echo $data['name']; ?></h1></div>
 
         </div> 
       </div>
@@ -124,8 +125,8 @@
           <h2 id="capt">
 
           "<?php 
-          if (Auth::user()->view_self&&Auth::user()->view_self!='NULL') {
-          echo Auth::user()->view_self;
+          if ($data['view_self']&&$data['view_self']!='NULL') {
+          echo $data['view_self'];
            }else{
             echo "No Caption Uploaded";
            }
@@ -140,19 +141,19 @@
         <div class="row">
         <div class="col l3 m3 s3 center">
           <h6 style="font-weight:bolder">Roll No.</h6>
-          <h6><?php echo Auth::user()->rollno; ?></h6>
+          <h6><?php echo $data['rollno']; ?></h6>
         </div>
         <div class="col l3 m3 s3 center">
           <h6 style="font-weight:bolder">Hall</h6>
-          <h6><?php echo Auth::user()->HOR; ?></h6>
+          <h6><?php echo $data['HOR']; ?></h6>
         </div>
         <div class="col l3 m3 s3 center">
 
           <h6 style="font-weight:bolder">Email</h6>
           <h6>
           <?php 
-          if (Auth::user()->email) {
-          echo Auth::user()->email;
+          if ($data['email']) {
+          echo $data['email'];
            }else{
             echo "No Email Provided";
            }
@@ -163,8 +164,8 @@
           <h6 style="font-weight:bolder">Department</h6>
           <h6>
           <?php 
-          if (Auth::user()->department) {
-          echo Auth::user()->department;
+          if ($data['department']) {
+          echo $data['department'];
            }else{
             echo "No Data";
            }
@@ -173,10 +174,52 @@
      
       </div>
       </div>
+     
+
+
+
+
+<p class="box2">Write about your friend!</p> 
+        <form action="/writetestimony/{{$data['rollno']}}" onSubmit="alert('Your views will be added in his yearbook after his registration and approval');" method="POST" style="padding-top: 0;">
+          {{csrf_field()}}
+        <div class="box4">
+          <div class="row">
+            <div class="col l6 m6 s12" style="display: none;">
+              
+
+            </div>
+            <div class="col l6 m6 s12" style="display: none;">
+              
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col l12 m12 s12">
+              <label for="textarea2">Write Here! (Max 144 characters)</label>
+
+              <textarea id="textarea2" name="viewf" placeholder="Write Here! (Max 144 Characters)" class="materialize-textarea" style="padding-bottom: 0;" maxlength="144"></textarea>
+            </div>
+          </div>
+          <center>
+          <button class="btn waves-effect waves-light" type="submit">submit</button></center>
+        </div>
+      </form>
+      <br>
+
+ @endforeach
+
+
+
+
+
+
+
+
+
       <div class=" center" style="padding: 20px;">
 
       <?php 
-        echo "Here’s what your friends written about you! Your testimonials are displayed below. You can approve or disapprove them by selecting the option shown beside each testimonial. The approved ones shall be a part of your yearbook.";
+        echo "Here’s what his friends have written about him! These ones will be a part of his yearbook.";
       //include 'profile_approval.blade.php';
        
        //include('profile_approval');
@@ -198,6 +241,7 @@
  {
 $id=$view['id'];
 
+if($view['approval']=='1')
  echo '<tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['user'].' said:</b><br>
                       '.$view["views"].'
                   </td>
@@ -206,11 +250,11 @@ $id=$view['id'];
 
                   if($view['approval']=='1'){
                     
-                    echo '<input type="submit" class="btn waves-light disapprove app'.$i.'" value= "disapprove" data-no="'.$i.'" data-id="'.json_encode($id).'" id= "'.json_encode($id).'" >';
+                    
                   }else{
                                       
 
-                    echo '<input type="submit" class="btn waves-light red approve app'.$i.'" value= "Approve" data-no="'.json_encode($i).'" data-id="'.json_encode($id).'" id= "'.json_encode($rollno).'" );"> <div class="text_show'.$i.'" style= "padding-left = 15px;"></div>';
+                    echo  '<div class="text_show'.$i.'" style= "padding-left = 15px;"></div>';
                   }
 
                   echo '</div></td>';
@@ -334,39 +378,3 @@ if($j==0)
     </div>
   </body>
   
-
-
-
-<script type="text/javascript">
-  
-  function call($id)
-  {
-    alert($id);
-  }
-$('.approve').click('.approve', function(){
-
-  
-    var rollno = $(this).attr('id');
-    var no = $(this).attr('data-no');
-    var id = $(this).attr('data-id');
-    var query= id;
-    
-    window.location="/approve/"+id;
-   
-  }); 
-  $('.disapprove').click('.disapprove',function(){
-    
-    var rollno = $(this).attr('id');
-    var no = $(this).attr('data-no');
-    var id = $(this).attr('data-id');
-    
-    var query= '1';
-    
-     window.location="/disapprove/"+id;
-   
-  }); 
-
-
-</script>
-
-
