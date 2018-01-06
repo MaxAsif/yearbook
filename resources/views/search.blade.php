@@ -54,6 +54,10 @@
         background-color: grey !important;
         opacity: 0.3;
       }
+      .tabb
+      {
+        background-color: ;
+      }
   </style>
   <script>
    $(document).ready(function(){
@@ -84,6 +88,7 @@
        { "searchable": false },
        
        null,
+       { "searchable": false },
        { "searchable": false },
        { "searchable": false },
        
@@ -118,13 +123,13 @@
 <div class="ui-widget " >
   
 </div></div></div>
-<div class="card grey darken-1 center animated zoomInUp" style="overflow-x: hidden;" data-step="2" data-intro="See friends suggestion here">
+<div class="card  center animated zoomInUp" style="overflow-x: hidden;" data-step="2" data-intro="See friends suggestion here">
 
 <div class="row back" style="">
 
-        
+       Search your friends by typing names on the search bar in the left<br>
   
-  <div class="col-sm-9">
+  <div class="col-sm-9 tabb">
    
     <table id="example" class="display" cellspacing="0" width="100%">
       <thead>
@@ -135,6 +140,7 @@
         <th>NAME</th>
         <th>DEPARTMENT</th>
         <th>ROLL</th>
+        <th>WRITE</th>
         
 
 
@@ -143,10 +149,13 @@
     <tbody>
       @foreach($user as $data)
 <tr>
-  <td id="nam"></td>
+  <td id="nam">{{$data['id']}}</td>
   <td id="nam">{{$data['name']}}</td>
   <td id="nam">{{$data['department']}}</td>
   <td id="nam">{{$data['rollno']}}</td>
+  <td id="nam"> <a href="/profile_index/{{$data['rollno']}}">
+        testimonial
+      </a></td>
   
   
 </tr>
