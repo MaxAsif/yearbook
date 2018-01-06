@@ -29,4 +29,13 @@ class profile extends Controller
         return view('testimonial',compact('myviews','mydata'));
     }
 
+    public function updateread()
+    {
+        //changing the default value of 1 to 0
+        views::where('read',1)->where('user',Auth::user()->name)->update(array('read' => 0));
+
+
+        return redirect('/profile_index') ;
+    }
+
 }

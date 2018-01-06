@@ -1,4 +1,5 @@
 <head>
+<!--link for notification icon -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
 </head>
 <script>
@@ -35,14 +36,18 @@ $(".button-collapse").sideNav();
   </div>
 
 
-   
+   <!-- for unread notification-->
   <div align="right" class="col l3 m2 s2">
-    <a href="/profile_index" style="margin-top:1.3em" class="waves-effect waves-light btn-large"  onsubmit="read();" onload="myfunction()">
+  <!--go to web.php for route in anchor tag -->
+    <a href="/updateread" style="margin-top:1.3em" class="waves-effect waves-light btn-large" >
       <i class="material-icons right"></i>
     <i class="fa fa-globe fa-2x" aria-hidden="true"></i>
-    <span class="badge" style="background: #ff4d4d; position: relative; top: -15px; left: -8px; color:black;" id="totalnoti">
-      {{ App\views::where('read',1)
-      ->where('user',Auth::user()->name)
+    <span class="badge" style="background: #ff4d4d; position: relative; top: -15px; left: -8px; color:black;" >
+      {{
+      // 1 is default value assigned selecting the user corresponding to unread
+
+       App\views::where('read',1)
+      ->where('user',Auth::user()->name)     
       ->count()
       }}
     </span>
@@ -79,39 +84,4 @@ $(".button-collapse").sideNav();
   </div>
 </nav>
 
-<script type="text/javascript">
-
-  function read(){ 
-
-   
-  {{ 
-    
-    DB::table('views')
-    ->where('read',2)
-    ->where('user',Auth::user()->name)
-    ->update(array('read' => 0))
-
-
-  }}
-  
-  }
-
-  function myfunction(){
-    {{
-      DB::table('views')
-    ->where('read',1)
-    ->where('user',Auth::user()->name)
-    ->update(array('read' => 2))
-    }}
-  }
-function ajaxCall(){
-$.ajax({
-  url: "/totalnoti",
-  success: function( response ) {
-    $('#totalnoti').text( response );
-  }
-  
-});
-}
-</script>
 
