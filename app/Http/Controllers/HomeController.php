@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\writeup;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -36,6 +37,19 @@ class HomeController extends Controller
         {
             return view('home');
         }
+
+
+
+         public function search()
+        {
+            $user = User::get();
+            return view('search',compact('user'));
+        }
+
+
+
+
+
         /*
     -------------------------------------------------------
     function edit()

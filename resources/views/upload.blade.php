@@ -180,6 +180,15 @@
   </div>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 </body>
 <script type="text/javascript">
   /*jslint browser: true, white: true, eqeq: true, plusplus: true, sloppy: true, vars: true*/
@@ -226,10 +235,27 @@
   }
 
   $(document).ready(function (e) {
+
+
     $('ul.first').bsPhotoGallery({
       "classes" : "col-lg-3 col-md-4 col-sm-3 col-xs-4 col-xxs-12",
-      "hasModal" : true
+      "hasModal" : false
     });
+    $('li img').on('click',function(){
+      var src = $(this).attr('src');
+      var img = '<img src="' + src + '" class="img-responsive"/>';
+      $('#myModal').modal();
+      $('#myModal').on('shown.bs.modal', function(){
+        $('#myModal .modal-body').html(img);
+      });
+      $('#myModal').on('hidden.bs.modal', function(){
+        $('#myModal .modal-body').html('');
+      });
+    });
+
+
+
+
     $('form#upload-image-form').on('submit', function(e) {
 
       e.preventDefault();
@@ -264,6 +290,7 @@
           var $el = $('#image');
           $el.wrap('<form>').closest('form').get(0).reset();
           $el.unwrap();
+          location.reload();
 
 
         },

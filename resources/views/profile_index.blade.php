@@ -1,4 +1,11 @@
 
+
+
+
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+
 <!doctype html>
 <html>
   <head>
@@ -12,6 +19,7 @@
     <meta name=viewport content='width=700'>
 
    <script>
+
  $(document).ready(function(){
    if ($(window).width()<770) {
     (function($){ $('.body').addClass('container-fluid');
@@ -75,6 +83,23 @@
 
     </style>
   </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
   <body><div class="container-fluid">
  @include('navbar');
@@ -153,10 +178,195 @@
       <?php 
         echo "Here’s what your friends written about you! Your testimonials are displayed below. You can approve or disapprove them by selecting the option shown beside each testimonial. The approved ones shall be a part of your yearbook.";
       //include 'profile_approval.blade.php';
-       ?>
-       <? //include('profile_approval');
+       
+       //include('profile_approval');
 ?>
+
+
+  <div class="container-fluid">
+    <table class="highlight col l12 s12 m12">
+
+          <tbody>
+            <?php
+           
+              $dept = Auth::user()->department;
+              $rollno = Auth::user()->rollno;
+               $j=0;
+               $i=0;
+             
+    foreach($myviews as $view)
+ {
+$id=$view['id'];
+
+ echo '<tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['user'].' said:</b><br>
+                      '.$view["views"].'
+                  </td>
+                  <td class="col l3"><div class="approval" style="padding:20px">'; 
+
+
+                  if($view['approval']=='1'){
+                    
+                    echo '<input type="submit" class="btn waves-light disapprove app'.$i.'" value= "disapprove" data-no="'.$i.'" data-id="'.json_encode($id).'" id= "'.json_encode($id).'" >';
+                  }else{
+                                      
+
+                    echo '<input type="submit" class="btn waves-light red approve app'.$i.'" value= "Approve" data-no="'.json_encode($i).'" data-id="'.json_encode($id).'" id= "'.json_encode($rollno).'" );"> <div class="text_show'.$i.'" style= "padding-left = 15px;"></div>';
+                  }
+
+                  echo '</div></td>';
+
+
+
+
+
+
+
+  
+  $j=1;
+ }         
+if($j==0)
+ {
+  
+            echo "<h5>No Testimonials Given</h5>";
+          }
+
+
+          /*
+            $i=0;
+
+              $id=$query_row['id'];
+
+                  echo '<tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$query_row1["name"].' said:</b><br>
+                      '.$query_row["views"].'
+                  </td>
+                  <td class="col l3"><div class="approval" style="padding:20px">';                  
+
+                  if($query_row['approval']=='approve'){
+                    
+                    echo '<input type="submit" class="btn waves-light disapprove app'.$i.'" value= "disapprove" data-no="'.$i.'" data-id="'.$id.'" id= "'.$rollno.'"> ';
+                  }else{
+                                      
+
+                    echo '<input type="submit" class="btn waves-light red approve app'.$i.'" value= "Approve" data-no="'.$i.'" data-id="'.$id.'" id= "'.$rollno.'"> <div class="text_show'.$i.'" style= "padding-left = 15px;"></div>';
+                  }
+
+                  echo '</div></td>';
+                  $pass= $query_row['deptmate'];
+                  $i++;
+                }*/
+            
+              
+              
+            ?>
+          </tbody>
+        </table>
+  </div>
+<script>
+  /*
+  $(document).on('click', '.approve', function(){
+    var rollno = $(this).attr('id');
+    var no = $(this).attr('data-no');
+    var id = $(this).attr('data-id');
+    var query= 'id='+id;
+    $.ajax({
+      url: 'views_approval_data.php',
+      data: query,
+      
+      type: 'POST',
+      success: function (data) {
+          console.log(data);
+          if(data){
+            console.log(data);
+            //$('.approve').remove();
+            $('.app'+no).attr('value','disapprove');
+            $('.app'+no).removeClass('approve');
+            $('.app'+no).addClass('disapprove');
+            $('.app'+no).removeClass('red');
+            $('.text_show'+no).html('Approved');
+          }else{
+            alert("Please try again");
+          }
+        }
+    });
+  }); 
+  $(document).on('click', '.disapprove',function(){
+    var rollno = $(this).attr('id');
+    var no = $(this).attr('data-no');
+    var id = $(this).attr('data-id');
+    var query= 'id='+id;
+    $.ajax({
+      url: 'views_disproval_data.php',
+      data: query,
+      
+      type: 'POST',
+      success: function (data) {
+          console.log(data);
+          if(data){
+            console.log(data);
+            $('.app'+no).attr('value','approve');
+            $('.app'+no).removeClass('disapprove');
+            $('.app'+no).addClass('approve');
+            $('.app'+no).addClass('red');
+            $('.text_show'+no).html('');
+          }else{
+            alert("Please try again");
+
+          }
+        }
+    });
+  }); 
+  */  
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>    
     </div>
   </body>
   
+
+
+
+<script type="text/javascript">
+  
+  function call($id)
+  {
+    alert($id);
+  }
+$('.approve').click('.approve', function(){
+
+  
+    var rollno = $(this).attr('id');
+    var no = $(this).attr('data-no');
+    var id = $(this).attr('data-id');
+    var query= id;
+    
+    window.location="/approve/"+id;
+   
+  }); 
+  $('.disapprove').click('.disapprove',function(){
+    
+    var rollno = $(this).attr('id');
+    var no = $(this).attr('data-no');
+    var id = $(this).attr('data-id');
+    
+    var query= '1';
+    
+     window.location="/disapprove/"+id;
+   
+  }); 
+
+
+</script>
+
+

@@ -27,6 +27,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); //Jus
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile_index', 'profile@index');
+Route::get('/profile_index/{roll}', 'profile@testimonials');
+Route::get('/search','HomeController@search');
 
 
 
@@ -39,11 +41,12 @@ FileController
 */
 
 Route::post('/upload_pic_moto','FileController@upload_pic_moto');
+Route::post('/writetestimony/{roll}','ViewsController@write');
 
 Route::get('/upload_pic_moto','HomeController@index');
 
 
-Route::get('/upload','ImageController@index()');
+Route::get('/upload','ImageController@index');
 
 Route::post('/upload','ImageController@upload');
 
@@ -61,3 +64,6 @@ Route::post('/writeup','WriteupController@store');
 Route::get('/writeup/{id}','WriteupController@delete');
 
 Route::post('/updates','WriteupController@updates');
+Route::post('/approve','ViewsController@approve');
+Route::get('/approve/{id}','ViewsController@approval');
+Route::get('/disapprove/{id}','ViewsController@disapproval');

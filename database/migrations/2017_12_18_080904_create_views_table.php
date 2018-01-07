@@ -16,6 +16,11 @@ class CreateViewsTable extends Migration
         Schema::create('views', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            
+            $table->text('depmate');
+            $table->text('views');
+            $table->text('user');
+            $table->text('approval');
         });
     }
 

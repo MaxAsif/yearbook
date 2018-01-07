@@ -14,7 +14,7 @@ class ImageController extends Controller
 	}
 	public function index()
 	{
-		$images = App\Image::where('rollno',Auth::user()->rollno)->pluck('url','caption')->toArray();
+		$images = Image::where('rollno',Auth::user()->rollno)->pluck('url','caption')->toArray();
 		
 		return view('upload',compact('images'));
 	}
