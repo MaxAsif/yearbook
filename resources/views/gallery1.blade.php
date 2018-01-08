@@ -80,8 +80,7 @@ Can this be done with Masonry options? */
 </style>
 
 
-<!-- Posts -->
-
+@if(count($images))
 <!-- <div id="grid" class="container"> -->
 <div class="container" id="grid">
   <div id="posts">
@@ -98,6 +97,7 @@ Can this be done with Masonry options? */
     @endforeach
   </div>
 </div>
+@endif
 <script type="text/javascript">
 	 // Takes the gutter width from the bottom margin of .post
 
