@@ -65,5 +65,10 @@ Route::get('/writeup/{id}','WriteupController@delete');
 
 Route::post('/updates','WriteupController@updates');
 Route::post('/approve','ViewsController@approve');
+
 Route::get('/approve/{id}','ViewsController@approval');
 Route::get('/disapprove/{id}','ViewsController@disapproval');
+
+//route for navbar unseen testinomial from navbar.blade.php 
+//go to profile.php controller
+Route::get('/updateread', 'profile@updateread');
