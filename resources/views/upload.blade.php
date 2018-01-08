@@ -32,6 +32,20 @@ if (isset($_SESSION['rollno'])) {
         <!-- CSS adjustments for browsers with JavaScript disabled -->
         <noscript><link rel="stylesheet" href="css/jquery.fileupload-noscript.css"></noscript>
         <noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
+
+
+<!-- ... [OTHER INCLUDES] ... -->
+        
+        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script> 
+        
+        <link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css' /> 
+        <script type='text/javascript' src='unitegallery/themes/default/ug-theme-default.js'></script> 
+        <link rel='stylesheet' href='unitegallery/themes/default/ug-theme-default.css' type='text/css' /> 
+
+
+
+
         <style>
         @font-face {
           font-family: 'Century gothic';
@@ -244,3 +258,11 @@ $(document).ready(function(){
 
 </body>
 </html>
+
+
+MCL
+EDCIL
+NPCC
+AIR INDIA
+1MORE
+STATIONARY

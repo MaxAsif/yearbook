@@ -81,6 +81,237 @@
       margin: 0 !important;
     }
 
+
+
+
+
+
+
+
+
+
+.main-timeline{
+    overflow: hidden;
+    position: relative;
+}
+.main-timeline:before{
+    content: "";
+    width: 3px;
+    height: 100%;
+    background: #d6d5d5;
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+.main-timeline .timeline{
+    padding-right: 30px;
+    position: relative;
+}
+.main-timeline .timeline:before,
+.main-timeline .timeline:after{
+    content: "";
+    display: block;
+    width: 100%;
+    clear: both;
+}
+.main-timeline .timeline:first-child:before,
+.main-timeline .timeline:last-child:before{
+    content: "";
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid #d6d5d5;
+    background: #fff;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: -3px;
+}
+.main-timeline .timeline:last-child:before{
+    top: auto;
+    bottom: 0;
+}
+.main-timeline .timeline-icon{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #d6d5d5;
+    box-sizing: content-box;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: -4px;
+}
+.main-timeline .timeline-icon:before{
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #737ab4;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.main-timeline .year{
+    display: inline-block;
+    padding: 8px 20px;
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+    background: #737ab4;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    right: 35%;
+    transform: translateY(-50%);
+}
+.main-timeline .year:before{
+    content: "";
+    border-right: 18px solid #737ab4;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    position: absolute;
+    top: 0;
+    left: -18px;
+}
+.main-timeline .timeline-content{
+    width: 46.5%;
+    padding: 43px 50px;
+    margin: 0 20px 0 0;
+    background: #f2f2f2;
+    position: relative;
+}
+.main-timeline .timeline-content:after{
+    content: "";
+    border-left: 20px solid #f2f2f2;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+}
+.main-timeline .title{
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: #504f54;
+    margin: 0 20px 20px 0;
+}
+.main-timeline .post{
+    display: inline-block;
+    font-size: 14px;
+    color: #999;
+    margin-top: 6px;
+}
+.main-timeline .description{
+    font-size: 14px;
+    color: #7d7b7b;
+    line-height: 24px;
+    margin: 0;
+    clear: both;
+}
+.main-timeline .timeline:nth-child(2n){ padding: 0 0 0 30px; }
+.main-timeline .timeline:nth-child(2n) .year{
+    right: auto;
+    left: 35%;
+}
+.main-timeline .timeline:nth-child(2n) .year:before{
+    border: 18px solid transparent;
+    border-right: none;
+    border-left: 18px solid #737ab4;
+    left: auto;
+    right: -18px;
+}
+.main-timeline .timeline:nth-child(2n) .timeline-content{
+    float: right;
+    margin: 0 0 0 20px;
+}
+.main-timeline .timeline:nth-child(2n) .timeline-content:after{
+    border-left: none;
+    border-right: 20px solid #f2f2f2;
+    right: auto;
+    left: -20px;
+}
+@media only screen and (max-width: 1200px){
+    .main-timeline .year{ right: 30%; }
+    .main-timeline .timeline:nth-child(2n) .year{ left: 30%; }
+}
+@media only screen and (max-width: 990px){
+    .main-timeline .year{ right: 25%; }
+    .main-timeline .timeline:nth-child(2n) .year{ left: 25%; }
+}
+@media only screen and (max-width: 767px){
+    .main-timeline:before{ left: 10px; }
+    .main-timeline .timeline{
+        padding: 0 0 0 30px;
+        margin-bottom: 20px;
+    }
+    .main-timeline .timeline:last-child{ margin-bottom: 0; }
+    .main-timeline .timeline:first-child:before,
+    .main-timeline .timeline:last-child:before{ display: none; }
+    .main-timeline .timeline-icon{
+        margin: 0;
+        position: absolute;
+        top: 7px;
+        left: 0;
+    }
+    .main-timeline .year,
+    .main-timeline .timeline:nth-child(2n) .year{
+        display: block;
+        font-weight: bold;
+        margin: 0 0 32px 30px;
+        z-index: 1;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+    }
+    .main-timeline .timeline:nth-child(2n) .year:before{
+        border-left: none;
+        border-right: 18px solid #737ab4;
+        right: auto;
+        left: -18px;
+    }
+    .main-timeline .timeline-content{ padding: 20px; }
+    .main-timeline .timeline-content,
+    .main-timeline .timeline:nth-child(2n) .timeline-content{
+        width: auto;
+        float: none;
+        margin: 0 0 0 30px;
+    }
+    .main-timeline .timeline-content:after,
+    .main-timeline .timeline:nth-child(2n) .timeline-content:after{
+        border: none;
+        border-bottom: 20px solid #f2f2f2;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        top: -20px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+}
+@media only screen and (max-width: 480px){
+    .main-timeline .title{
+        float: none;
+        margin: 0;
+    }
+    .main-timeline .year,
+    .main-timeline .timeline:nth-child(2n) .year{ margin-left: 20px; }
+    .main-timeline .timeline-content,
+    .main-timeline .timeline:nth-child(2n) .timeline-content{ margin-left: 10px; }
+    .main-timeline .post{ margin: 5px 0; }
+}
     </style>
   </head>
 
@@ -225,86 +456,72 @@
        //include('profile_approval');
 ?>
 
+</div></div></div></div>
+<br><br>
 
-  <div class="container-fluid">
-    <table class="highlight col l12 s12 m12">
+<?php
+$l=0;
+echo'
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-timeline">';
+foreach($myviews as $view)
+{
+  if($view['approval']=='1'){
 
-          <tbody>
-            <?php
-           
-              $dept = Auth::user()->department;
-              $rollno = Auth::user()->rollno;
-               $j=0;
-               $i=0;
-             
-    foreach($myviews as $view)
- {
-$id=$view['id'];
-
-if($view['approval']=='1')
- echo '<tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['user'].' said:</b><br>
-                      '.$view["views"].'
-                  </td>
-                  <td class="col l3"><div class="approval" style="padding:20px">'; 
-
-
-                  if($view['approval']=='1'){
-                    
-                    
-                  }else{
-                                      
-
-                    echo  '<div class="text_show'.$i.'" style= "padding-left = 15px;"></div>';
-                  }
-
-                  echo '</div></td>';
-
-
-
-
-
-
-
-  
-  $j=1;
- }         
-if($j==0)
- {
-  
-            echo "<h5>No Testimonials Given</h5>";
-          }
+            if($l==0)
+            {
+               echo ' <div class="timeline">
+                    <span class="timeline-icon" ></span>
+                    <span class="year">Testimonial</span>
+                    <div class="timeline-content">
+                        <h3 class="title">'.$view['user'].'</h3>
+                        <span class="post"></span>
+                        <p class="description">
+                            '.$view["views"].'
+                        </p>
+                    </div>
+                </div>';
+                $l=1;
+              }
+              else{
+                echo'
+ 
+                <div class="timeline">
+                    <span class="timeline-icon"></span>
+                    <span class="year">Testimonial</span>
+                    <div class="timeline-content">
+                        <h3 class="title">'.$view['user'].'</h3>
+                        <span class="post"></span>
+                        <p class="description">
+                           '.$view["views"].'
+                        </p>
+                    </div>
+                </div>';
+                $l=0;
+              }
+               
+}
+}
+ echo '
+            </div>
+        </div>
+    </div>
+</div>
+';
 
 
-          /*
-            $i=0;
+?>
 
-              $id=$query_row['id'];
 
-                  echo '<tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$query_row1["name"].' said:</b><br>
-                      '.$query_row["views"].'
-                  </td>
-                  <td class="col l3"><div class="approval" style="padding:20px">';                  
 
-                  if($query_row['approval']=='approve'){
-                    
-                    echo '<input type="submit" class="btn waves-light disapprove app'.$i.'" value= "disapprove" data-no="'.$i.'" data-id="'.$id.'" id= "'.$rollno.'"> ';
-                  }else{
-                                      
+</body>
 
-                    echo '<input type="submit" class="btn waves-light red approve app'.$i.'" value= "Approve" data-no="'.$i.'" data-id="'.$id.'" id= "'.$rollno.'"> <div class="text_show'.$i.'" style= "padding-left = 15px;"></div>';
-                  }
 
-                  echo '</div></td>';
-                  $pass= $query_row['deptmate'];
-                  $i++;
-                }*/
-            
-              
-              
-            ?>
-          </tbody>
-        </table>
-  </div>
+
+
+
 <script>
   /*
   $(document).on('click', '.approve', function(){
@@ -374,7 +591,6 @@ if($j==0)
 
 
 
-    </div>    
-    </div>
+  
   </body>
   
