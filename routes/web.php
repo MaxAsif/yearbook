@@ -43,14 +43,12 @@ FileController
 Route::post('/upload_pic_moto','FileController@upload_pic_moto');
 Route::post('/writetestimony/{roll}','ViewsController@write');
 
+Route::get('/upload_pic_moto','HomeController@index');
 
 
+Route::get('/upload','ImageController@index');
 
-
-Route::get('/upload',function(){
-	return view('upload');
-});
-Route::post('/upload','FileController@upload');
+Route::post('/upload','ImageController@upload');
 
 Route::get('/details',function(){
 	return view('details');
@@ -67,5 +65,10 @@ Route::get('/writeup/{id}','WriteupController@delete');
 
 Route::post('/updates','WriteupController@updates');
 Route::post('/approve','ViewsController@approve');
+
 Route::get('/approve/{id}','ViewsController@approval');
 Route::get('/disapprove/{id}','ViewsController@disapproval');
+
+//route for navbar unseen testinomial from navbar.blade.php 
+//go to profile.php controller
+Route::get('/updateread', 'profile@updateread');

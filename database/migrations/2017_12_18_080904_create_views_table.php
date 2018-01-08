@@ -21,6 +21,7 @@ class CreateViewsTable extends Migration
             $table->text('views');
             $table->text('user');
             $table->text('approval');
+            $table->integer('read')->default('1');
         });
     }
 
