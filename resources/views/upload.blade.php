@@ -73,7 +73,6 @@
    <br>
    <div class="container animated zoomInLeft ">
     <div class="row">
-
       <div class="col-md-12 col-sm-12 col-lg-12" align="center">
         <h2 style="color:#707070;">Upload Photos</h2>
       </div>
@@ -81,17 +80,11 @@
     <div class="row" align="center" style="padding: 30px;">
       <h4>What better way to capture a memory than printing it in your yearbook? Share with us the pictures of your most memorable times at KGP and we’ll make it a part of your memoir. Select the category for your picture/s and upload them using the option below.</h4>
     </div>
-
-
-
     <div class="container-fluid">
-
       <div style="max-width: 650px; margin: auto;">
-
         <!-- Modal -->
         <div id="bootstrap-modal" class="modal fade" role="dialog">
           <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
@@ -101,18 +94,14 @@
               <div class="modal-body">
                <div id="image-preview-div" style="display: none">
                 <img id="preview-img" src="noimage">
-
               </div>
-
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
             </div>
           </div>
-
         </div>
       </div>
-
       <form id="upload-image-form" action="/upload" method="post" enctype="multipart/form-data">
         <input id="signup-token" type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
@@ -124,7 +113,6 @@
             <option value="misc">OTHER MOMENTS AT KGP</option>
           </select>
         </div>
-
         <div id="cropp-image-div" style="display: none">
           <img id="crop-image" src="noimage" class="img-thumbnail">
           <div class="form-group">
@@ -137,7 +125,6 @@
         </div>
         <button class="btn btn-lg btn-primary" id="upload-button" type="submit" disabled>Upload image</button>
       </form>
-
       <br>
       <div class="alert alert-info" id="loading" style="display: none;" role="alert">
         Uploading image...
@@ -148,13 +135,9 @@
       </div>
       <div id="message"></div>
     </div>
-
   </div>
-
-
 </div>
 <br>
-
 @include('gallery1')
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -164,14 +147,10 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 </body>
 <script type="text/javascript">
   /*jslint browser: true, white: true, eqeq: true, plusplus: true, sloppy: true, vars: true*/
   /*global $, console, alert, FormData, FileReader*/
-
-
-
   function selectImage(e) {
     $('#file').css("color", "green");
     console.log("selectImage called"); 
@@ -185,15 +164,12 @@
       $('#preview-img').cropper({
         viewMode : 1,
         preview : '.preview',
-
         crop : function(e) {
         
       }
     });
     }).on("hidden.bs.modal", function() {
-
       originalData = $("#preview-img").cropper("getCroppedCanvas");
-
       var originalPng = originalData.toDataURL("image/png");
       console.log(originalData);
       $("#preview-img").cropper("destroy");
@@ -202,12 +178,9 @@
       $('#crop-image').css('max-width', '200px');
     });
   }
-
   $(document).ready(function (e) {
     $('form#upload-image-form').on('submit', function(e) {
-
       e.preventDefault();
-
       $('#message').empty();
       $('#loading').show();
       console.log(originalData);
@@ -223,7 +196,6 @@
          console.log(value[1]); 
        }
        console.log("crop image",originalData);
-
        $.ajax({
         url: "/upload",
         type: "POST",
@@ -236,13 +208,10 @@
           alert('Your pic has been succesfully added.');
           $('#loading').hide();
           $('#cropp-image-div').css("display", "none");
-
           var $el = $('#image');
           $el.wrap('<form>').closest('form').get(0).reset();
           $el.unwrap();
           location.reload();
-
-
         },
         error: function(data)
         {
@@ -250,26 +219,19 @@
           console.log("error",data);
           $('#loading').hide();
           $('#cropp-image-div').css("display", "none");
-
           var $el = $('#image');
           $el.wrap('<form>').closest('form').get(0).reset();
           $el.unwrap();
         }
       });
      });
-
     });
-
     $('#image').change(function() {
       $('#upload-button').removeAttr("disabled");
-
-
       var reader = new FileReader();
       reader.onload = selectImage;
       reader.readAsDataURL(this.files[0]);
-
     });
-
   });
 </script>
 </html>
