@@ -22,8 +22,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/3.1.3/cropper.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/3.1.3/cropper.js"></script>
-    <script src="js/jquery.bsPhotoGallery.js"></script>
-    <link rel="stylesheet" href="css/jquery.bsPhotoGallery.css" />
+    
 
 
     <style>
@@ -156,30 +155,7 @@
 </div>
 <br>
 
-<div class="container">
-  <br>  
-  <div class="row">
-    <ul class="first">
-      @foreach($images as $caption=>$url)
-      <li>
-
-        <div class="thumbnail">
-          <img src="{{$url}}" alt="{{$caption}}" style="width:100%">
-          <div class="caption">
-            <p style="text-overflow: ellipsis; overflow: hidden;
-            white-space: nowrap;">{{$caption}}</p>
-          </div>
-          
-        </div>
-        
-      </li>
-      @endforeach
-    </ul>
-    
-
-  </div>
-</div>
-
+@include('gallery1')
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -211,14 +187,7 @@
         preview : '.preview',
 
         crop : function(e) {
-        // Output the result data for cropping image.
-        console.log(e.x);
-        console.log(e.y);
-        console.log(e.width);
-        console.log(e.height);
-        console.log(e.rotate);
-        console.log(e.scaleX);
-        console.log(e.scaleY);
+        
       }
     });
     }).on("hidden.bs.modal", function() {
@@ -235,27 +204,6 @@
   }
 
   $(document).ready(function (e) {
-
-
-    $('ul.first').bsPhotoGallery({
-      "classes" : "col-lg-3 col-md-4 col-sm-3 col-xs-4 col-xxs-12",
-      "hasModal" : false
-    });
-    $('li img').on('click',function(){
-      var src = $(this).attr('src');
-      var img = '<img src="' + src + '" class="img-responsive"/>';
-      $('#myModal').modal();
-      $('#myModal').on('shown.bs.modal', function(){
-        $('#myModal .modal-body').html(img);
-      });
-      $('#myModal').on('hidden.bs.modal', function(){
-        $('#myModal .modal-body').html('');
-      });
-    });
-
-
-
-
     $('form#upload-image-form').on('submit', function(e) {
 
       e.preventDefault();
@@ -264,13 +212,15 @@
       $('#loading').show();
       console.log(originalData);
       var formdata = new FormData(this); 
-      for (var value of formdata.values()) {
-        console.log("before",value); 
+      for (var value of formdata.entries()) {
+        console.log("after",value[0]);
+         console.log(value[1]); 
       }
       originalData.toBlob(function (blob){
        formdata.append('croppedImage',blob);
-       for (var value of formdata.values()) {
-         console.log("after",value); 
+       for (var value of formdata.entries()) {
+         console.log("after",value[0]);
+         console.log(value[1]); 
        }
        console.log("crop image",originalData);
 
@@ -297,7 +247,7 @@
         error: function(data)
         {
           alert("Sorry, there was an error uploading image");
-          console.log(data);
+          console.log("error",data);
           $('#loading').hide();
           $('#cropp-image-div').css("display", "none");
 

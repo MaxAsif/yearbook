@@ -49,12 +49,12 @@ class ImageController extends Controller
 				'classifier' => $classifier,
 
 			]);
-			echo 'Success';
+			
 		}
 		else
 		{
-			echo request('croppedImage');
-			return Response::json(['error' => 'Sorry could not upload your picture'], 404); // Status code here
+			
+			return Response::json(['error' => json_encode(request('caption'))], 404); // Status code here
 			
 		}
 		
