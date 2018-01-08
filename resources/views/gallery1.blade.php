@@ -84,13 +84,13 @@ Can this be done with Masonry options? */
 <!-- <div id="grid" class="container"> -->
 <div class="container" id="grid">
   <div id="posts">
-  	@foreach($images as $caption=>$url)
-     @if(file_exists($url))
+  	@foreach($images as $image)
+     @if(file_exists($image['url']))
     <div class="post">
-      <img src="{{$url}}">
+      <img src="{{$image['url']}}">
       <br>
       <br>
-      <strong>{{$caption}}</strong>
+      <strong>{{$image['caption']}}</strong>
       
     </div>
     @endif

@@ -458,6 +458,7 @@
 
 </div></div></div></div>
 <br><br>
+<div id="testimonial">
 
 <?php
 $l=0;
@@ -514,7 +515,7 @@ foreach($myviews as $view)
 
 ?>
 
-
+</div>
 
 </body>
 
