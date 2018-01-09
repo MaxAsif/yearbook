@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\views;
 use Auth;
 use App\User;
+use App\Image;
 
 class profile extends Controller
 {
@@ -24,9 +25,11 @@ class profile extends Controller
 
     	$myviews = views::where('depmate',$roll)->get();
 
+        $images = Image::where('rollno',$roll)->get()->toArray();    
+
 
     	
-        return view('testimonial',compact('myviews','mydata'));
+        return view('testimonial',compact('myviews','mydata','images'));
     }
 
     public function updateread()
