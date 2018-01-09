@@ -458,6 +458,12 @@
 
 </div></div></div></div>
 <br><br>
+<div class="container">
+<ul id="tabs-swipe-demo" class="tabs">
+  <li class="tab col s6"><a  class="active" href="#testimonial">Testimonial</a></li>
+  <li class="tab col s6"><a href="#gallery">Gallery</a></li>
+</ul>
+</div>
 <div id="testimonial">
 
 <?php
@@ -516,7 +522,9 @@ foreach($myviews as $view)
 ?>
 
 </div>
-
+<div class="gallery">
+  @include('gallery1')
+</div>
 </body>
 
 
