@@ -1,50 +1,50 @@
 <style type="text/css">
-	
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
-  background-color: #17A2B8;
+	background-color: #17A2B8;
 }
 .dropdown-menu{
-  top: 60px;
-  right: 0px;
-  left: unset;
-  width: 460px;
-  box-shadow: 0px 5px 7px -1px #c1c1c1;
-  padding-bottom: 0px;
-  padding: 0px;
+	top: 60px;
+	right: 0px;
+	left: unset;
+	width: 460px;
+	box-shadow: 0px 5px 7px -1px #c1c1c1;
+	padding-bottom: 0px;
+	padding: 0px;
 }
 .dropdown-menu:before{
-  content: "";
-  position: absolute;
-  top: -20px;
-  right: 12px;
-  border:10px solid #343A40;
-  border-color: transparent transparent #343A40 transparent;
+	content: "";
+	position: absolute;
+	top: -20px;
+	right: 12px;
+	border:10px solid #343A40;
+	border-color: transparent transparent #343A40 transparent;
 }
 .head{
-  padding:5px 15px;
-  border-radius: 3px 3px 0px 0px;
+	padding:5px 15px;
+	border-radius: 3px 3px 0px 0px;
 }
 .notification-box{
-  padding: 10px 0px; 
+	padding: 10px 0px; 
 }
 .bg-gray{
-  background-color: #eee;
+	background-color: #eee;
 }
 @media (max-width: 640px) {
-    .dropdown-menu{
-      top: 50px;
-      left: -16px;  
-      width: 290px;
-    } 
-    .nav{
-      display: block;
-    }
-    .nav .nav-item,.nav .nav-item a{
-      padding-left: 0px;
-    }
-    .message{
-      font-size: 13px;
-    }
+	.dropdown-menu{
+		top: 50px;
+		left: -16px;  
+		width: 290px;
+	} 
+	.nav{
+		display: block;
+	}
+	.nav .nav-item,.nav .nav-item a{
+		padding-left: 0px;
+	}
+	.message{
+		font-size: 13px;
+	}
 }
 </style>
 <nav class="navbar navbar-expand-sm navbar-light bg-dark" style="height: 86px">
@@ -54,20 +54,41 @@
 	</button>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent" style="display: unset !important;">
+		
 		<ul class="nav nav-pills mr-auto justify-content-end">
+			<li class="nav-item">
+
+				<form action="search/" method="POST" class="form-inline">
+					{{ csrf_field() }}
+					<div class="form-group">
+						<input type="text" name="search" required="required" id="search" class="form-control" placeholder="Search your friend here">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-default">Search</button>
+					</div>
+				</form>
+			</li>
 			<li class="nav-item active">
 				<a class="nav-link text-light" href="/home">Home <span class="sr-only">(current)</span></a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link text-light" href="/logout">Logout <span class="sr-only">{{Auth::user()->name}}</span></a>
+
+			<li class="nav-item dropdown">
+				<a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+					{{Auth::user()->name}}
+				</a>
+				<ul class="dropdown-menu dropdown-menu-right" >
+					<li class="head text-dark bg-light">
+						<a class="nav-link text-dark" href="/logout">Logout </a>
+					</li>
+					<li class="head text-dark bg-light">
+						<a class="nav-link text-dark" href="#">Profile </a>
+					</li>
+					<li class="head text-dark bg-light">
+						<a class="nav-link text-dark" href="#">Change Password </a>
+					</li>
+
+				</ul>
 			</li>
-
-			<li class="nav-item">
-				<a class="nav-link text-light" href="http://www.sac.iitkgp.ac.in"></a>
-			</li>
-
-
-
 			<li class="nav-item dropdown">
 				<a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-bell"></i>
@@ -77,7 +98,7 @@
 						<div class="row">
 							<div class="col-lg-12 col-sm-12 col-12">
 								<span>Notifications (3)</span>
-								
+
 							</div>
 						</li>
 						<li class="notification-box">
@@ -127,3 +148,18 @@
 			</ul>
 		</div>
 	</nav>
+	<script type="text/javascript">
+		var user = <?php echo $user;?>;
+		//console.log(user[0].name);
+		var names = [];
+		for (var i = 0; i < user.length; i++) {
+			names[i] = user[i].name;
+		}
+		//console.log('names',names);
+		
+		$(function() {
+			$("#search").autocomplete({
+				source:[names]
+			}); 
+		});
+	</script>

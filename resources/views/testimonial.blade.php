@@ -10,12 +10,21 @@
 <html>
   <head>
     <title>YB|Profile</title>
-    <link rel="icon" href="../ind/fav.png" type="image/png" >
-    <script type="text/javascript" src="../../js/materialize.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-    <link type="text/css" rel="stylesheet" href="../../css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="myself2.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <link rel="icon" href="ind/fav.png" type="image/png" >
+  <script type="text/javascript" src="js/intro.min.js"></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/introjs.min.css"  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
     <meta name=viewport content='width=700'>
 
    <script>
@@ -332,8 +341,9 @@
 
 
  
-  <body><div class="container-fluid">
+  <body>
  @include('navbar1');
+ <div class="container-fluid">
     <div>
   <div class="body">
     <div class="header">

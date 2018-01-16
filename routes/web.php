@@ -28,8 +28,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); //Jus
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile_index', 'profile@index');
 Route::get('/profile_index/{roll}', 'profile@testimonials');
-Route::get('/search','HomeController@search');
-Route::get('/comment/{id}','ImageController@comment');
+Route::post('/search','HomeController@search');
+
 
 
 
@@ -73,3 +73,23 @@ Route::get('/disapprove/{id}','ViewsController@disapproval');
 //route for navbar unseen testinomial from navbar.blade.php 
 //go to profile.php controller
 Route::get('/updateread', 'profile@updateread');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
