@@ -35,15 +35,19 @@ class HomeController extends Controller
     */
         public function index()
         {
-            return view('home');
+            $user = User::get();
+            return view('home',compact('user'));
         }
 
 
 
          public function search()
         {
-            $user = User::get();
-            return view('search',compact('user'));
+            $name = request('search');
+                $user = User::where('name',$name)->get();
+            
+            $roll = $user[0]['rollno'];
+            return redirect("/profile_index/".$roll);
         }
 
 

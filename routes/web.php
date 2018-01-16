@@ -28,7 +28,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); //Jus
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile_index', 'profile@index');
 Route::get('/profile_index/{roll}', 'profile@testimonials');
-Route::get('/search','HomeController@search');
+Route::post('/search','HomeController@search');
 
 
 

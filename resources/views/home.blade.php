@@ -16,7 +16,8 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="css/autocomplete.css">
+  <script src="js/autocomplete.js"></script>
 
   <title>Yearbook</title>
   <script>
@@ -69,7 +70,7 @@
               <div class="input-field col sm-12 lg-12 md-12">
                 <div class="form-group">
                   <label for="comment">Caption (Max 50 characters)</label>
-                  <textarea name="motto" id="icon_prefix2" class="form-control" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50" rows="5" id="comment"><?php if (!empty(Auth::user()->view_self)) { echo Auth::user()->view_self;}else {echo 'Enter Your Caption Here';}?></textarea>
+                  <textarea name="motto" id="icon_prefix2" class="form-control" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50" rows="2" id="comment"><?php if (!empty(Auth::user()->view_self)) { echo Auth::user()->view_self;}else {echo 'Enter Your Caption Here';}?></textarea>
                 </div>
 
               </div>
@@ -117,7 +118,7 @@
     </div>
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6">
-        <div class="dropdown">
+        <div class="dropdown" id="dropdown_button" >
           <button type="button" style="width: 100%;height: 100%;" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             User
           </button>
@@ -141,14 +142,16 @@
         <a class='btn btn-primary' style="width: 100%;height: 80%;font-size: 2px;" href="http://www.sac.iitkgp.ac.in/team.php">Contact Us</a>
       </div>
     </div>
-     <br/>
+    <br/>
     <div class="row">
-      <div  class="col s12 l6 card-panel grey lighten-5 z-depth-1" align="center" style="min-height: 270px;padding: 10px;height: 100%;"><h5>Yearbook</h5><div style="padding-right: 15px;padding-left: 15px;"><p style="text-align: justify;"> The yearbook is an opus of memories that you would carry along graduating from the institute. The wonderful years spent in the campus are engraved and expressed via photographs and writeups in this departing souvenir from IIT KGP. 
+      <div  class="col-sm-12 col-lg-6 card-panel grey lighten-5 z-depth-1" align="center" style="min-height: 270px;padding: 10px;height: 100%;"><h5>Yearbook</h5><div style="padding-right: 15px;padding-left: 15px;"><p style="text-align: justify;"> The yearbook is an opus of memories that you would carry along graduating from the institute. The wonderful years spent in the campus are engraved and expressed via photographs and writeups in this departing souvenir from IIT KGP. 
       With an assortment of your thoughts and snaps from various experiences through the years, the book truly collaborates your time in KGP and is a walk down your memory lane every time you look through it.</p> </div></div>
-      <div class="col l6 s12 card-panel grey lighten-5 z-depth-1" align="center" style="min-height: 270px;padding: 10px;"><h5>Previous Yearbooks</h5> <br>
-        <div class="col l4 s4"><img src="ind/year16.jpg" width="100%" alt=""/></div>
-        <div class="col l4 s4"> <img src="ind/year2015.jpg" width="100%"  alt=""/></div>
-        <div class="col l4 s4"> <img src="ind/year2014.jpg" width="100%"  alt=""/></div>
+      <div class="col-lg-6 col-sm-12 card-panel grey lighten-5 z-depth-1" align="center" style="min-height: 270px;padding: 10px;"><h5>Previous Yearbooks</h5> <br>
+        <div class="row">
+          <div class="col-lg-4 col-sm-4"><img src="ind/year16.jpg" width="100%" alt=""/></div>
+          <div class="col-lg-4 col-sm-4"> <img src="ind/year2015.jpg" width="100%"  alt=""/></div>
+          <div class="col-lg-4 col-sm-4"> <img src="ind/year2014.jpg" width="100%"  alt=""/></div>
+        </div>
       </div>
 
     </div>
@@ -162,10 +165,10 @@
               var back = "<?php if (!empty(Auth::user()->view_self)) echo 1;else echo 0; ?>" ;
               var back2 = "<?php echo Auth::user()->pro_pic; ?>" ;
               $(document).ready(function() {
-                $('.modal-trigger').leanModal();
+                $('#modal2').modal('hide');
 
                 if ( (!back)||!(back2) ) {
-                  $("#modal1").openModal();
+                  $("#modal2").modal('show');
                 } else {
                 }
 
@@ -203,34 +206,15 @@
               }
 
               $(document).ready(function() {
-                $('select').material_select();
+                $('#dropdown_button').hover(function(){
+                  $('.dropdown-toggle').dropdown()
+                })
+
               });
 
-              function update(){
-                $('.edit_button').click(function(){
-                  $('.edit').show();$(".upload").hide();$(".edit_button").hide();
-                });
-              }
 
             </script>
 
 
           </body>
           </html>
-
-<!--
-<?php/*
-  if($line['email']==NULL||$line['phone']==NULL){
-    echo '<script>$(".upload").hide();$(".edit_button").hide();</script>';
-
-
-  }else{
-    echo '<script>$(".edit").hide();</script>';
-  }
-
-if (isset($_GET['motto'])&&!empty($_GET['motto'])){
-   $motto=$_GET['motto'];
-}
-*/
-?>
--->
