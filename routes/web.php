@@ -29,7 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile_index', 'profile@index');
 Route::get('/profile_index/{roll}', 'profile@testimonials');
 Route::post('/search','HomeController@search');
-
+Route::get('/comment/{id}','ImageController@comment');
 
 
 
