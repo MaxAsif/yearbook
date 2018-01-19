@@ -7,6 +7,7 @@ use Auth;
 
 use App\writeup;
 use App\User;
+use App\views;
 
 class HomeController extends Controller
 {
@@ -36,18 +37,25 @@ class HomeController extends Controller
         public function index()
         {
             $user = User::get();
-            return view('home',compact('user'));
+            $roll = Auth::user()->rollno;
+            $notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();
+            return view('home',compact('user','notifications'));
         }
 
 
 
-         public function search()
+        public function search()
         {
+
             $name = request('search');
-                $user = User::where('name',$name)->get();
-            
-            $roll = $user[0]['rollno'];
-            return redirect("/profile_index/".$roll);
+            $user = User::where('name',$name)->get();
+        
+            if( $user->isNotEmpty()){
+                $roll = $user[0]['rollno']; 
+                return redirect("/profile_index/".$roll);
+            }
+            else
+                return back()->with('Error','Sorry, we cannot find your driend in our database');
         }
 
 

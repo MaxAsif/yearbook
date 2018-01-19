@@ -2,27 +2,6 @@
 <html>
 <head>
   <title>YB|Home</title>
-  <link rel="icon" href="ind/fav.png" type="image/png" >
-  <script type="text/javascript" src="js/intro.min.js"></script>
-  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link type="text/css" rel="stylesheet" href="css/introjs.min.css"  media="screen,projection"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" type="text/css" href="css/animate.css">
-
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/autocomplete.css">
-  <script src="js/autocomplete.js"></script>
-
-  <title>Yearbook</title>
-  <script>
-  </script>
-
   <style type="text/css">
   .btn{
     font-size: 15px !important;    
@@ -117,21 +96,6 @@
 
     </div>
     <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-6">
-        <div class="dropdown" id="dropdown_button" >
-          <button type="button" style="width: 100%;height: 100%;" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            User
-          </button>
-          <div class="dropdown-menu">
-            <a  class="dropdown-item" href="/details">Edit Details</a>
-            <a  class="dropdown-item" href="/profile_index">My Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6">
-
-        <a class="btn  btn-primary" href='search/' style="width: 100%;height: 80%;" data-intro="Search your friend and write about them">Batch Sento</a>
-      </div>
       <div class="col-lg-4 col-md-4 col-sm-6">
         <a class='btn btn-primary' href='/writeup' style="width: 100%;height: 80%;" data-step="4" data-intro="Share your interesting memories with us">Write Article</a>
       </div>

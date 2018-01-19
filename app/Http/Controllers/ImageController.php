@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Image;
 use Auth;
 use Response;
+use App\User;
+use App\views;
 class ImageController extends Controller
 {
 	public function __construct()
@@ -15,7 +17,11 @@ class ImageController extends Controller
 	public function index()
 	{
 		$images = Image::where('rollno',Auth::user()->rollno)->get()->toArray();	
-		return view('upload',compact('images'));
+		$user = User::get();
+		$roll = Auth::user()->rollno;
+		$notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();
+
+		return view('upload',compact('images','user','notifications'));
 	}
 	public function upload(Request $request)
 	{
@@ -58,29 +64,6 @@ class ImageController extends Controller
 		}
 		
 	}
-		/*
-		if($request->file('image'))
-		{
-			echo 'abc';
-			$this->validate($request, [
 
-				'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
-
-			]);
-			$classifier = $request('classifier');
-			$image = $request->file('image');//image
-			$input['imagename'] = $user->rollno.'_'.time().'.'.$image->getClientOriginalExtension();//name of file
-			$destinationPath = public_path('/uploads');//destination of image in public/uploads
-			if($image->move($destinationPath, $input['imagename']))
-			{
-				 
-				echo 'Your pic is uplaoded';
-			}
-			else
-			{
-				echo 'Your pic is not uplaoded';
-				
-			}
-		}*/
-	}
+}
 
