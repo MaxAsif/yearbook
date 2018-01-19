@@ -78,7 +78,7 @@ Can this be done with Masonry options? */
      @foreach($images as $image)
      @if(file_exists($image['url']))
      <div class="post">
-      <img src="{{$image['url']}}">
+      <img src="{{$image['url']}}" id="{{$image['id']}}">
       <br>
       <br>
       <strong>{{$image['caption']}}</strong>
@@ -101,7 +101,19 @@ Can this be done with Masonry options? */
             <img src="" class="enlargeImageModalSource" style="height: 100%;width: 100%; object-fit: contain;">
           </div>
           <div class="col" style="margin-right: 11px ; border: 1px solid;">
+            <br>
+            <form class="form" id="form-comment" action="/comment" method="post">
+              {{csrf_field()}}
+              <input id="comment-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 
+              <div class="form-group">
+                <textarea name="comment" class="form-control" placeholder="Your comments here..."></textarea>
+              </div>
+              <button class="btr btn-success">Comment</button>
+            </form>
+            <div class="row">
+
+            </div>
           </div>
         </div>
         
@@ -145,7 +157,36 @@ Can this be done with Masonry options? */
  $(function() {
   $('img').on('click', function() {
     $('.enlargeImageModalSource').attr('src', $(this).attr('src'));
+    $('.enlargeImageModalSource').attr('id', $(this).attr('id'));
     $('#enlargeImageModal').modal('show');
   });
+});
+
+
+ $(document).ready(function (e) {
+  $('form#form-comment').on('submit', function(e) {
+   e.preventDefault();
+   var formData = {
+    'comments' : $('textarea[name=comment]').val(),
+    'pic_id' : $('.enlargeImageModalSource').attr('id'),
+    '_token' : $('#comment-token').val()
+  }
+  console.log(formData);
+
+  $.ajax({
+    url: "/comment",
+    type: "POST",
+    data: formData,
+   
+    success: function(data)
+    {
+      console.log('Added Comment');
+    },
+    error: function(data)
+    {
+      console.log('Error in comment');  
+    }
+  });
+});
 });
 </script>

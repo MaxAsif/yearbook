@@ -80,6 +80,6 @@ FileController
 //go to profile.php controller
 
 Route::get('/updateread', 'profile@updateread');
-
+Route::post('/comment','CommentController@add');
 
 
