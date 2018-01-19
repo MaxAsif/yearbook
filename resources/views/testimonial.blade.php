@@ -1,280 +1,233 @@
-
-
-
-
-
-<meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-<!doctype html>
 <html>
-  <head>
-    <title>YB|Profile</title>
-   <link rel="icon" href="ind/fav.png" type="image/png" >
-  <script type="text/javascript" src="js/intro.min.js"></script>
-  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link type="text/css" rel="stylesheet" href="css/introjs.min.css"  media="screen,projection"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" type="text/css" href="css/animate.css">
+<head>
+  <title>YB|Profile</title>
+  
 
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+  @font-face {
+    font-family: 'Century gothic';
+    src: url('font.ttf');
+  }
+  #modal1{
+    overflow: hidden;
+  }
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  table{
+    table-layout: fixed;
+  }
+  .btn{
+    width: 180px;
+  }
+  body{
 
-    <meta name=viewport content='width=700'>
+    font-family: Century gothic;
+  }
+  .caption{
+    margin-top: -40px;
+    background-color: #26a69a;
+  }
 
-   <script>
+  .caption h2{
+    text-align: left;
+    font-size: 20px;
+    color: #fff;
+    padding:10px;
 
- $(document).ready(function(){
-   if ($(window).width()<770) {
-    (function($){ $('.body').addClass('container-fluid');
-      $('#logo_mob').show();
-     
-    })(jQuery, undefined); }
-    else{$('.body').addClass('container');
-    $('.logo_desk').show();}
-    
-  });
-</script>
+  }
+  .header{
 
-    <style type="text/css">
-    @font-face {
-  font-family: 'Century gothic';
-  src: url('font.ttf');
-}
- #modal1{
-        overflow: hidden;
-      }
-
-    table{
-      table-layout: fixed;
-    }
-      .btn{
-        width: 180px;
-      }
-      body{
-
-      font-family: Century gothic;
-      }
-.caption{
-  margin-top: -40px;
-  background-color: #26a69a;
-}
-
-.caption h2{
-  text-align: left;
-  font-size: 20px;
-  color: #fff;
-  padding:10px;
-
-}
-.header{
-
-  background-image: url("../2.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-@media only screen and (min-width: 1000px) {
+    background-image: url("../2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  @media only screen and (min-width: 1000px) {
     #capt {
       text-align: right;
       padding-top: 0;
     }
     @media only screen and (min-width: 770px){
-      
+
     }
     .row{
       margin: 0 !important;
     }
-
-
-
-
-
-
-
-
-
-
-.main-timeline{
-    overflow: hidden;
-    position: relative;
-}
-.main-timeline:before{
-    content: "";
-    width: 3px;
-    height: 100%;
-    background: #d6d5d5;
-    position: absolute;
-    top: 0;
-    left: 50%;
-}
-.main-timeline .timeline{
-    padding-right: 30px;
-    position: relative;
-}
-.main-timeline .timeline:before,
-.main-timeline .timeline:after{
-    content: "";
-    display: block;
-    width: 100%;
-    clear: both;
-}
-.main-timeline .timeline:first-child:before,
-.main-timeline .timeline:last-child:before{
-    content: "";
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    border: 2px solid #d6d5d5;
-    background: #fff;
-    margin: 0 auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: -3px;
-}
-.main-timeline .timeline:last-child:before{
-    top: auto;
-    bottom: 0;
-}
-.main-timeline .timeline-icon{
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #d6d5d5;
-    box-sizing: content-box;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: -4px;
-}
-.main-timeline .timeline-icon:before{
-    content: "";
-    display: block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #737ab4;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-.main-timeline .year{
-    display: inline-block;
-    padding: 8px 20px;
-    margin: 0;
-    font-size: 14px;
-    color: #fff;
-    background: #737ab4;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    right: 35%;
-    transform: translateY(-50%);
-}
-.main-timeline .year:before{
-    content: "";
-    border-right: 18px solid #737ab4;
-    border-top: 18px solid transparent;
-    border-bottom: 18px solid transparent;
-    position: absolute;
-    top: 0;
-    left: -18px;
-}
-.main-timeline .timeline-content{
-    width: 46.5%;
-    padding: 43px 50px;
-    margin: 0 20px 0 0;
-    background: #f2f2f2;
-    position: relative;
-}
-.main-timeline .timeline-content:after{
-    content: "";
-    border-left: 20px solid #f2f2f2;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    transform: translateY(-50%);
-}
-.main-timeline .title{
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    color: #504f54;
-    margin: 0 20px 20px 0;
-}
-.main-timeline .post{
-    display: inline-block;
-    font-size: 14px;
-    color: #999;
-    margin-top: 6px;
-}
-.main-timeline .description{
-    font-size: 14px;
-    color: #7d7b7b;
-    line-height: 24px;
-    margin: 0;
-    clear: both;
-}
-.main-timeline .timeline:nth-child(2n){ padding: 0 0 0 30px; }
-.main-timeline .timeline:nth-child(2n) .year{
-    right: auto;
-    left: 35%;
-}
-.main-timeline .timeline:nth-child(2n) .year:before{
-    border: 18px solid transparent;
-    border-right: none;
-    border-left: 18px solid #737ab4;
-    left: auto;
-    right: -18px;
-}
-.main-timeline .timeline:nth-child(2n) .timeline-content{
-    float: right;
-    margin: 0 0 0 20px;
-}
-.main-timeline .timeline:nth-child(2n) .timeline-content:after{
-    border-left: none;
-    border-right: 20px solid #f2f2f2;
-    right: auto;
-    left: -20px;
-}
-@media only screen and (max-width: 1200px){
-    .main-timeline .year{ right: 30%; }
-    .main-timeline .timeline:nth-child(2n) .year{ left: 30%; }
-}
-@media only screen and (max-width: 990px){
-    .main-timeline .year{ right: 25%; }
-    .main-timeline .timeline:nth-child(2n) .year{ left: 25%; }
-}
-@media only screen and (max-width: 767px){
-    .main-timeline:before{ left: 10px; }
+    .main-timeline{
+      overflow: hidden;
+      position: relative;
+    }
+    .main-timeline:before{
+      content: "";
+      width: 3px;
+      height: 100%;
+      background: #d6d5d5;
+      position: absolute;
+      top: 0;
+      left: 50%;
+    }
     .main-timeline .timeline{
+      padding-right: 30px;
+      position: relative;
+    }
+    .main-timeline .timeline:before,
+    .main-timeline .timeline:after{
+      content: "";
+      display: block;
+      width: 100%;
+      clear: both;
+    }
+    .main-timeline .timeline:first-child:before,
+    .main-timeline .timeline:last-child:before{
+      content: "";
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid #d6d5d5;
+      background: #fff;
+      margin: 0 auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: -3px;
+    }
+    .main-timeline .timeline:last-child:before{
+      top: auto;
+      bottom: 0;
+    }
+    .main-timeline .timeline-icon{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #d6d5d5;
+      box-sizing: content-box;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: -4px;
+    }
+    .main-timeline .timeline-icon:before{
+      content: "";
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #737ab4;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    .main-timeline .year{
+      display: inline-block;
+      padding: 8px 20px;
+      margin: 0;
+      font-size: 14px;
+      color: #fff;
+      background: #737ab4;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      right: 35%;
+      transform: translateY(-50%);
+    }
+    .main-timeline .year:before{
+      content: "";
+      border-right: 18px solid #737ab4;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+      position: absolute;
+      top: 0;
+      left: -18px;
+    }
+    .main-timeline .timeline-content{
+      width: 46.5%;
+      padding: 43px 50px;
+      margin: 0 20px 0 0;
+      background: #f2f2f2;
+      position: relative;
+    }
+    .main-timeline .timeline-content:after{
+      content: "";
+      border-left: 20px solid #f2f2f2;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%);
+    }
+    .main-timeline .title{
+      float: left;
+      font-size: 24px;
+      font-weight: bold;
+      color: #504f54;
+      margin: 0 20px 20px 0;
+    }
+    .main-timeline .post{
+      display: inline-block;
+      font-size: 14px;
+      color: #999;
+      margin-top: 6px;
+    }
+    .main-timeline .description{
+      font-size: 14px;
+      color: #7d7b7b;
+      line-height: 24px;
+      margin: 0;
+      clear: both;
+    }
+    .main-timeline .timeline:nth-child(2n){ padding: 0 0 0 30px; }
+    .main-timeline .timeline:nth-child(2n) .year{
+      right: auto;
+      left: 35%;
+    }
+    .main-timeline .timeline:nth-child(2n) .year:before{
+      border: 18px solid transparent;
+      border-right: none;
+      border-left: 18px solid #737ab4;
+      left: auto;
+      right: -18px;
+    }
+    .main-timeline .timeline:nth-child(2n) .timeline-content{
+      float: right;
+      margin: 0 0 0 20px;
+    }
+    .main-timeline .timeline:nth-child(2n) .timeline-content:after{
+      border-left: none;
+      border-right: 20px solid #f2f2f2;
+      right: auto;
+      left: -20px;
+    }
+    @media only screen and (max-width: 1200px){
+      .main-timeline .year{ right: 30%; }
+      .main-timeline .timeline:nth-child(2n) .year{ left: 30%; }
+    }
+    @media only screen and (max-width: 990px){
+      .main-timeline .year{ right: 25%; }
+      .main-timeline .timeline:nth-child(2n) .year{ left: 25%; }
+    }
+    @media only screen and (max-width: 767px){
+      .main-timeline:before{ left: 10px; }
+      .main-timeline .timeline{
         padding: 0 0 0 30px;
         margin-bottom: 20px;
-    }
-    .main-timeline .timeline:last-child{ margin-bottom: 0; }
-    .main-timeline .timeline:first-child:before,
-    .main-timeline .timeline:last-child:before{ display: none; }
-    .main-timeline .timeline-icon{
+      }
+      .main-timeline .timeline:last-child{ margin-bottom: 0; }
+      .main-timeline .timeline:first-child:before,
+      .main-timeline .timeline:last-child:before{ display: none; }
+      .main-timeline .timeline-icon{
         margin: 0;
         position: absolute;
         top: 7px;
         left: 0;
-    }
-    .main-timeline .year,
-    .main-timeline .timeline:nth-child(2n) .year{
+      }
+      .main-timeline .year,
+      .main-timeline .timeline:nth-child(2n) .year{
         display: block;
         font-weight: bold;
         margin: 0 0 32px 30px;
@@ -284,22 +237,22 @@
         left: auto;
         right: auto;
         transform: none;
-    }
-    .main-timeline .timeline:nth-child(2n) .year:before{
+      }
+      .main-timeline .timeline:nth-child(2n) .year:before{
         border-left: none;
         border-right: 18px solid #737ab4;
         right: auto;
         left: -18px;
-    }
-    .main-timeline .timeline-content{ padding: 20px; }
-    .main-timeline .timeline-content,
-    .main-timeline .timeline:nth-child(2n) .timeline-content{
+      }
+      .main-timeline .timeline-content{ padding: 20px; }
+      .main-timeline .timeline-content,
+      .main-timeline .timeline:nth-child(2n) .timeline-content{
         width: auto;
         float: none;
         margin: 0 0 0 30px;
-    }
-    .main-timeline .timeline-content:after,
-    .main-timeline .timeline:nth-child(2n) .timeline-content:after{
+      }
+      .main-timeline .timeline-content:after,
+      .main-timeline .timeline:nth-child(2n) .timeline-content:after{
         border: none;
         border-bottom: 20px solid #f2f2f2;
         border-left: 20px solid transparent;
@@ -308,49 +261,31 @@
         left: 50%;
         right: auto;
         transform: translateX(-50%);
+      }
     }
-}
-@media only screen and (max-width: 480px){
-    .main-timeline .title{
+    @media only screen and (max-width: 480px){
+      .main-timeline .title{
         float: none;
         margin: 0;
+      }
+      .main-timeline .year,
+      .main-timeline .timeline:nth-child(2n) .year{ margin-left: 20px; }
+      .main-timeline .timeline-content,
+      .main-timeline .timeline:nth-child(2n) .timeline-content{ margin-left: 10px; }
+      .main-timeline .post{ margin: 5px 0; }
     }
-    .main-timeline .year,
-    .main-timeline .timeline:nth-child(2n) .year{ margin-left: 20px; }
-    .main-timeline .timeline-content,
-    .main-timeline .timeline:nth-child(2n) .timeline-content{ margin-left: 10px; }
-    .main-timeline .post{ margin: 5px 0; }
-}
-    </style>
-  </head>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-  <body>
+  </style>
+</head>
+<body>
  @include('navbar1');
- <div class="container-fluid">
-    <div>
-  <div class="body">
-    <div class="header">
-      <div class="">
+ <div class="container">
+  <div>
+    <div class="body">
+      <div class="header">
+        <div class="">
 
          @foreach($mydata as $data) 
-        <div class="row">
+         <div class="row">
           <div class="col l6 m6 s6" style="padding: 20px;"><img class="circle" width="180px"; height= "180px";  src="<?php if (!empty($data['pro_pic'])){echo '../'.$data['pro_pic']; } else { echo '../ind/shot.jpg';}?>" alt="" class="circle responsive-img" id="OpenImgUpload" style="cursor: pointer;width: 180px;height: 180px;"></div>
           <div class="col l6 m6 s6" style=""><h1 style="font-size: 30px; color: #fff;background-color: black;opacity: 0.6;padding: 10px;"><?php echo $data['name']; ?></h1></div>
 
@@ -360,26 +295,26 @@
 
     <div class="caption">
       <div class="">
-      <div class="row">
-      <div class="l6 m6 s6"></div>
-        <div class=" m6 s6 l6">
-          <h2 id="capt">
+        <div class="row">
+          <div class="l6 m6 s6"></div>
+          <div class=" m6 s6 l6">
+            <h2 id="capt">
 
-          "<?php 
-          if ($data['view_self']&&$data['view_self']!='NULL') {
-          echo $data['view_self'];
-           }else{
-            echo "No Caption Uploaded";
-           }
-          ?>"
-          </h2>
+              "<?php 
+              if ($data['view_self']&&$data['view_self']!='NULL') {
+                echo $data['view_self'];
+              }else{
+                echo "No Caption Uploaded";
+              }
+              ?>"
+            </h2>
+          </div>
         </div>
-      </div>
       </div>
     </div>            
 
-      <div class="">
-        <div class="row">
+    <div class="">
+      <div class="row">
         <div class="col l3 m3 s3 center">
           <h6 style="font-weight:bolder">Roll No.</h6>
           <h6><?php echo $data['rollno']; ?></h6>
@@ -392,224 +327,157 @@
 
           <h6 style="font-weight:bolder">Email</h6>
           <h6>
-          <?php 
-          if ($data['email']) {
-          echo $data['email'];
-           }else{
-            echo "No Email Provided";
-           }
-          ?></h6>
+            <?php 
+            if ($data['email']) {
+              echo $data['email'];
+            }else{
+              echo "No Email Provided";
+            }
+            ?></h6>
+          </div>
+
+          <div class="col l3 m3 s3 center">
+            <h6 style="font-weight:bolder">Department</h6>
+            <h6>
+              <?php 
+              if ($data['department']) {
+                echo $data['department'];
+              }else{
+                echo "No Data";
+              }
+              ?></h6>
+            </div>
+
+          </div>
         </div>
 
-        <div class="col l3 m3 s3 center">
-          <h6 style="font-weight:bolder">Department</h6>
-          <h6>
-          <?php 
-          if ($data['department']) {
-          echo $data['department'];
-           }else{
-            echo "No Data";
-           }
-          ?></h6>
-        </div>
-     
-      </div>
-      </div>
-     
 
 
 
 
-<p class="box2">Write about your friend!</p> 
+        <p class="box2">Write about your friend!</p> 
         <form action="/writetestimony/{{$data['rollno']}}" onSubmit="alert('Your views will be added in his yearbook after his registration and approval');" method="POST" style="padding-top: 0;">
           {{csrf_field()}}
-        <div class="box4">
-          <div class="row">
-            <div class="col l6 m6 s12" style="display: none;">
-              
+          <div class="box4">
+            <div class="row">
+              <div class="col l6 m6 s12" style="display: none;">
 
+
+              </div>
+              <div class="col l6 m6 s12" style="display: none;">
+
+
+              </div>
             </div>
-            <div class="col l6 m6 s12" style="display: none;">
-              
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <label for="textarea2">Write Here! (Max 144 characters)</label>
 
+                <textarea id="textarea2" name="viewf" placeholder="Write Here! (Max 144 Characters)" class="materialize-textarea" style="padding-bottom: 0;" maxlength="144"></textarea>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col l12 m12 s12">
-              <label for="textarea2">Write Here! (Max 144 characters)</label>
-
-              <textarea id="textarea2" name="viewf" placeholder="Write Here! (Max 144 Characters)" class="materialize-textarea" style="padding-bottom: 0;" maxlength="144"></textarea>
+            <center>
+              <button class="btn waves-effect waves-light" type="submit">submit</button></center>
             </div>
-          </div>
-          <center>
-          <button class="btn waves-effect waves-light" type="submit">submit</button></center>
-        </div>
-      </form>
-      <br>
+          </form>
+          <br>
 
- @endforeach
+          @endforeach
 
+          <div class=" center" style="padding: 20px;">
 
+            <?php 
+            echo "Here’s what his friends have written about him! These ones will be a part of his yearbook.";
 
+            ?>
 
+          </div></div></div></div>
+          <br><br>
+          <div class="container">
+            <ul id="tabs-swipe-demo" class="nav nav-tabs">
+              <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#testimonial">Testimonial</a></li>
+              <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#gallery">Gallery</a></li>
+            </ul>
+            <br>
+            <div class="tab-content">
+              <div id="testimonial" class="container tab-pane active">
 
-
-
-
-
-      <div class=" center" style="padding: 20px;">
-
-      <?php 
-        echo "Here’s what his friends have written about him! These ones will be a part of his yearbook.";
-      //include 'profile_approval.blade.php';
-       
-       //include('profile_approval');
-?>
-
-</div></div></div></div>
-<br><br>
-<div class="container">
-<ul id="tabs-swipe-demo" class="tabs">
-  <li class="tab col s6"><a  class="active" href="#testimonial">Testimonial</a></li>
-  <li class="tab col s6"><a href="#gallery">Gallery</a></li>
-</ul>
-</div>
-<div id="testimonial">
-
-<?php
-$l=0;
-echo'
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="main-timeline">';
-foreach($myviews as $view)
-{
-  if($view['approval']=='1'){
-
-            if($l==0)
-            {
-               echo ' <div class="timeline">
-                    <span class="timeline-icon" ></span>
-                    <span class="year">Testimonial</span>
-                    <div class="timeline-content">
-                        <h3 class="title">'.$view['user'].'</h3>
-                        <span class="post"></span>
-                        <p class="description">
-                            '.$view["views"].'
-                        </p>
-                    </div>
-                </div>';
-                $l=1;
-              }
-              else{
+                <?php
+                $l=0;
                 echo'
- 
-                <div class="timeline">
+                <div class="container">
+                <div class="row">
+                <div class="col-md-12">
+                <div class="main-timeline">';
+                foreach($myviews as $view)
+                {
+                  if($view['approval']=='1'){
+
+                    if($l==0)
+                    {
+                     echo ' <div class="timeline">
+                     <span class="timeline-icon" ></span>
+                     <span class="year">Testimonial</span>
+                     <div class="timeline-content">
+                     <h3 class="title">'.$view['user'].'</h3>
+                     <span class="post"></span>
+                     <p class="description">
+                     '.$view["views"].'
+                     </p>
+                     </div>
+                     </div>';
+                     $l=1;
+                   }
+                   else{
+                    echo'
+
+                    <div class="timeline">
                     <span class="timeline-icon"></span>
                     <span class="year">Testimonial</span>
                     <div class="timeline-content">
-                        <h3 class="title">'.$view['user'].'</h3>
-                        <span class="post"></span>
-                        <p class="description">
-                           '.$view["views"].'
-                        </p>
+                    <h3 class="title">'.$view['user'].'</h3>
+                    <span class="post"></span>
+                    <p class="description">
+                    '.$view["views"].'
+                    </p>
                     </div>
-                </div>';
-                $l=0;
+                    </div>';
+                    $l=0;
+                  }
+
+                }
               }
-               
-}
-}
- echo '
+              echo '
+              </div>
+              </div>
+              </div>
+              </div>
+              ';
+
+
+              ?>
+
             </div>
+            <div id="gallery" class="tab-pane fade">
+             <p>
+               @include('gallery2')
+             </p>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-';
+      </body>
+      <script>
 
+       $(document).ready(function(){
+         if ($(window).width()<770) {
+          (function($){ $('.body').addClass('container-fluid');
+            $('#logo_mob').show();
 
-?>
+          })(jQuery, undefined); }
+          else{$('.body').addClass('container');
+          $('.logo_desk').show();}
 
-</div>
-<div class="gallery">
-  @include('gallery1')
-</div>
-</body>
-
-
-
-
-
-<script>
-  /*
-  $(document).on('click', '.approve', function(){
-    var rollno = $(this).attr('id');
-    var no = $(this).attr('data-no');
-    var id = $(this).attr('data-id');
-    var query= 'id='+id;
-    $.ajax({
-      url: 'views_approval_data.php',
-      data: query,
-      
-      type: 'POST',
-      success: function (data) {
-          console.log(data);
-          if(data){
-            console.log(data);
-            //$('.approve').remove();
-            $('.app'+no).attr('value','disapprove');
-            $('.app'+no).removeClass('approve');
-            $('.app'+no).addClass('disapprove');
-            $('.app'+no).removeClass('red');
-            $('.text_show'+no).html('Approved');
-          }else{
-            alert("Please try again");
-          }
-        }
-    });
-  }); 
-  $(document).on('click', '.disapprove',function(){
-    var rollno = $(this).attr('id');
-    var no = $(this).attr('data-no');
-    var id = $(this).attr('data-id');
-    var query= 'id='+id;
-    $.ajax({
-      url: 'views_disproval_data.php',
-      data: query,
-      
-      type: 'POST',
-      success: function (data) {
-          console.log(data);
-          if(data){
-            console.log(data);
-            $('.app'+no).attr('value','approve');
-            $('.app'+no).removeClass('disapprove');
-            $('.app'+no).addClass('approve');
-            $('.app'+no).addClass('red');
-            $('.text_show'+no).html('');
-          }else{
-            alert("Please try again");
-
-          }
-        }
-    });
-  }); 
-  */  
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  </body>
-  
+        });
+      </script>
+    </body>
+    </html>
