@@ -1,9 +1,75 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
+
+ 
 <style type="text/css">
 .lead {
   padding: 40px 0;
 }
 /* Grid */
+
+.thumbnail {
+    padding:0px;
+}
+.panel {
+  position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+  position:absolute;
+  top:11px;left:-16px;
+  right:100%;
+  width:0;
+  height:0;
+  display:block;
+  content:" ";
+  border-color:transparent;
+  border-style:solid solid outset;
+  pointer-events:none;
+}
+.panel>.panel-heading:after{
+  border-width:7px;
+  border-right-color:#f7f7f7;
+  margin-top:1px;
+  margin-left:2px;
+}
+.panel>.panel-heading:before{
+  border-right-color:#ddd;
+  border-width:8px;
+}
+.content-header{
+  font-family: 'Oleo Script', cursive;
+  color:#fcc500;
+  font-size: 45px;
+}
+
+.section-content{
+  text-align: center; 
+
+}
+#contact{
+    
+    font-family: 'Teko', sans-serif;
+  padding-top: 60px;
+  width: 100%;
+  width: 100vw;
+  height: 550px;
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;    
+}
+.contact-section{
+  padding-top: 40px;
+}
+.contact-section .col-md-6{
+  width: 50%;
+}
+
+.form-line{
+  border-right: 1px solid #B29999;
+}
+
+.form-group{
+  margin-top: 10px;
 
 #posts {
   margin: 30px auto 0;
@@ -109,6 +175,74 @@ Can this be done with Masonry options? */
             <img src="" class="enlargeImageModalSource" style="height: 100%;width: 100%; object-fit: contain;">
           </div>
           <div class="col" style="margin-right: 11px ; border: 1px solid;">
+
+<form action="/action_page.php">
+  <div class="form-group">
+    <label for="name">COMMENT</label>
+    <input type="name" class="form-control" id="name">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h3>User Comment Example</h3>
+</div><!-- /col-sm-12 -->
+</div><!-- /row -->
+<div class="row">
+<div class="col-sm-1">
+<div class="thumbnail">
+<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+</div><!-- /thumbnail -->
+</div><!-- /col-sm-1 -->
+
+<div class="col-sm-5">
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+</div>
+<div class="panel-body">
+Panel content
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+
+<div class="col-sm-1">
+<div class="thumbnail">
+<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+</div><!-- /thumbnail -->
+</div><!-- /col-sm-1 -->
+
+<div class="col-sm-5">
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+</div>
+<div class="panel-body">
+Panel content
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+</div><!-- /row -->
+
+</div><!-- /container -->
+
+
+
+
+
+
+
+
+
+
+
+
 
           </div>
         </div>
