@@ -18,11 +18,11 @@ Auth::routes()
 	login page is edited
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+	Route::get('/', function () {
+		return view('auth.login');
+	});
 
-Auth::routes();
+	Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); //Just added to fix issue
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -41,55 +41,45 @@ FileController
 	
 */
 
-Route::post('/upload_pic_moto','FileController@upload_pic_moto');
-Route::post('/writetestimony/{roll}','ViewsController@write');
+	Route::post('/upload_pic_moto','FileController@upload_pic_moto');
+	Route::post('/writetestimony/{roll}','ViewsController@write');
 
-Route::get('/upload_pic_moto','HomeController@index');
-
-
-Route::get('/upload','ImageController@index');
-
-Route::post('/upload','ImageController@upload');
-
-Route::get('/details',function(){
-	return view('details');
-});
-Route::post('/details','HomeController@edit');
+	Route::get('/upload_pic_moto','HomeController@index');
 
 
+	Route::get('/upload','ImageController@index');
 
-Route::get('/writeup','WriteupController@index');
+	Route::post('/upload','ImageController@upload');
 
-Route::post('/writeup','WriteupController@store');
+	Route::get('/details',function(){
+		$user = App\User::get();
+		$roll = Auth::user()->rollno;
+		$notifications = App\views::where('depmate',$roll)->where('read','1')->get()->toArray();
 
-Route::get('/writeup/{id}','WriteupController@delete');
+		return view('details',compact('user','notifications'));
+	});
+	Route::post('/details','HomeController@edit');
 
-Route::post('/updates','WriteupController@updates');
-Route::post('/approve','ViewsController@approve');
 
-Route::get('/approve/{id}','ViewsController@approval');
-Route::get('/disapprove/{id}','ViewsController@disapproval');
+
+	Route::get('/writeup','WriteupController@index');
+
+	Route::post('/writeup','WriteupController@store');
+
+	Route::get('/writeup/{id}','WriteupController@delete');
+
+	Route::post('/updates','WriteupController@updates');
+	Route::post('/approve','ViewsController@approve');
+
+	Route::get('/approve/{id}','ViewsController@approval');
+	Route::get('/disapprove/{id}','ViewsController@disapproval');
+
+	Route::get('/read/{id}','ViewsController@read');
 
 //route for navbar unseen testinomial from navbar.blade.php 
 //go to profile.php controller
+
 Route::get('/updateread', 'profile@updateread');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

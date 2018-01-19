@@ -16,36 +16,36 @@ class ViewsController extends Controller
     {
         $data = array();
 
-            $data['writeup'] = $request->query;
-            
+        $data['writeup'] = $request->query;
+
     }
-     public function approval($id)
+    public function approval($id)
     {
-       
+
         views::where('id', $id)
         ->update([
-            
+
             'approval' => '1',
         ]);
         return redirect('/profile_index');
-            
+
     }
     public function disapproval($id)
     {
-       
+
         views::where('id', $id)
         ->update([
-            
+
             'approval' => '0',
         ]);
         return redirect('/profile_index');
-            
+
     }
     public function write($roll)
     {
 
 
-views::create([
+        views::create([
             'depmate' => $roll,
             'views' => request('viewf'),
             'user' => Auth::user()->name,
@@ -61,6 +61,13 @@ views::create([
 
         
         return redirect('/profile_index/'.$roll) ;
+    }
+    public function read($id)
+    {
+       $post = views::find($id);
+        $post->read = 0;
+        $post->save();
+        return redirect('/profile_index') ;
     }
 
 }

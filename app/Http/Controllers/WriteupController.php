@@ -11,7 +11,7 @@ use App\writeup;
 use Auth;
 
 use DB;
-
+use App\views;
 class WriteupController extends Controller
 {
     public function __construct()
@@ -24,13 +24,16 @@ class WriteupController extends Controller
 
         $writeups = writeup::where('rollno',Auth::user()->rollno)->get();
         
+        $user = User::get();
+        $roll = Auth::user()->rollno;
+        $notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();
 
-        return view('writeup', compact('writeups'));
+        return view('writeup1', compact('writeups','user','notifications'));
     }
 
 
 
-        public function store()
+    public function store()
     {
 
 
@@ -41,9 +44,9 @@ class WriteupController extends Controller
     		'topic' => request('topic'),
 
     		'rollno' => Auth::user()->rollno
-    		]);
+      ]);
 
-    
+
 
     	/*$writeup = new \App\writeup;
 
@@ -70,9 +73,9 @@ class WriteupController extends Controller
     public function updates(Request $request)
     {
         $data = array();
-            $data['writeup'] = $request->writeup;
-            
-          DB::table('writeups')->where('id',$request->id)->update($data);
+        $data['writeup'] = $request->writeup;
+
+        DB::table('writeups')->where('id',$request->id)->update($data);
     }
 
 }

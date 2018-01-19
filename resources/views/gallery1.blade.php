@@ -1,8 +1,6 @@
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
 <style type="text/css">
-	.lead {
+.lead {
   padding: 40px 0;
 }
 /* Grid */
@@ -82,11 +80,12 @@ Can this be done with Masonry options? */
 
 @if(count($images))
 <!-- <div id="grid" class="container"> -->
-<div class="container" id="grid">
-  <div id="posts">
-  	@foreach($images as $image)
+  <div class="container" id="grid">
+    <br>
+    <div id="posts">
+     @foreach($images as $image)
      @if(file_exists($image['url']))
-    <div class="post">
+     <div class="post">
       <img src="{{$image['url']}}">
       <br>
       <br>
@@ -95,6 +94,27 @@ Can this be done with Masonry options? */
     </div>
     @endif
     @endforeach
+  </div>
+  <br>
+</div>
+<div  class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col" style="width: 800px; height: 500px;">
+            <img src="" class="enlargeImageModalSource" style="height: 100%;width: 100%; object-fit: contain;">
+          </div>
+          <div class="col" style="margin-right: 11px ; border: 1px solid;">
+
+          </div>
+        </div>
+        
+      </div>
+    </div>
   </div>
 </div>
 @endif
@@ -142,4 +162,12 @@ Can this be done with Masonry options? */
 
    }
  }).trigger('resize');
+
+ $(function() {
+  $('img').on('click', function() {
+    $('.enlargeImageModalSource').attr('src', $(this).attr('src'));
+    $('#enlargeImageModal').modal('show');
+  });
+});
 </script>
+
