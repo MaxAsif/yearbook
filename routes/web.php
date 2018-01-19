@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile_index', 'profile@index');
 Route::get('/profile_index/{roll}', 'profile@testimonials');
 Route::post('/search','HomeController@search');
+Route::get('/comment/{id}','ImageController@comment');
 
 
 
@@ -77,4 +78,8 @@ FileController
 
 //route for navbar unseen testinomial from navbar.blade.php 
 //go to profile.php controller
-	Route::get('/updateread', 'profile@updateread');
+
+Route::get('/updateread', 'profile@updateread');
+
+
+

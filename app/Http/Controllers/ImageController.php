@@ -10,6 +10,16 @@ use App\User;
 use App\views;
 class ImageController extends Controller
 {
+
+
+
+
+
+
+
+
+
+
 	public function __construct()
 	{
 		$this->middleware('auth');
@@ -23,6 +33,29 @@ class ImageController extends Controller
 
 		return view('upload',compact('images','user','notifications'));
 	}
+
+
+
+
+
+
+public function comment($pic_id)
+{
+	$images = Image::where('id',$pic_id)->get();
+	//	dd($images);
+		return view('comment',compact('images'));
+}
+
+
+
+
+
+
+
+
+
+
+
 	public function upload(Request $request)
 	{
 
@@ -64,6 +97,4 @@ class ImageController extends Controller
 		}
 		
 	}
-
 }
-

@@ -10,21 +10,12 @@
 <html>
   <head>
     <title>YB|Profile</title>
-   <link rel="icon" href="ind/fav.png" type="image/png" >
-  <script type="text/javascript" src="js/intro.min.js"></script>
-  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link type="text/css" rel="stylesheet" href="css/introjs.min.css"  media="screen,projection"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" type="text/css" href="css/animate.css">
-
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-
+    <link rel="icon" href="../ind/fav.png" type="image/png" >
+    <script type="text/javascript" src="../../js/materialize.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="../../css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="myself2.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <meta name=viewport content='width=700'>
 
    <script>
@@ -341,18 +332,17 @@
 
 
  
-  <body>
+  <body><div class="container-fluid">
  @include('navbar1');
- <div class="container-fluid">
     <div>
   <div class="body">
-    <div class="header">
+    <div class="header" >
       <div class="">
 
-         @foreach($mydata as $data) 
+         @foreach($images as $data) 
         <div class="row">
-          <div class="col l6 m6 s6" style="padding: 20px;"><img class="circle" width="180px"; height= "180px";  src="<?php if (!empty($data['pro_pic'])){echo '../'.$data['pro_pic']; } else { echo '../ind/shot.jpg';}?>" alt="" class="circle responsive-img" id="OpenImgUpload" style="cursor: pointer;width: 180px;height: 180px;"></div>
-          <div class="col l6 m6 s6" style=""><h1 style="font-size: 30px; color: #fff;background-color: black;opacity: 0.6;padding: 10px;"><?php echo $data['name']; ?></h1></div>
+          <div class="col l6 m6 s6" style="padding: 20px;"></div>
+          <div class="col l6 m6 s6" style=""><h1 style="font-size: 30px; color: #fff;background-color: black;opacity: 0.6;padding: 10px;"></h1></div>
 
         </div> 
       </div>
@@ -366,8 +356,8 @@
           <h2 id="capt">
 
           "<?php 
-          if ($data['view_self']&&$data['view_self']!='NULL') {
-          echo $data['view_self'];
+          if ($data['caption']&&$data['caption']!='NULL') {
+          echo $data['caption'];
            }else{
             echo "No Caption Uploaded";
            }
@@ -380,37 +370,14 @@
 
       <div class="">
         <div class="row">
-        <div class="col l3 m3 s3 center">
-          <h6 style="font-weight:bolder">Roll No.</h6>
-          <h6><?php echo $data['rollno']; ?></h6>
-        </div>
-        <div class="col l3 m3 s3 center">
-          <h6 style="font-weight:bolder">Hall</h6>
-          <h6><?php echo $data['HOR']; ?></h6>
-        </div>
+        
+        
         <div class="col l3 m3 s3 center">
 
-          <h6 style="font-weight:bolder">Email</h6>
-          <h6>
-          <?php 
-          if ($data['email']) {
-          echo $data['email'];
-           }else{
-            echo "No Email Provided";
-           }
-          ?></h6>
         </div>
 
         <div class="col l3 m3 s3 center">
-          <h6 style="font-weight:bolder">Department</h6>
-          <h6>
-          <?php 
-          if ($data['department']) {
-          echo $data['department'];
-           }else{
-            echo "No Data";
-           }
-          ?></h6>
+          
         </div>
      
       </div>
@@ -468,15 +435,9 @@
 
 </div></div></div></div>
 <br><br>
-<div class="container">
-<ul id="tabs-swipe-demo" class="tabs">
-  <li class="tab col s6"><a  class="active" href="#testimonial">Testimonial</a></li>
-  <li class="tab col s6"><a href="#gallery">Gallery</a></li>
-</ul>
-</div>
-<div id="testimonial">
 
 <?php
+/*
 $l=0;
 echo'
 <div class="container">
@@ -527,14 +488,12 @@ foreach($myviews as $view)
     </div>
 </div>
 ';
-
+*/
 
 ?>
 
-</div>
-<div class="gallery">
-  @include('gallery1')
-</div>
+
+
 </body>
 
 
