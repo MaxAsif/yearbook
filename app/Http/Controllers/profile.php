@@ -14,8 +14,8 @@ class profile extends Controller
      public function index()
     {
     	$myviews = views::where('depmate',Auth::user()->rollno)->get();
-    	
-        return view('profile_index',compact('myviews'));
+    	   $user = User::get();
+        return view('profile_index',compact('myviews','user'));
     }
 
 
@@ -26,10 +26,10 @@ class profile extends Controller
     	$myviews = views::where('depmate',$roll)->get();
 
         $images = Image::where('rollno',$roll)->get()->toArray();    
-
+           $user = User::get();
 
     	
-        return view('testimonial',compact('myviews','mydata','images'));
+        return view('testimonial',compact('myviews','mydata','images','user'));
     }
 
     public function updateread()
