@@ -1,9 +1,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
+<script type="text/javascript">
+ 
+</script>
 <style type="text/css">
 .lead {
   padding: 40px 0;
 }
 /* Grid */
+
+tbody {
+    height: 400px;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
+
 #posts {
   margin: 30px auto 0;
 }
@@ -109,9 +120,20 @@ Can this be done with Masonry options? */
               <div class="form-group">
                 <textarea name="comment" class="form-control" placeholder="Your comments here..."></textarea>
               </div>
-              <button class="btr btn-success">Comment</button>
+              <button class="btr btn-success" id="submitt">Comment</button>
             </form>
-            <div class="row">
+
+
+            <div id="comments" class="table-scrollable">
+
+
+
+ 
+
+
+
+
+
 
             </div>
           </div>
@@ -159,6 +181,27 @@ Can this be done with Masonry options? */
     $('.enlargeImageModalSource').attr('src', $(this).attr('src'));
     $('.enlargeImageModalSource').attr('id', $(this).attr('id'));
     $('#enlargeImageModal').modal('show');
+    var formData = {
+    'comments' : $('textarea[name=comment]').val(),
+    'pic_id' : $('.enlargeImageModalSource').attr('id'),
+    '_token' : $('#comment-token').val()
+  }
+     $.ajax({
+    url: "/commentadd",
+    type: "POST",
+    data: formData,
+   
+    success: function(response)
+    {
+      console.log('Added Comment');
+     document.getElementById("comments").innerHTML = response;
+    },
+    error: function(data)
+    {
+      console.log('Error in comment');  
+    }
+  });
+
   });
 });
 
@@ -178,9 +221,10 @@ Can this be done with Masonry options? */
     type: "POST",
     data: formData,
    
-    success: function(data)
+    success: function(response)
     {
       console.log('Added Comment');
+     document.getElementById("comments").innerHTML = response;
     },
     error: function(data)
     {

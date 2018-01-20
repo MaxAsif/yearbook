@@ -81,5 +81,6 @@ FileController
 
 Route::get('/updateread', 'profile@updateread');
 Route::post('/comment','CommentController@add');
+Route::post('/commentadd','CommentController@new');
 
 
