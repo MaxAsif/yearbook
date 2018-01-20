@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\User;
 use Auth;
 class CommentController extends Controller
 {
@@ -23,7 +24,7 @@ $mydata = Comment::where('pic_id',request('pic_id'))->get();
  foreach($mydata as $view)   
    {   
     $content=$content. '    
- <tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['pic_id'].' said:</b><br>
+ <tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['user_id'].' said:</b><br>
                       '.$view['comments'].'
                   </td>'
          ;
@@ -51,7 +52,7 @@ $mydata = Comment::where('pic_id',request('pic_id'))->get();
  foreach($mydata as $view)   
    {   
     $content=$content. '    
- <tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['pic_id'].' said:</b><br>
+ <tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['user_id'].' said:</b><br>
                       '.$view['comments'].'
                   </td>'
          ;
