@@ -104,6 +104,7 @@ Can this be done with Masonry options? */
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <div class="approval" id="like"></div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
@@ -145,6 +146,34 @@ Can this be done with Masonry options? */
 </div>
 @endif
 <script type="text/javascript">
+
+  $('#like').click('#like', function() {
+var formData = {
+    
+    'pic_id' : $('.enlargeImageModalSource').attr('id'),
+    '_token' : $('#comment-token').val()
+  }
+
+  $.ajax({
+    url: "/likeadd",
+    type: "POST",
+    data: formData,
+   
+    success: function(response)
+    {
+      console.log('Added Comment');
+     
+     //document.getElementById("comments").innerHTML = response;
+      document.getElementById("like").innerHTML = response;
+    },
+    error: function(data)
+    {
+      alert('fsil');
+      console.log('Error in comment');  
+    }
+  });
+
+ });
    // Takes the gutter width from the bottom margin of .post
    var gutter = parseInt($('.post').css('marginBottom'));
    var container = $('#posts');
@@ -202,6 +231,25 @@ Can this be done with Masonry options? */
     }
   });
 
+
+      $.ajax({
+    url: "/likes",
+    type: "POST",
+    data: formData,
+   
+    success: function(response)
+    {
+      console.log('Added Comment');
+     document.getElementById("like").innerHTML = response;
+     
+    },
+    error: function(data)
+    {
+      console.log('Error in comment');  
+      
+    }
+  });
+
   });
 });
 
@@ -233,4 +281,6 @@ Can this be done with Masonry options? */
   });
 });
 });
+
+ 
 </script>
