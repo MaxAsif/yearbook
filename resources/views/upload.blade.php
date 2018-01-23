@@ -177,6 +177,7 @@
           var $el = $('#image');
           $el.wrap('<form>').closest('form').get(0).reset();
           $el.unwrap();
+          location.reload();
         }
       });
      });

@@ -1,30 +1,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
+<script type="text/javascript">
+ 
+</script>
 <style type="text/css">
 .lead {
   padding: 40px 0;
 }
 /* Grid */
 
+tbody {
+    height: 400px;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
+
 #posts {
   margin: 30px auto 0;
 }
-
 .post {
   margin: 0 0 20px;
   text-align: center;
   width: 100%;
 }
-
 .post img {
   padding: 0 15px;
   width: 100%;
 }
-
 #grid.container .post img {
   padding: 0;
 }
 /* Medium devices */
-
 @media (min-width: 768px) {
   #grid > #posts .post {
     width: 335px;
@@ -37,7 +43,6 @@
   }
 }
 /* Medium devices */
-
 @media (min-width: 992px) {
   #grid > #posts .post {
     width: 445px;
@@ -47,7 +52,6 @@
   }
 }
 /* Large devices */
-
 @media (min-width: 1200px) {
   #grid > #posts .post {
     width: 346px;
@@ -61,7 +65,6 @@
 bleed if you will) the same width as the .post margins posts (50px). Basically I'm
 being really picky about whitespace. If you don't care, no problem, just delete this.
 Can this be done with Masonry options? */
-
 @media (min-width: 1300px) {
   #grid {
     left: -50px;
@@ -86,7 +89,7 @@ Can this be done with Masonry options? */
      @foreach($images as $image)
      @if(file_exists($image['url']))
      <div class="post">
-      <img src="../{{$image['url']}}">
+      <img src="../{{$image['url']}}" id="{{$image['id']}}">
       <br>
       <br>
       <strong>{{$image['caption']}}</strong>
@@ -101,6 +104,7 @@ Can this be done with Masonry options? */
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <div class="approval" id="like"></div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
@@ -109,7 +113,30 @@ Can this be done with Masonry options? */
             <img src="" class="enlargeImageModalSource" style="height: 100%;width: 100%; object-fit: contain;">
           </div>
           <div class="col" style="margin-right: 11px ; border: 1px solid;">
+            <br>
+            <form class="form" id="form-comment" action="/comment" method="post">
+              {{csrf_field()}}
+              <input id="comment-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 
+              <div class="form-group">
+                <textarea name="comment" class="form-control" placeholder="Your comments here..."></textarea>
+              </div>
+              <button class="btr btn-success" id="submitt">Comment</button>
+            </form>
+
+
+            <div id="comments" class="table-scrollable">
+
+
+
+ 
+
+
+
+
+
+
+            </div>
           </div>
         </div>
         
@@ -119,32 +146,51 @@ Can this be done with Masonry options? */
 </div>
 @endif
 <script type="text/javascript">
-	 // Takes the gutter width from the bottom margin of .post
 
-	 var gutter = parseInt($('.post').css('marginBottom'));
-	 var container = $('#posts');
+  $('#like').click('#like', function() {
+var formData = {
+    
+    'pic_id' : $('.enlargeImageModalSource').attr('id'),
+    '_token' : $('#comment-token').val()
+  }
 
+  $.ajax({
+    url: "/likeadd",
+    type: "POST",
+    data: formData,
+   
+    success: function(response)
+    {
+      console.log('Added Comment');
+     
+     //document.getElementById("comments").innerHTML = response;
+      document.getElementById("like").innerHTML = response;
+    },
+    error: function(data)
+    {
+      alert('fsil');
+      console.log('Error in comment');  
+    }
+  });
+
+ });
+   // Takes the gutter width from the bottom margin of .post
+   var gutter = parseInt($('.post').css('marginBottom'));
+   var container = $('#posts');
  // Creates an instance of Masonry on #posts
-
  container.masonry({
    gutter: gutter,
    itemSelector: '.post',
    columnWidth: '.post'
  });
-
  // This code fires every time a user resizes the screen and only affects .post elements
  // whose parent class isn't .container. Triggers resize first so nothing looks weird.
-
  $(window).bind('resize', function() {
- 	if (!$('#posts').parent().hasClass('container')) {
-
+  if (!$('#posts').parent().hasClass('container')) {
      // Resets all widths to 'auto' to sterilize calculations
-
      post_width = $('.post').width() + gutter;
      $('#posts, body > #grid').css('width', 'auto');
-
      // Calculates how many .post elements will actually fit per row. Could this code be cleaner?
-
      posts_per_row = $('#posts').innerWidth() / post_width;
      floor_posts_width = (Math.floor(posts_per_row) * post_width) - gutter;
      ceil_posts_width = (Math.ceil(posts_per_row) * post_width) - gutter;
@@ -152,22 +198,89 @@ Can this be done with Masonry options? */
      if (posts_width == $('.post').width()) {
        posts_width = '100%';
      }
-
      // Ensures that all top-level elements have equal width and stay centered
-
      $('#posts, #grid').css('width', posts_width);
      $('#grid').css({
        'margin': '0 auto'
      });
-
    }
  }).trigger('resize');
-
  $(function() {
   $('img').on('click', function() {
     $('.enlargeImageModalSource').attr('src', $(this).attr('src'));
+    $('.enlargeImageModalSource').attr('id', $(this).attr('id'));
     $('#enlargeImageModal').modal('show');
+    var formData = {
+    'comments' : $('textarea[name=comment]').val(),
+    'pic_id' : $('.enlargeImageModalSource').attr('id'),
+    '_token' : $('#comment-token').val()
+  }
+     $.ajax({
+    url: "/commentadd",
+    type: "POST",
+    data: formData,
+   
+    success: function(response)
+    {
+      console.log('Added Comment');
+     document.getElementById("comments").innerHTML = response;
+    },
+    error: function(data)
+    {
+      console.log('Error in comment');  
+    }
+  });
+
+
+      $.ajax({
+    url: "/likes",
+    type: "POST",
+    data: formData,
+   
+    success: function(response)
+    {
+      console.log('Added Comment');
+     document.getElementById("like").innerHTML = response;
+     
+    },
+    error: function(data)
+    {
+      console.log('Error in comment');  
+      
+    }
+  });
+
   });
 });
-</script>
 
+
+ $(document).ready(function (e) {
+  $('form#form-comment').on('submit', function(e) {
+   e.preventDefault();
+   var formData = {
+    'comments' : $('textarea[name=comment]').val(),
+    'pic_id' : $('.enlargeImageModalSource').attr('id'),
+    '_token' : $('#comment-token').val()
+  }
+  console.log(formData);
+
+  $.ajax({
+    url: "/comment",
+    type: "POST",
+    data: formData,
+   
+    success: function(response)
+    {
+      console.log('Added Comment');
+     document.getElementById("comments").innerHTML = response;
+    },
+    error: function(data)
+    {
+      console.log('Error in comment');  
+    }
+  });
+});
+});
+
+ 
+</script>
