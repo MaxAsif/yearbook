@@ -86,3 +86,4 @@ Route::post('/likes','LikesController@load');
 Route::post('/likeadd','LikesController@like');
 
 
+Route::get('send','mailController@send');
