@@ -24,8 +24,8 @@
       {{csrf_field()}}
       <div class="row">
         <div class="col-4">
-         <select name="topic" id="topic" class="form-control" required onchange="showfield(this.options[this.selectedIndex].value)">
-          <option selected disabled>Choose your topic</option>
+         <select name="topic" id="topic" class="form-control" required="required" onchange="showfield(this.options[this.selectedIndex].value)">
+          <option selected disabled value="">Choose your topic</option>
           <option  value="Spring Fest">Spring Fest</option>
           <option value="Kshitij">Kshitij</option>
           <option value="Annual Alumni Meet">Annual Alumni Meet</option>
