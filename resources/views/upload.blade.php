@@ -140,15 +140,17 @@
       $('#loading').show();
       console.log(originalData);
       var formdata = new FormData(this); 
+      var i=0;
       for (var value of formdata.entries()) {
-        console.log("after",value[0]);
-        console.log(value[1]); 
+        console.log("before",value[i]);
+        i++;
       }
+      i=0;
       originalData.toBlob(function (blob){
        formdata.append('croppedImage',blob);
        for (var value of formdata.entries()) {
-         console.log("after",value[0]);
-         console.log(value[1]); 
+         console.log("after",value[i]);
+         i++; 
        }
        console.log("crop image",originalData);
        $.ajax({
@@ -158,7 +160,7 @@
         contentType: false,
         cache: false,
         processData: false,
-        success: function(data)
+        success: function(response)
         {
           alert('Your pic has been succesfully added.');
           $('#loading').hide();
@@ -166,6 +168,8 @@
           var $el = $('#image');
           $el.wrap('<form>').closest('form').get(0).reset();
           $el.unwrap();
+          console.log(response);
+          document.getElementById('posts').innerHTML += response;
           location.reload();
         },
         error: function(data)
@@ -180,6 +184,7 @@
           location.reload();
         }
       });
+       
      });
     });
     $('#image').change(function() {
