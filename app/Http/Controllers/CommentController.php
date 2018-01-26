@@ -18,20 +18,22 @@ class CommentController extends Controller
     'user_id' => Auth::user()->id,
   ]);
 
+
    //it will increase totalcount by 2 
 Image::where('id',request('pic_id'))->increment('totalcount', 2);
 
 
+   $mydata = Comment::where('pic_id',request('pic_id'))->latest()->get();
 
-   $mydata = Comment::where('pic_id',request('pic_id'))->get();
-   
+
    $content= '<table class="table-striped col l12 s12 m12 table-scrollable">
    <tbody>  '; 
 
    foreach($mydata as $view)   
    {   
+    $name = User::find($view['user_id'])->name;
     $content=$content. '    
-    <tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['user_id'].' said:</b><br>
+    <tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$name.' said:</b><br>
     '.$view['comments'].'
     </td>'
     ;
@@ -41,7 +43,7 @@ Image::where('id',request('pic_id'))->increment('totalcount', 2);
   $content=$content.' </tbody>
   </table>';
   return response($content, 200);  	
-  
+
 
 }
 
@@ -49,17 +51,18 @@ Image::where('id',request('pic_id'))->increment('totalcount', 2);
 
 public function new()
 {
- 
 
-  $mydata = Comment::where('pic_id',request('pic_id'))->get();
+
+  $mydata = Comment::where('pic_id',request('pic_id'))->latest()->get();
 
   $content= '<table class="table-striped col l12 s12 m12 table-scrollable">
   <tbody>  '; 
 
   foreach($mydata as $view)   
   {   
+    $name = User::find($view['user_id'])->name;
     $content=$content. '    
-    <tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$view['user_id'].' said:</b><br>
+    <tr class="row"><td style = "word-wrap: break-word;padding:20px; " class="col l9"> <b>'.$name.' said:</b><br>
     '.$view['comments'].'
     </td>'
     ;
@@ -69,7 +72,7 @@ public function new()
   $content=$content.' </tbody>
   </table>';
   return response($content, 200);  	
-  
+
 
 }
 }

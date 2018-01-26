@@ -61,13 +61,15 @@ class ImageController extends Controller
 				'classifier' => $classifier,
 
 			]);
+			$response = '<div class="post"><img src="'.request('url').'" id="'.Image::get()->count().'"><br>
+			<br><strong>'.request('caption').'</strong></div>`';
+			return response($response,200);
 			
 		}
 		else
 		{
-			
-			return Response::json(['error' => json_encode(request('caption'))], 404); // Status code here
-			
+			$response = "Not Uploaded";
+			return response($response,404);
 		}
 		
 	}

@@ -104,7 +104,7 @@ Can this be done with Masonry options? */
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="approval" id="like"></div>
+       
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
@@ -119,9 +119,12 @@ Can this be done with Masonry options? */
               <input id="comment-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 
               <div class="form-group">
-                <textarea name="comment" class="form-control" placeholder="Your comments here..."></textarea>
+                <textarea name="comment" id="textarea" class="form-control" required="required" placeholder="Your comments here..."></textarea>
               </div>
-              <button class="btr btn-success" id="submitt">Comment</button>
+               <div class="row">
+                <div class="col""><button class="btn btn-success"  style="width: 100%;" id="submitt">Comment</button></div>
+                <div class="col approval" id="like"></div>
+              </div>
             </form>
 
 
@@ -161,15 +164,11 @@ var formData = {
    
     success: function(response)
     {
-      console.log('Added Comment');
-     
-     //document.getElementById("comments").innerHTML = response;
-      document.getElementById("like").innerHTML = response;
+     document.getElementById("like").innerHTML = response;
     },
     error: function(data)
     {
-      alert('fsil');
-      console.log('Error in comment');  
+      
     }
   });
 
@@ -222,12 +221,12 @@ var formData = {
    
     success: function(response)
     {
-      console.log('Added Comment');
+      
      document.getElementById("comments").innerHTML = response;
     },
     error: function(data)
     {
-      console.log('Error in comment');  
+     
     }
   });
 
@@ -239,13 +238,12 @@ var formData = {
    
     success: function(response)
     {
-      console.log('Added Comment');
+      
      document.getElementById("like").innerHTML = response;
      
     },
     error: function(data)
     {
-      console.log('Error in comment');  
       
     }
   });
@@ -271,8 +269,9 @@ var formData = {
    
     success: function(response)
     {
-      console.log('Added Comment');
-     document.getElementById("comments").innerHTML = response;
+      console.log('Added Comments');
+      document.getElementById("textarea").value="";
+      document.getElementById("comments").innerHTML = response;
     },
     error: function(data)
     {
