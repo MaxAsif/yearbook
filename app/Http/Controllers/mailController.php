@@ -14,6 +14,8 @@ class mailController extends Controller
 {
     public function send()
     {   
+        //generates random password
+
     	function generateRandomString($length = 6) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -27,8 +29,10 @@ class mailController extends Controller
         $password=  generateRandomString();
 
         
+        //use mailable class  in app/mail/sendmail
+    	\Mail::to(Auth::user())->send(new SendMail($password));
 
-    	\Mail::to(Auth::user()->email)->send(new SendMail($password));
+        //update the password in database
 
     	DB::table('users')->where('id',Auth::user()->id)->update(array('password'=> $password));
 

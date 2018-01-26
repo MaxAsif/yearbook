@@ -7,25 +7,19 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-use Auth;
-use App\User;
-use DB;
-
-class SendMail extends Mailable
+class InviteCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $password ;
-
+    public $invite ;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($password)
+    public function __construct($invite)
     {
-        //
-        $this->password =$password;
+        $this->invite = $invite;
     }
 
     /**
@@ -34,18 +28,10 @@ class SendMail extends Mailable
      * @return $this
      */
     public function build()
-    {   
-        $username = Auth::user()->name;
+    {
+        
 
-        // go to mail.blade.php
-
-        $this->subject('Yearbook Password')->view('mail',compact('username','password'));
-
-
-
-         
-
-    
-
+        return $this->from('you@example.com')
+                    ->view('emails.invite');
     }
 }

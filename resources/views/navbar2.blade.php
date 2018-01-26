@@ -95,6 +95,9 @@ crossorigin="anonymous"></script>
 				<a class="nav-link text-light" href="/home">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item active">
+				<a class="nav-link text-light" href="/trending">Trending <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item active">
 				<a class="nav-link text-light" href="/profile_index">
 					{{Auth::user()->name}}
 				</a>			

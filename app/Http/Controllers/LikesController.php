@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\likes;
+use App\Image;
+use DB;
 
 class LikesController extends Controller
 {
@@ -55,6 +57,9 @@ foreach($mydata as $view)
 if($i==1)
 {
 
+  //will decrease totalcount by -1
+Image::where('id',request('pic_id'))->increment('totalcount', -1);
+
 $content="<button type='button' class='btn btn-success approve app'>LIKE</button>";
 
 }
@@ -65,6 +70,12 @@ likes::create([
     		
     		'user_id' => Auth::user()->id,
     	]);
+
+//will increase total count by 1 whenever like button clicked
+Image::where('id',request('pic_id'))->increment('totalcount', 1);
+
+
+
 $content="<button type='button' class='btn btn-danger disapprove app' onclick>UNLIKE</button>";
  }
 

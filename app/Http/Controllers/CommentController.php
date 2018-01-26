@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Comment;
 use App\User;
 use Auth;
+use App\Image;
+use DB;
 class CommentController extends Controller
 {
   public function add()
@@ -15,6 +17,11 @@ class CommentController extends Controller
     'comments' => request('comments'),
     'user_id' => Auth::user()->id,
   ]);
+
+   //it will increase totalcount by 2 
+Image::where('id',request('pic_id'))->increment('totalcount', 2);
+
+
 
    $mydata = Comment::where('pic_id',request('pic_id'))->get();
    
