@@ -170,18 +170,13 @@
           $el.unwrap();
           console.log(response);
           document.getElementById('posts').innerHTML += response;
-          location.reload();
+          window.location.reload();
         },
         error: function(data)
         {
           alert("Sorry, there was an error uploading image");
           console.log("error",data);
-          $('#loading').hide();
-          $('#cropp-image-div').css("display", "none");
-          var $el = $('#image');
-          $el.wrap('<form>').closest('form').get(0).reset();
-          $el.unwrap();
-          location.reload();
+          window.location.reload();
         }
       });
        
