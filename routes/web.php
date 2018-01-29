@@ -86,3 +86,18 @@ Route::post('/likes','LikesController@load');
 Route::post('/likeadd','LikesController@like');
 
 
+//change password route referenced by navbar2.blade.php
+//go to env file to change email and passord 
+//go to config/mail from there change the from name and id
+Route::get('send','mailController@send');
+
+
+Route::get('invite', 'InviteController@invite')->name('invite');
+Route::post('invite', 'InviteController@process')->name('process');
+// {token} is a required parameter that will be exposed to us in the controller method
+Route::get('accept/{token}', 'InviteController@accept')->name('accept');
+
+
+
+//referenced by navbar2
+Route::get('/trending','CountController@index');

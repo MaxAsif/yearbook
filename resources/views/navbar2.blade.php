@@ -95,6 +95,9 @@ crossorigin="anonymous"></script>
 				<a class="nav-link text-light" href="/home">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item active">
+				<a class="nav-link text-light" href="/trending">Trending <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item active">
 				<a class="nav-link text-light" href="/profile_index">
 					{{Auth::user()->name}}
 				</a>			
@@ -108,7 +111,7 @@ crossorigin="anonymous"></script>
 						<a class="nav-link text-dark" href="/details">Edit Details</a>
 					</li>
 					<li class="head text-dark bg-light">
-						<a class="nav-link text-dark" href="#">Change Password </a>
+						<a class="nav-link text-dark" href="/send">Change Password </a>
 					</li>
 					<li class="head text-dark bg-light">
 						<a class="nav-link text-dark" href="/logout">Logout </a>
