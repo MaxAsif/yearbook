@@ -130,55 +130,71 @@ Can this be done with Masonry options? */
 }
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+</style>
+
 
 @if(count($images))
-<!-- <div id="grid" class="container"> -->
-  <div class="container" id="grid">
-    <br>
- <br>
- <!-- for bootstarp feature in the pagination -->
+<div class="container animated zoomInLeft">
+  <br>
 {{ $images->links('vendor.pagination.bootstrap-4')}}
-    <div id="posts">
 
-     @foreach($images as $image)
+@php
+$count= 0;
+@endphp
 
-     @if(file_exists($image['url']))
-     <div class="post">
-      
-      <strong>{{$image['caption']}}</strong>
-      <br>
+  <div class="row">
+    @foreach($images as $image)
+    @if(file_exists($image['url']))
+    <div class="col-lg-12 col-sm-12 col-md-4">
+      <div class="card" style="margin-bottom: 12px;" data-toggle="tooltip" data-placement="top" title="Click the image!">
+        <div class="card-body">
+         <img height="400px" width="100%" src="{{$image['url']}}" id="{{$image['id']}}">
+       </div>
+       <div class="card-footer">
+        <p style="text-align: center;">
+    <strong>
       @php
-        $name = App\User::where('rollno',$image['rollno'])->get()->toArray();
-
+      echo '#';
+      $count1 = $count + ($currentpage*$perpage ) -($perpage-1);
+      echo $count1 ;
+      $count++;
       @endphp
-      <strong>{{$name[0]['name']}}</strong>
+    </strong>
+    <br>
+    <strong >"{{$image['caption']}}"</strong>
+
+     @php
+      $name = App\User::where('rollno',$image['rollno'])->get()->toArray();
+
+     @endphp
+     <br>
+    <strong>{{$name[0]['name']}}</strong>
       <br>
       
       <!-- carbon class used -->
       <strong>{{$image['created_at']->diffForHumans() }}</strong>
-      
-      <br>
-      <br>
-      <img src="{{$image['url']}}" id="{{$image['id']}}">
-      <br>
-      
-      <hr>
-
-      
+        </p>
+      </div>
     </div>
-    @endif
-  
-    @endforeach
-  </div>    
- {{ $images->links('vendor.pagination.bootstrap-4')}}
-  <br>
- 
+  </div>
+  @endif
+  @endforeach
 </div>
+<br>
+{{ $images->links('vendor.pagination.bootstrap-4')}}
+<br>
+</div>
+
 <div  class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="approval" id="like"></div>
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
@@ -193,9 +209,12 @@ Can this be done with Masonry options? */
               <input id="comment-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 
               <div class="form-group">
-                <textarea name="comment" class="form-control" placeholder="Your comments here..."></textarea>
+                <textarea name="comment" id="textarea" class="form-control" required="required" placeholder="Your comments here..."></textarea>
               </div>
-              <button class="btr btn-success" id="submitt">Comment</button>
+              <div class="row">
+                <div class="col"><button class="btn btn-success" style="width: 100%;" id="submitt">Comment</button></div>
+                <div class="col approval" id="like"></div>
+              </div>
             </form>
 
 
@@ -203,7 +222,7 @@ Can this be done with Masonry options? */
 
 
 
- 
+
 
 
 
@@ -222,32 +241,29 @@ Can this be done with Masonry options? */
 <script type="text/javascript">
 
   $('#like').click('#like', function() {
-var formData = {
-    
-    'pic_id' : $('.enlargeImageModalSource').attr('id'),
-    '_token' : $('#comment-token').val()
-  }
+    var formData = {
 
-  $.ajax({
-    url: "/likeadd",
-    type: "POST",
-    data: formData,
-   
-    success: function(response)
-    {
-      console.log('Added Comment');
-     
-     //document.getElementById("comments").innerHTML = response;
-      document.getElementById("like").innerHTML = response;
-    },
-    error: function(data)
-    {
-      alert('fsil');
-      console.log('Error in comment');  
+      'pic_id' : $('.enlargeImageModalSource').attr('id'),
+      '_token' : $('#comment-token').val()
     }
-  });
 
- });
+    $.ajax({
+      url: "/likeadd",
+      type: "POST",
+      data: formData,
+
+      success: function(response)
+      {
+
+       document.getElementById("like").innerHTML = response;
+     },
+     error: function(data)
+     {
+
+     }
+   });
+
+  });
    // Takes the gutter width from the bottom margin of .post
    var gutter = parseInt($('.post').css('marginBottom'));
    var container = $('#posts');
@@ -285,44 +301,44 @@ var formData = {
     $('.enlargeImageModalSource').attr('id', $(this).attr('id'));
     $('#enlargeImageModal').modal('show');
     var formData = {
-    'comments' : $('textarea[name=comment]').val(),
-    'pic_id' : $('.enlargeImageModalSource').attr('id'),
-    '_token' : $('#comment-token').val()
-  }
-     $.ajax({
-    url: "/commentadd",
-    type: "POST",
-    data: formData,
-   
-    success: function(response)
-    {
-      console.log('Added Comment');
-     document.getElementById("comments").innerHTML = response;
-    },
-    error: function(data)
-    {
-      console.log('Error in comment');  
+      'comments' : $('textarea[name=comment]').val(),
+      'pic_id' : $('.enlargeImageModalSource').attr('id'),
+      '_token' : $('#comment-token').val()
     }
-  });
+    $.ajax({
+      url: "/commentadd",
+      type: "POST",
+      data: formData,
+
+      success: function(response)
+      {
+
+        document.getElementById("comments").innerHTML = response;
+      },
+      error: function(data)
+      {
+
+      }
+    });
 
 
-      $.ajax({
-    url: "/likes",
-    type: "POST",
-    data: formData,
-   
-    success: function(response)
-    {
-      console.log('Added Comment');
-     document.getElementById("like").innerHTML = response;
-     
-    },
-    error: function(data)
-    {
-      console.log('Error in comment');  
-      
-    }
-  });
+    $.ajax({
+      url: "/likes",
+      type: "POST",
+      data: formData,
+
+      success: function(response)
+      {
+
+        document.getElementById("like").innerHTML = response;
+
+      },
+      error: function(data)
+      {
+
+
+      }
+    });
 
   });
 });
@@ -342,11 +358,12 @@ var formData = {
     url: "/comment",
     type: "POST",
     data: formData,
-   
+
     success: function(response)
     {
-      console.log('Added Comment');
-     document.getElementById("comments").innerHTML = response;
+      console.log('Added Comments');
+      document.getElementById("textarea").value="";
+      document.getElementById("comments").innerHTML = response;
     },
     error: function(data)
     {
@@ -356,7 +373,9 @@ var formData = {
 });
 });
 
- 
+ $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>
 
 
