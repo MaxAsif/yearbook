@@ -12,13 +12,9 @@
 </head>
 
 <style>
-@font-face{
- font-family:'digital-clock-font';
- src: url('clock.ttf');
-}
-h2
-{
-    font-family: 'digital-clock-font';
+@font-face {
+  font-family: 'Century gothic';
+  src: url('font.ttf');
 }
 .container-fluid
 {
@@ -83,14 +79,6 @@ h2
     position: absolute;
     top: 35%;
 }
-#clock{
-    background-color:black;
-    color:#1CD06E;
-    display:inline;
-    font-size:60px;
-    padding:10px;
-    border: 3px solid red;
-    }
 a{
     color: #fff;
 }
@@ -104,20 +92,7 @@ a:hover span {display: block; text-align: center;z-index: 1000;}
         <div id="large-header" class="large-header" style="height: 613px; z-index: 100">
             <canvas id="demo-canvas" width="1366" height="613"></canvas>
 
-            <h2 class="center main-title animated zoomIn">
-    <div class="clock-wrap">
-  <div class="clock">
-    <div class="clock__date">
-    </div>
-    <div class="clock__time">
-    </div>
-  </div>
-</div>
-<div class="clock-toogle">
-  <div class="clock-toogle__toogle"></div>
-</div>           
-<br>
-Welcome to<b> Yearbook'17</b> Portal </h2>
+            <h2 class="center main-title animated zoomIn">Welcome to<b> Yearbook'17</b> Portal </h2>
 
             <form method="post" action="{{ route('login') }}" class="form main-title center">
 
@@ -140,16 +115,12 @@ Welcome to<b> Yearbook'17</b> Portal </h2>
                     </div>
                 </div>
             </form>
-            <p class=" center sub-title main-title" style="font-family: 'digital-clock-font';">Contact us at:<br> <a href="mailto:yearbook2k17.kgp@gmail.com"> yearbook2k17.kgp@gmail.com<a><i class="material-icons">error_outline</i><span class="tooltip">If you are not graduating this year, but want to write about your friends who are graduating, send us the testimonials via mail at yearbook2k17.kgp@gmail.com</span></a></p>
+            <p class=" center sub-title main-title" >Contact us at:<br> <a href="mailto:yearbook2k17.kgp@gmail.com"> yearbook2k17.kgp@gmail.com<a><i class="material-icons">error_outline</i><span class="tooltip">If you are not graduating this year, but want to write about your friends who are graduating, send us the testimonials via mail at yearbook2k17.kgp@gmail.com</span></a></p>
 
         </div>
 
     </div>
-    <script type="text/javascript">
-        var myTimer = setInterval(setClock,1000);
-function setClock(){    
-       document.getElementById("clock").innerHTML=new Date().toLocaleTimeString();}
-    </script>
+    
     <script src="/js/TweenLite.min.js.download"></script>
     <script src="/js/EasePack.min.js.download"></script>
     <script src="/js/demo-1.js.download"></script>
