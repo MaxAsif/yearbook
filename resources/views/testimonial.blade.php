@@ -289,7 +289,7 @@
   </style>
 </head>
 <body>
- @include('navbar2');
+ @include('navbar1');
  <div class="container">
   <div>
     <div class="body">
@@ -393,7 +393,7 @@
                             <div class="stars starrr" data-rating="0"></div>
                             <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
                             <span class="glyphicon glyphicon-remove"></span>Cancel</a>
-                            <button class="btn btn-success btn-lg" type="submit">Submit</button>
+                            <button class="btn btn-success btn-sm" type="submit">Submit</button>
                         </div>
                     </form>
                 
