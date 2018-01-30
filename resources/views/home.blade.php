@@ -8,6 +8,32 @@
     margin-top: 10px;   
     padding: 5px;   
   }
+  .back { 
+    /* The image used */
+    background-image: url("12.jpg");
+
+    /* Set a specific height */
+    height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+  h4
+  {
+    color: white;
+  }
+  body
+  {
+    background-image: url('13.jpg');
+     background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
 </style>
 </head>
@@ -15,7 +41,7 @@
 <br>
 <body>
 
-  <div class="container" style="border: 1px solid grey;">
+  <div class="container parallax" >
 
 
     @if(session('message'))
@@ -24,7 +50,7 @@
     </script>
     @endif
 
-
+<div class="back" style="border: 1px solid grey;">
 
     <div id="modal2" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -33,7 +59,7 @@
         <div class="modal-content" style="text-align: center;">
           <div class="modal-header">
 
-            <h4 class="modal-title">Upload Picture and Caption</h4>
+            <h4 class="modal-title" style="color: white;">Upload Picture and Caption</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
@@ -80,10 +106,10 @@
         <a data-toggle="modal" data-target="#modal2" ref="#">
           <img src="<?php if (!empty(Auth::user()->pro_pic)){echo Auth::user()->pro_pic; } else { echo 'ind/your.jpg';}?>" class="rounded-circle img-responsive" width="200px" height="200px" data-step="1" data-intro="Click on image to Upload Profile pic and Caption"> 
         </a>
-        <figcaption style="text-align: center;"><h4> 
+        <figcaption style="text-align: center;color: white;"><h4> 
           <?php echo Auth::user()->name;  ?>
         </h4></figcaption>
-        <figcaption style="text-align: center;"><h5>"
+        <figcaption style="text-align: center;color: white;"><h5>"
           <?php if (!empty(Auth::user()->view_self)) { echo Auth::user()->view_self;}
           else{
             echo "Upload your Caption for the Yearbook";
@@ -107,6 +133,8 @@
       </div>
     </div>
     <br/>
+    </div>
+    <br><hr><br>
     <div class="row">
       <div  class="col-sm-12 col-lg-6 card-panel grey lighten-5 z-depth-1" align="center" style="min-height: 270px;padding: 10px;height: 100%;"><h5>Yearbook</h5><div style="padding-right: 15px;padding-left: 15px;"><p style="text-align: justify;"> The yearbook is an opus of memories that you would carry along graduating from the institute. The wonderful years spent in the campus are engraved and expressed via photographs and writeups in this departing souvenir from IIT KGP. 
       With an assortment of your thoughts and snaps from various experiences through the years, the book truly collaborates your time in KGP and is a walk down your memory lane every time you look through it.</p> </div></div>
