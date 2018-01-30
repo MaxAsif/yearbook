@@ -28,10 +28,13 @@ class CountController extends Controller
 		//to select 50 images and show them in 10 per page
 		$images=Image::orderBy('totalcount','DESC')->take(50)->paginate(10);
 
+		$currentpage=$images->currentPage();
+		$perpage=$images->perPage();
+
 		$user = User::get();
 		$roll = Auth::user()->rollno;
 		$notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();
 
-    	return view('trending',compact('images','user','notifications'));
+    	return view('trending',compact('images','user','notifications','currentpage','perpage'));
     }
 }
