@@ -60,7 +60,7 @@ class ViewsController extends Controller
         
 
         
-        return redirect('/profile_index/'.$roll) ;
+        return redirect('/'.$roll) ;
     }
     public function read($id)
     {

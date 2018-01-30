@@ -5,14 +5,19 @@
 </head>
 @include('navbar2')
 <style>
-@font-face {
-	font-family: 'Century gothic';
-	src: url('font.ttf');
-}
+
 body{
 	background-color:#333;
 	font-color: black;
 	font-family: Century gothic;
+}
+@font-face{
+ font-family:'digital-clock-font';
+ src: url('clock.ttf');
+}
+h1
+{
+	font-family: 'digital-clock-font';
 }
 </style>
 <body>
