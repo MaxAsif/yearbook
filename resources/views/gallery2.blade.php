@@ -1,110 +1,40 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
 <script type="text/javascript">
- 
+
 </script>
 <style type="text/css">
-.lead {
-  padding: 40px 0;
-}
-/* Grid */
-
-tbody {
-    height: 400px;
-    display: inline-block;
-    width: 100%;
-    overflow: auto;
-}
-
-#posts {
-  margin: 30px auto 0;
-}
-.post {
-  margin: 0 0 20px;
-  text-align: center;
-  width: 100%;
-}
-.post img {
-  padding: 0 15px;
-  width: 100%;
-}
-#grid.container .post img {
-  padding: 0;
-}
-/* Medium devices */
-@media (min-width: 768px) {
-  #grid > #posts .post {
-    width: 335px;
-  }
-  #grid > #posts .post.cs2 {
-    width: 100%;
-  }
-  .post img {
-    padding: 0;
-  }
-}
-/* Medium devices */
-@media (min-width: 992px) {
-  #grid > #posts .post {
-    width: 445px;
-  }
-  #grid > #posts .post.cs2 {
-    width: 100%;
-  }
-}
-/* Large devices */
-@media (min-width: 1200px) {
-  #grid > #posts .post {
-    width: 346px;
-  }
-  #grid > #posts .post.cs2 {
-    width: 742px;
-  }
-}
-/* Large devices min-width (1200px) + a .post margin (50px) * 2 (100px) = 1300px */
-/* 1300px gives me the clearance I need to keep the margins of the entire #grid (the
-bleed if you will) the same width as the .post margins posts (50px). Basically I'm
-being really picky about whitespace. If you don't care, no problem, just delete this.
-Can this be done with Masonry options? */
-@media (min-width: 1300px) {
-  #grid {
-    left: -50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    position: relative;
-  }
-  #grid.container {
-    left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
 </style>
 
 
 @if(count($images))
-<!-- <div id="grid" class="container"> -->
-  <div class="container" id="grid">
-    <br>
-    <div id="posts">
-     @foreach($images as $image)
-     @if(file_exists($image['url']))
-     <div class="post">
-      <img src="../{{$image['url']}}" id="{{$image['id']}}">
-      <br>
-      <br>
-      <strong>{{$image['caption']}}</strong>
-      
-    </div>
-    @endif
-    @endforeach
-  </div>
+<div class="container animated zoomInLeft">
   <br>
+  <div class="row">
+    @foreach($images as $image)
+    @if(file_exists($image['url']))
+    <div class="col-lg-4 col-sm-12 col-md-4">
+      <div class="card" style="margin-bottom: 12px;" data-toggle="tooltip" data-placement="top" title="Click the image!">
+        <div class="card-body">
+         <img height="200px" width="300px" src="../{{$image['url']}}" id="{{$image['id']}}">
+       </div>
+       <div class="card-footer">
+        <p style="text-align: center;">
+          <strong >"{{$image['caption']}}"</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+  @endif
+  @endforeach
 </div>
+<br>
+</div>
+
 <div  class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-       
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
@@ -121,8 +51,8 @@ Can this be done with Masonry options? */
               <div class="form-group">
                 <textarea name="comment" id="textarea" class="form-control" required="required" placeholder="Your comments here..."></textarea>
               </div>
-               <div class="row">
-                <div class="col""><button class="btn btn-success"  style="width: 100%;" id="submitt">Comment</button></div>
+              <div class="row">
+                <div class="col"><button class="btn btn-success" style="width: 100%;" id="submitt">Comment</button></div>
                 <div class="col approval" id="like"></div>
               </div>
             </form>
@@ -132,7 +62,7 @@ Can this be done with Masonry options? */
 
 
 
- 
+
 
 
 
@@ -151,28 +81,29 @@ Can this be done with Masonry options? */
 <script type="text/javascript">
 
   $('#like').click('#like', function() {
-var formData = {
-    
-    'pic_id' : $('.enlargeImageModalSource').attr('id'),
-    '_token' : $('#comment-token').val()
-  }
+    var formData = {
 
-  $.ajax({
-    url: "/likeadd",
-    type: "POST",
-    data: formData,
-   
-    success: function(response)
-    {
-     document.getElementById("like").innerHTML = response;
-    },
-    error: function(data)
-    {
-      
+      'pic_id' : $('.enlargeImageModalSource').attr('id'),
+      '_token' : $('#comment-token').val()
     }
-  });
 
- });
+    $.ajax({
+      url: "/likeadd",
+      type: "POST",
+      data: formData,
+
+      success: function(response)
+      {
+
+       document.getElementById("like").innerHTML = response;
+     },
+     error: function(data)
+     {
+
+     }
+   });
+
+  });
    // Takes the gutter width from the bottom margin of .post
    var gutter = parseInt($('.post').css('marginBottom'));
    var container = $('#posts');
@@ -210,43 +141,44 @@ var formData = {
     $('.enlargeImageModalSource').attr('id', $(this).attr('id'));
     $('#enlargeImageModal').modal('show');
     var formData = {
-    'comments' : $('textarea[name=comment]').val(),
-    'pic_id' : $('.enlargeImageModalSource').attr('id'),
-    '_token' : $('#comment-token').val()
-  }
-     $.ajax({
-    url: "/commentadd",
-    type: "POST",
-    data: formData,
-   
-    success: function(response)
-    {
-      
-     document.getElementById("comments").innerHTML = response;
-    },
-    error: function(data)
-    {
-     
+      'comments' : $('textarea[name=comment]').val(),
+      'pic_id' : $('.enlargeImageModalSource').attr('id'),
+      '_token' : $('#comment-token').val()
     }
-  });
+    $.ajax({
+      url: "/commentadd",
+      type: "POST",
+      data: formData,
+
+      success: function(response)
+      {
+
+        document.getElementById("comments").innerHTML = response;
+      },
+      error: function(data)
+      {
+
+      }
+    });
 
 
-      $.ajax({
-    url: "/likes",
-    type: "POST",
-    data: formData,
-   
-    success: function(response)
-    {
-      
-     document.getElementById("like").innerHTML = response;
-     
-    },
-    error: function(data)
-    {
-      
-    }
-  });
+    $.ajax({
+      url: "/likes",
+      type: "POST",
+      data: formData,
+
+      success: function(response)
+      {
+
+        document.getElementById("like").innerHTML = response;
+
+      },
+      error: function(data)
+      {
+
+
+      }
+    });
 
   });
 });
@@ -266,7 +198,7 @@ var formData = {
     url: "/comment",
     type: "POST",
     data: formData,
-   
+
     success: function(response)
     {
       console.log('Added Comments');
@@ -281,5 +213,7 @@ var formData = {
 });
 });
 
- 
+ $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>
