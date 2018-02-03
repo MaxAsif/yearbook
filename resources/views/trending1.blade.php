@@ -31,10 +31,55 @@
 
   <link rel="stylesheet" type="text/css" href="css/autocomplete.css">
   <script src="js/autocomplete.js"></script>
-
+  <style type="text/css">
+  
+  .dropdown-menu{
+    top: 60px;
+    right: 0px;
+    left: unset;
+    width: 460px;
+    box-shadow: 0px 5px 7px -1px #c1c1c1;
+    padding-bottom: 0px;
+    padding: 0px;
+  }
+  .dropdown-menu:before{
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 12px;
+    border:10px solid #343A40;
+    border-color: transparent transparent #343A40 transparent;
+  }
+  .head{
+    padding:5px 15px;
+    border-radius: 3px 3px 0px 0px;
+  }
+  .notification-box{
+    padding: 10px 0px; 
+  }
+  .bg-gray{
+    background-color: #eee;
+  }
+  @media (max-width: 640px) {
+    .dropdown-menu{
+      top: 50px;
+      left: -16px;  
+      width: 290px;
+    } 
+    .nav{
+      display: block;
+    }
+    .nav .nav-item,.nav .nav-item a{
+      padding-left: 0px;
+    }
+    .message{
+      font-size: 13px;
+    }
+  }
+</style>
 </head>
 
-  <div  class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
+<div  class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -290,87 +335,87 @@
    });
 
   });
- $(function() {
-  $('.product-item-img').on('click', function() {
-    $('.enlargeImageModalSource').attr('src', $(this).attr('src'));
-    $('.enlargeImageModalSource').attr('id', $(this).attr('id'));
-    $('#enlargeImageModal').modal('show');
-    var formData = {
+  $(function() {
+    $('.product-item-img').on('click', function() {
+      $('.enlargeImageModalSource').attr('src', $(this).attr('src'));
+      $('.enlargeImageModalSource').attr('id', $(this).attr('id'));
+      $('#enlargeImageModal').modal('show');
+      var formData = {
+        'comments' : $('textarea[name=comment]').val(),
+        'pic_id' : $('.enlargeImageModalSource').attr('id'),
+        '_token' : $('#comment-token').val()
+      }
+      $.ajax({
+        url: "/commentadd",
+        type: "POST",
+        data: formData,
+
+        success: function(response)
+        {
+
+          document.getElementById("comments").innerHTML = response;
+        },
+        error: function(data)
+        {
+
+        }
+      });
+
+
+      $.ajax({
+        url: "/likes",
+        type: "POST",
+        data: formData,
+
+        success: function(response)
+        {
+
+          document.getElementById("like").innerHTML = response;
+
+        },
+        error: function(data)
+        {
+
+
+        }
+      });
+
+    });
+  });
+
+
+  $(document).ready(function (e) {
+    $('form#form-comment').on('submit', function(e) {
+     e.preventDefault();
+     var formData = {
       'comments' : $('textarea[name=comment]').val(),
       'pic_id' : $('.enlargeImageModalSource').attr('id'),
       '_token' : $('#comment-token').val()
     }
+    console.log(formData);
+
     $.ajax({
-      url: "/commentadd",
+      url: "/comment",
       type: "POST",
       data: formData,
 
       success: function(response)
       {
-
+        console.log('Added Comments');
+        document.getElementById("textarea").value="";
         document.getElementById("comments").innerHTML = response;
       },
       error: function(data)
       {
-
+        console.log('Error in comment');  
       }
     });
-
-
-    $.ajax({
-      url: "/likes",
-      type: "POST",
-      data: formData,
-
-      success: function(response)
-      {
-
-        document.getElementById("like").innerHTML = response;
-
-      },
-      error: function(data)
-      {
-
-
-      }
-    });
-
   });
-});
-
-
- $(document).ready(function (e) {
-  $('form#form-comment').on('submit', function(e) {
-   e.preventDefault();
-   var formData = {
-    'comments' : $('textarea[name=comment]').val(),
-    'pic_id' : $('.enlargeImageModalSource').attr('id'),
-    '_token' : $('#comment-token').val()
-  }
-  console.log(formData);
-
-  $.ajax({
-    url: "/comment",
-    type: "POST",
-    data: formData,
-
-    success: function(response)
-    {
-      console.log('Added Comments');
-      document.getElementById("textarea").value="";
-      document.getElementById("comments").innerHTML = response;
-    },
-    error: function(data)
-    {
-      console.log('Error in comment');  
-    }
   });
-});
-});
 
- $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 
 
   var user = <?php echo $user;?>;
