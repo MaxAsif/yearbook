@@ -92,7 +92,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item px-lg-4">
+          <li class="nav-item px-lg-6">
 
             <form action="search/" method="POST" class="form-inline">
               {{ csrf_field() }}
@@ -104,18 +104,18 @@
               </div>
             </form>
           </li>
-          <li class="nav-item active px-lg-4">
+          <li class="nav-item active px-lg-3">
             <a class="nav-link text-uppercase text-expanded" href="/home">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item px-lg-4">
+          <li class="nav-item px-lg-3">
             <a class="nav-link text-uppercase text-expanded" href="/trending">Trending</a>
           </li>
-          <li class="nav-item px-lg-4">
+          <li class="nav-item px-lg-3">
             <a class="nav-link text-uppercase text-expanded" href="/profile_index">{{Auth::user()->name}}</a>
           </li>
-          <li class="nav-item px-lg-4 dropdown">
+          <li class="nav-item px-lg-3 dropdown">
             <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
               <i class="fa fa-cog"></i>
             </a>
@@ -132,7 +132,7 @@
 
             </ul>
           </li>
-          <li class="nav-item px-lg-4 dropdown">
+          <li class="nav-item px-lg-3 dropdown">
             <a class="nav-link text-light" href="#" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" >
 
               @if(count($notifications))
