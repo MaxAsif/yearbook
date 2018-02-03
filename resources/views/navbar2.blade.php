@@ -70,7 +70,7 @@ crossorigin="anonymous"></script>
 @endif
 
 
-<nav class="navbar navbar-expand-sm navbar-light bg-dark" style="height: 86px">
+<nav class="navbar navbar-expand-sm navbar-light bg-dark" style="height: 86px; opacity: 0.7;">
 	<a class="navbar-brand text-light" href="http://www.sac.iitkgp.ac.in"><img height="90" width="250" src="sac.png" alt="someimg"/></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
