@@ -35,6 +35,6 @@ class CountController extends Controller
 		$roll = Auth::user()->rollno;
 		$notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();
 
-    	return view('trending',compact('images','user','notifications','currentpage','perpage'));
+    	return view('trending1',compact('images','user','notifications','currentpage','perpage'));
     }
 }

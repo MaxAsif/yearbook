@@ -95,6 +95,9 @@ crossorigin="anonymous"></script>
         <a class="nav-link text-light" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
+        <a class="nav-link text-light" href="/trending">Trending <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
         <a class="nav-link text-light" href="/profile_index">
           {{Auth::user()->name}}
         </a>      
@@ -144,7 +147,7 @@ crossorigin="anonymous"></script>
                   $pic = App\User::where('name',$notification['user'])->pluck('pro_pic');
                   @endphp  
                   <div class="col-lg-3 col-sm-3 col-3 text-center">
-                    <img src="{{$pic[0]}}" class="w-50 rounded-circle">
+                    <img src="../{{$pic[0]}}" class="w-50 rounded-circle">
                   </div> 
                   <div class="col-lg-8 col-sm-8 col-8">
                     <strong class="text-info">{{$notification['user']}}</strong>
