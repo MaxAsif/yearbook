@@ -163,7 +163,7 @@
     </div>
   </section>
 
-  <section class="page-section cta">
+  <section class="page-section cta" style="background-color: rgba(67,100,107,0.55);">
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
