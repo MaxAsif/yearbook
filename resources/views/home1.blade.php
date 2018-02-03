@@ -18,6 +18,8 @@
   <script  src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
   <!-- Custom fonts for this template -->
@@ -27,169 +29,261 @@
   <!-- Custom styles for this template -->
   <link href="css/business-casual.min.css" rel="stylesheet">
 
+
+  <link rel="stylesheet" type="text/css" href="css/autocomplete.css">
+  <script src="js/autocomplete.js"></script>
+
 </head>
 
 <body>
 
-  @include('navbar2')
-  <h1 class="site-heading text-center text-white d-none d-lg-block">
-    <span class="site-heading-upper text-primary mb-3">Yearbook'2018</span>
-    <span class="site-heading-lower">A Travel Through Time</span>
-  </h1>
-
-
-  <div id="modal2" class="modal fade" role="dialog">
-
-    <div class="modal-dialog">
-
-
-
-      <!-- Modal content-->
-
-      <div class="modal-content" style="text-align: center;">
-
-        <div class="modal-header">
-
-
-
-          <h4 class="modal-title" style="color: white;">Upload Picture and Caption</h4>
-
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        </div>
-
-        <div class="modal-body">
-
-          <form action="/upload_pic_moto" method="post" enctype="multipart/form-data">
-
-            {{csrf_field()}}
-
-            @if (count($errors) > 0)
-
-            <script type="text/javascript">
-
-              alert('<?php foreach($errors->all() as $error) { echo "$error"; } ?>');
-
-            </script>
-
-            @endif
-
-            <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;" onchange="readURL(this);">
-
-            <img src="<?php if (!empty(Auth::user()->pro_pic)){echo Auth::user()->pro_pic; } else { echo 'ind/shot.jpg';}?>" alt="" class="intro-img img-fluid mb-3 mb-lg-0 rounded" id="OpenImgUpload" style="cursor: pointer;width: 180px;height: 180px;">
-
-            <div class="input-field col sm-12 lg-12 md-12">
-
-              <div class="form-group">
-
-                <label for="comment">Caption (Max 50 characters)</label>
-
-                <textarea name="motto" id="icon_prefix2" class="form-control" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50" rows="2" id="comment"><?php if (!empty(Auth::user()->view_self)) { echo Auth::user()->view_self;}else {echo 'Enter Your Caption Here';}?></textarea>
-
-              </div>
-
-
-
-            </div>
-
-            <input type="submit" name="save" value="Save" class="waves-effect waves-light btn" style="width: 150px;" id="imgsave">
-
-          </form>
-
-        </div>
-
-      </div>
-
-
-
-    </div>
-
-  </div>
-
-  <!-- 
-  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+  <!-- Navigation--> 
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav" style="background-color: rgba(67,100,107,0.55);">
+    <a class="navbar-brand text-light" href="http://www.sac.iitkgp.ac.in"><img height="90" width="250" src="sac.png" alt="someimg"/></a>
     <div class="container">
-      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="http://www.sac.iitkgp.ac.in">Yearbook</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-lg-4">
+
+            <form action="search/" method="POST" class="form-inline">
+              {{ csrf_field() }}
+              <div class="form-group" >
+                <input type="text" name="search" required="required" id="search" class="form-control" placeholder="Search your friend here">
+              </div>
+              <div class="form-group" style="margin-left: 8px;">
+                <button type="submit" class="btn btn-default" style="margin-top: 0px;">Search</button>
+              </div>
+            </form>
+          </li>
           <li class="nav-item active px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+            <a class="nav-link text-uppercase text-expanded" href="/home">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+            <a class="nav-link text-uppercase text-expanded" href="/trending">Trending</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="products.html">Products</a>
+            <a class="nav-link text-uppercase text-expanded" href="/profile_index">{{Auth::user()->name}}</a>
           </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  Navigation -->
+          <li class="nav-item px-lg-4 dropdown">
+            <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-cog"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" >
+              <li class="head text-dark bg-light">
+                <a class="nav-link text-dark" href="/details">Edit Details</a>
+              </li>
+              <li class="head text-dark bg-light">
+                <a class="nav-link text-dark" href="#">Change Password </a>
+              </li>
+              <li class="head text-dark bg-light">
+                <a class="nav-link text-dark" href="/logout">Logout </a>
+              </li>
 
-  <section class="page-section clearfix">
-    <div class="container">
-      <div class="intro">
-        @if(!empty(Auth::user()->pro_pic))
-        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" style="height: 600px" src="{{Auth::user()->pro_pic}}" alt="">
-        @else
-         <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" style="height: 600px" src="img/intro.jpg" alt="">
-        @endif
-        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-          <h2 class="section-heading mb-4">
-            <!--<span class="section-heading-upper">{{Auth::user()->name}}</span>-->
-            <span class="section-heading-lower">{{Auth::user()->name}}</span>
-          </h2>
-          @if(!empty(Auth::user()->view_self))
-          <p class="mb-3">"{{Auth::user()->view_self}}"</p>
+            </ul>
+          </li>
+          <li class="nav-item px-lg-4 dropdown">
+            <a class="nav-link text-light" href="#" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" >
+
+              @if(count($notifications))
+              <i class="fa fa-bell" style="color: blue;">
+                <span lass="badge" style="position: relative; top: 6px; left: -6px;color: white; font-size: 19px;">{{count($notifications)}}</span>
+              </i>
+              @else
+              <i class="fa fa-bell"></i>
+              @endif
+
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="head text-light bg-dark">
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 col-12">
+                    <span>Notifications ({{count($notifications)}})</span>
+
+                  </div>
+                </li>
+                @foreach($notifications as $notification)
+                <a href="/read/{{$notification['id']}}">
+                  <li class="notification-box">
+                    <div class="row">
+                      @php
+                      $pic = App\User::where('name',$notification['user'])->pluck('pro_pic');
+                      @endphp  
+                      <div class="col-lg-3 col-sm-3 col-3 text-center">
+                        <img src="../{{$pic[0]}}" class="w-50 rounded-circle">
+                      </div> 
+                      <div class="col-lg-8 col-sm-8 col-8">
+                        <strong class="text-info">{{$notification['user']}}</strong>
+                        <div>
+                          {{$notification['views']}}
+                        </div>
+                        <small class="text-warning">{{$notification['created_at']}}</small>
+                      </div>    
+                    </div>
+                  </li>
+                </a>
+                @endforeach           
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      <span class="site-heading-upper text-primary mb-3">Yearbook'2018</span>
+      <span class="site-heading-lower">A Travel Through Time</span>
+    </h1>
+
+
+    <div id="modal2" class="modal fade" role="dialog">
+
+      <div class="modal-dialog">
+
+
+
+        <!-- Modal content-->
+
+        <div class="modal-content" style="text-align: center;">
+
+          <div class="modal-header">
+
+
+
+            <h4 class="modal-title" style="color: white;">Upload Picture and Caption</h4>
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          </div>
+
+          <div class="modal-body">
+
+            <form action="/upload_pic_moto" method="post" enctype="multipart/form-data">
+
+              {{csrf_field()}}
+
+              @if (count($errors) > 0)
+
+              <script type="text/javascript">
+
+                alert('<?php foreach($errors->all() as $error) { echo "$error"; } ?>');
+
+              </script>
+
+              @endif
+
+              <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;" onchange="readURL(this);">
+
+              <img src="<?php if (!empty(Auth::user()->pro_pic)){echo Auth::user()->pro_pic; } else { echo 'ind/shot.jpg';}?>" alt="" class="intro-img img-fluid mb-3 mb-lg-0 rounded" id="OpenImgUpload" style="cursor: pointer;width: 180px;height: 180px;">
+
+              <div class="input-field col sm-12 lg-12 md-12">
+
+                <div class="form-group">
+
+                  <label for="comment">Caption (Max 50 characters)</label>
+
+                  <textarea name="motto" id="icon_prefix2" class="form-control" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50" rows="2" id="comment"><?php if (!empty(Auth::user()->view_self)) { echo Auth::user()->view_self;}else {echo 'Enter Your Caption Here';}?></textarea>
+
+                </div>
+
+
+
+              </div>
+
+              <input type="submit" name="save" value="Save" class="waves-effect waves-light btn" style="width: 150px;" id="imgsave">
+
+            </form>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+    
+
+    <section class="page-section clearfix">
+      <div class="container">
+        <div class="intro">
+          @if(!empty(Auth::user()->pro_pic))
+          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" style="height: 600px" src="{{Auth::user()->pro_pic}}" alt="">
           @else
-          <p class="mb-3">"Your Caption Here!"</p>
+          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" style="height: 600px" src="img/intro.jpg" alt="">
           @endif
-          <div class="intro-button mx-auto">
-
-            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#modal2" style=" padding-top: 0;padding-left: 25px;padding-right: 25px;">Upload Profile Picture and Caption
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="page-section cta" style="background-color: rgba(67,100,107,0.55);">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-9 mx-auto">
-          <div class="cta-inner text-center rounded">
+          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
             <h2 class="section-heading mb-4">
-              <span class="section-heading-upper"></span>
-              <span class="section-heading-lower">Yearbook</span>
+              <!--<span class="section-heading-upper">{{Auth::user()->name}}</span>-->
+              <span class="section-heading-lower">{{Auth::user()->name}}</span>
             </h2>
-            <p class="mb-0"> The yearbook is an opus of memories that you would carry along graduating from the institute. The wonderful years spent in the campus are engraved and expressed via photographs and writeups in this departing souvenir from IIT KGP. 
+            @if(!empty(Auth::user()->view_self))
+            <p class="mb-3">"{{Auth::user()->view_self}}"</p>
+            @else
+            <p class="mb-3">"Your Caption Here!"</p>
+            @endif
+            <div class="intro-button mx-auto">
 
-            With an assortment of your thoughts and snaps from various experiences through the years, the book truly collaborates your time in KGP and is a walk down your memory lane every time you look through it.</p>
+              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal2" >Upload Picture and Caption
+              </button>
+              <button type="button" class="btn btn-primary btn-md" onclick="location.href='/writeup'">Write Article</button>
+              <button type="button" class="btn btn-primary btn-md" onclick="location.href='/upload'" >Upload Photo
+              </button>
+
+              
+            </div>
+
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer text-faded text-center py-5">
-    <div class="container">
-      <p class="m-0 small">Copyright &copy; Your Website 2018</p>
-    </div>
-  </footer>
-</body>
+    <section class="page-section cta" style="background-color: rgba(67,100,107,0.55);">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper"></span>
+                <span class="section-heading-lower">Yearbook</span>
+              </h2>
+              <p class="mb-0"> The yearbook is an opus of memories that you would carry along graduating from the institute. The wonderful years spent in the campus are engraved and expressed via photographs and writeups in this departing souvenir from IIT KGP. 
+
+              With an assortment of your thoughts and snaps from various experiences through the years, the book truly collaborates your time in KGP and is a walk down your memory lane every time you look through it.</p>
+              <br>
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper"></span>
+                <span class="section-heading-lower">Prevoius Yearbook</span>
+              </h2>
+              <div class="row">
+                <div class="col-lg-4 col-sm-4"><img src="ind/year16.jpg" width="100%" alt=""/></div>
+
+                <div class="col-lg-4 col-sm-4"> <img src="ind/year2015.jpg" width="100%"  alt=""/></div>
+
+                <div class="col-lg-4 col-sm-4"> <img src="ind/year2014.jpg" width="100%"  alt=""/></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 small">Copyright &copy; Your Website 2018</p>
+      </div>
+    </footer>
+  </body>
 
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
             /*
 
@@ -270,3 +364,18 @@
 
             </script>
             </html>
+            <script type="text/javascript">
+              var user = <?php echo $user;?>;
+    //console.log(user[0].name);
+    var names = [];
+    for (var i = 0; i < user.length; i++) {
+      names[i] = user[i].name;
+    }
+    //console.log('names',names);
+    
+    $(function() {
+      $("#search").autocomplete({
+        source:[names]
+      }); 
+    });
+  </script>
