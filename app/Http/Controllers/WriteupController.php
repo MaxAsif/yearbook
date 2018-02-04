@@ -22,11 +22,11 @@ class WriteupController extends Controller
     {
     	//$writeups = writeup::all();
 
-        $writeups = writeup::where('rollno',Auth::user()->rollno)->get();
+        $writeups = writeup::where('rollno',Auth::user()->rollno)->latest()->get();
         
         $user = User::get();
         $roll = Auth::user()->rollno;
-        $notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();
+        $notifications = views::where('depmate',$roll)->where('read','1')->latest()->get()->toArray();
 
         return view('writeup1', compact('writeups','user','notifications'));
     }
