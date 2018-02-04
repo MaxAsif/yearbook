@@ -54,7 +54,7 @@
                 </h2>
               </div>
             </div>
-            <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{$image['url']}}" id="{{$image['id']}}"  data-toggle="tooltip" data-placement="top" title="Click the image!" >
+            <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="../{{$image['url']}}" id="{{$image['id']}}"  data-toggle="tooltip" data-placement="top" title="Click the image!" >
        <!-- <div class="product-item-description d-flex mr-auto">
           <div class="bg-faded p-5 rounded">
             <p class="mb-0">{{$image['caption']}}</p>

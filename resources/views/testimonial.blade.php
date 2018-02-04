@@ -361,6 +361,11 @@
     margin-top: -40px;
     background-color: #26a69a;
   }
+
+  .cta .cta-inner:before
+  {
+    content: none !important;
+  }
 </style>
 
     <link rel="stylesheet" type="text/css" href="../../css/animate.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -427,7 +432,7 @@
           <li class="nav-item px-lg-3">
             <a class="nav-link text-uppercase text-expanded" href="/trending">Trending</a>
           </li>
-          <li class="nav-item active px-lg-3">
+          <li class="nav-item px-lg-3">
             <a class="nav-link text-uppercase text-expanded" href="/profile_index">{{Auth::user()->name}}</a>
           </li>
           <li class="nav-item px-lg-3 dropdown">
@@ -666,7 +671,7 @@
             </div>
             <div id="gallery" class="tab-pane fade">
              <p>
-               @include('gallery2')
+               @include('gallery3')
              </p>
             </div>
             
