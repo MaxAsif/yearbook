@@ -26,7 +26,7 @@ class CountController extends Controller
     {
 
 		//to select 50 images and show them in 10 per page
-		$images=Image::orderBy('totalcount','DESC')->take(50)->paginate(10);
+		$images=Image::orderBy('totalcount','DESC')->take(50)->paginate(5);
 
 		$currentpage=$images->currentPage();
 		$perpage=$images->perPage();

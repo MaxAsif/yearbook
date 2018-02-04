@@ -153,7 +153,7 @@ $count= 0;
     <div class="col-lg-12 col-sm-12 col-md-4">
       <div class="card" style="margin-bottom: 12px;" data-toggle="tooltip" data-placement="top" title="Click the image!">
         <div class="card-body">
-         <img height="400px" width="100%" src="{{$image['url']}}" id="{{$image['id']}}">
+         <img  width="100%" src="{{$image['url']}}" id="{{$image['id']}}">
        </div>
        <div class="card-footer">
         <p style="text-align: center;">
