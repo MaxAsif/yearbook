@@ -50,15 +50,15 @@ Welcome to<b> Yearbook'17</b> Portal </h3>
 
                 {{ csrf_field() }}
 
-                <div class="row"> <br> <br> <br>
+                <div class="row" style="margin-bottom: 0px;"> <br> <br> 
 
-                    <div class="input-field col s12 l6 m12 ">                   
+                    <div class="input-field col s12 l6 m12 " >                   
                         <input name="rollno" id="rollno" autofocus placeholder="Roll Number" type="text" style="margin-top: 5px;" required>
-                        <label for="rollno"><h5>Roll Number (14THXXXXX)</h5></label>
+                        <label for="rollno"><h5 style="font-size: 140%;  color: #004d33;">Roll Number (14THXXXXX)</h5></label>
                     </div>
                     <div class="input-field col s12 l6 m12 ">                   
                         <input name="password" id="dob" placeholder="Date of Birth" pattern="\d{1,2}-\d{1,2}-\d{4}" type="text" style="margin-top: 5px;" required>
-                        <label for="dob"><h5>Date of Birth (dd-mm-yyyy)</h5></label>
+                        <label for="dob"><h5 style="font-size: 140%; color: #004d33;">Date of Birth (dd-mm-yyyy)</h5></label>
                     </div>
                 </div>
                 <div class="row">
@@ -66,18 +66,23 @@ Welcome to<b> Yearbook'17</b> Portal </h3>
                         <button type="submit" id="submit" name="submit" class="waves-effect waves-light btn" style="font-size: 15px;" required >Submit</button>
                     </div>
                 </div>
-            </form></small></h1>
+            </form>
+
+            <p class=" center sub-title main-title" >Contact us at:<br> <a href="mailto:yearbook2k17.kgp@gmail.com"> yearbook2k17.kgp@gmail.com<a><i class="material-icons">error_outline</i><span class="tooltip">If you are not graduating this year, but want to write about your friends who are graduating, send us the testimonials via mail at yearbook2k17.kgp@gmail.com</span></a></p>
+
+            </small></h1>
   </div>
 
 <!-- You can add more ".slideshow-image" elements, but remember to update the "$items" variable on SCSS -->
 <div class="slideshow">
-  <div class="slideshow-image" style="background-image: url('12.jpg')"></div>
   <div class="slideshow-image" style="background-image: url('screen.png')"></div>
+  <div class="slideshow-image" style="background-image: url('12.jpg')"></div>
   <div class="slideshow-image" style="background-image: url('2.jpg')"></div>
   <div class="slideshow-image" style="background-image: url('back.jpg')"></div>
 </div>
   
-  
+
+
 
 </body>
 

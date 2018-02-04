@@ -32,7 +32,10 @@
   <link rel="stylesheet" type="text/css" href="css/autocomplete.css">
   <script src="js/autocomplete.js"></script>
   <style type="text/css">
-  
+  .pagination {
+   justify-content: center;
+}
+
   .dropdown-menu{
     top: 60px;
     right: 0px;
@@ -220,6 +223,11 @@
           </div>
         </div>
       </nav>
+      <br>
+{{ $images->links('vendor.pagination.bootstrap-4')}}
+@php
+$count= 0;
+@endphp
 
       @foreach($images as $image)
       @if(file_exists($image['url']))
@@ -234,9 +242,20 @@
                   $name = App\User::where('rollno',$image['rollno'])->get()->toArray();
 
                   @endphp
-                  <span class="section-heading-lower">{{$name[0]['name']}}</span>
-                  <span class="section-heading-upper">"{{$image['caption']}}"</span>
+
+            <strong>
+      @php
+      echo '#';
+      $count1 = $count + ($currentpage*$perpage ) -($perpage-1);
+      echo $count1 ;
+      $count++;
+      @endphp
+    </strong>
+                     <span class="section-heading-lower">{{$name[0]['name']}}</span>
+                      <span class="section-heading-upper">"{{$image['caption']}}"</span>
+
                 </h2>
+        <strong>{{$image['created_at']->diffForHumans() }}</strong>
               </div>
             </div>
             <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{$image['url']}}" id="{{$image['id']}}"  data-toggle="tooltip" data-placement="top" title="Click the image!" >
@@ -250,6 +269,7 @@
   </section>
   @endif
   @endforeach
+{{ $images->links('vendor.pagination.bootstrap-4')}}
   <!--
   <section class="page-section">
     <div class="container">
