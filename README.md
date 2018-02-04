@@ -6,3 +6,9 @@
 3. php artisan key:generate
 4. php artisan migrate  
 5. php artisan serve
+
+#change /etc/php/7.0/php.ini file
+upload_max_filesize = 100M
+post_max_size = 125M
+#Restart apache
+systemctl restart apache2.service

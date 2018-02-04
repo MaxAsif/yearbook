@@ -28,7 +28,7 @@ class WriteupController extends Controller
         $roll = Auth::user()->rollno;
         $notifications = views::where('depmate',$roll)->where('read','1')->latest()->get()->toArray();
 
-        return view('writeup1', compact('writeups','user','notifications'));
+        return view('writeup2', compact('writeups','user','notifications'));
     }
 
 

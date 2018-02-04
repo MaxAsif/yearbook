@@ -181,7 +181,7 @@
     </nav>
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">Yearbook'2018</span>
-      <span class="site-heading-lower">A Travel Through Time</span>
+      <span class="site-heading-lower">A Journey Through Time</span>
     </h1>
 
 

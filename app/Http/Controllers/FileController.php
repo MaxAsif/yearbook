@@ -30,10 +30,10 @@ class FileController extends Controller
         			'fileToUpload' => 'image|mimes:jpeg,png,jpg,gif,svg|max:500',
 
         		]);
-			$image = $request->file('fileToUpload');//image
-			$input['imagename'] = time().'.'.$image->getClientOriginalExtension();//name of file
-			$destinationPath = public_path('/uploads');//destination of image in public/uploads
-			if($image->move($destinationPath, $input['imagename']))
+				$image = $request->file('fileToUpload');//image
+				$input['imagename'] = time().'.'.$image->getClientOriginalExtension();//name of file
+				$destinationPath = public_path('/uploads');//destination of image in public/uploads
+				if($image->move($destinationPath, $input['imagename']))
 			{
 
 				$user->pro_pic = 'uploads/'.$input['imagename'];

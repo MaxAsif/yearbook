@@ -15,9 +15,8 @@
   <link rel="stylesheet" type="text/css" href="../css/animate.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <script  src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
@@ -100,7 +99,7 @@
         </div>
         <div class="modal-body">
          <div id="image-preview-div" style="display: none">
-          <img id="preview-img" src="noimage">
+          <img id="preview-img" src="">
         </div>
       </div>
       <div class="modal-footer">
@@ -234,7 +233,7 @@
               </select>
             </div>
             <div id="cropp-image-div" style="display: none">
-              <img id="crop-image" src="noimage" class="img-thumbnail">
+              <img id="crop-image" src="" class="img-thumbnail">
               <div class="form-group">
                 <label for="caption">Caption:</label>
                 <textarea class="form-control" rows="2" cols="15" name="caption" id="caption" required="required"></textarea>
