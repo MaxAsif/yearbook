@@ -13,10 +13,10 @@ class profile extends Controller
     //
    public function index()
    {
-       $myviews = views::where('depmate',Auth::user()->rollno)->get();
+       $myviews = views::where('depmate',Auth::user()->rollno)->latest()->get();
        $user = User::get();
        $roll = Auth::user()->rollno;
-       $notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();
+       $notifications = views::where('depmate',$roll)->where('read','1')->latest()->get()->toArray();
 
        return view('profile_index',compact('myviews','user','notifications'));
    }
@@ -24,11 +24,11 @@ class profile extends Controller
 
    public function testimonials($roll)
    {
-       $mydata = User::where('rollno',$roll)->get();
+       $mydata = User::where('rollno',$roll)->latest()->get();
 
        $myviews = views::where('depmate',$roll)->latest()->get();
 
-       $images = Image::where('rollno',$roll)->get()->toArray();    
+       $images = Image::where('rollno',$roll)->latest()->get()->toArray();    
        $user = User::get();
        $roll = Auth::user()->rollno;
        $notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();

@@ -46,6 +46,7 @@ text-align: start;
 .xdsoft_autocomplete .xdsoft_autocomplete_hint span{
 	color:transparent;
 	opacity: 0.0;
+	max-height: 37px;
 }
 
 .xdsoft_autocomplete .xdsoft_autocomplete_dropdown > .xdsoft_autocomplete_copyright{

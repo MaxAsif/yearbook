@@ -120,11 +120,6 @@
   </div>
 </div>
 <body>
-<!--
-    <h1 class="site-heading text-center text-white d-none d-lg-block">
-      <span class="site-heading-upper text-primary mb-3">A Free Bootstrap 4 Business Theme</span>
-      <span class="site-heading-lower">Business Casual</span>
-    </h1>-->
 
     <!-- Navigation--> 
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav" style="background-color: rgba(67,100,107,0.55);">
@@ -269,6 +264,7 @@ $count= 0;
   </section>
   @endif
   @endforeach
+
 {{ $images->links('vendor.pagination.bootstrap-4')}}
   <!--
   <section class="page-section">
@@ -312,6 +308,7 @@ $count= 0;
       </div>
     </div>
   </section>-->
+
 
 
   <footer class="footer text-faded text-center py-5">

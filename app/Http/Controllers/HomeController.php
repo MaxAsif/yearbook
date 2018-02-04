@@ -55,7 +55,7 @@ class HomeController extends Controller
                 return redirect("/profile_index/".$roll);
             }
             else
-                return back()->with('Error','Sorry, we cannot find your driend in our database');
+                return back()->with('Error','Sorry, we cannot find your friend in our database');
         }
 
 

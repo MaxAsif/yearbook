@@ -16,17 +16,17 @@ class ImageController extends Controller
 	}
 	public function index()
 	{
-		$images = Image::where('rollno',Auth::user()->rollno)->get()->toArray();	
+		$images = Image::where('rollno',Auth::user()->rollno)->latest()->get()->toArray();	
 		$user = User::get();
 		$roll = Auth::user()->rollno;
-		$notifications = views::where('depmate',$roll)->where('read','1')->get()->toArray();
+		$notifications = views::where('depmate',$roll)->where('read','1')->latest()->get()->toArray();
 
-		return view('upload',compact('images','user','notifications'));
+		return view('upload1',compact('images','user','notifications'));
 	}
 
 	public function comment($pic_id)
 	{
-		$images = Image::where('id',$pic_id)->get();
+		$images = Image::where('id',$pic_id)->latest()->get();
 	//	dd($images);
 		return view('comment',compact('images'));
 	}
