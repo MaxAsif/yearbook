@@ -16,7 +16,7 @@ class CreateWriteupsTable extends Migration
         Schema::create('writeups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('rollno');
-            $table->string('writeup');
+            $table->text('writeup');
             $table->string('topic');
             $table->timestamps();
         });

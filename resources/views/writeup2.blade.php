@@ -252,7 +252,7 @@
                   <td style="text-align: center;"> <?php echo $k; ?></td>
                   <td >{{ $writeup->topic }}</td>
                   
-                  <td onblur="update({{ $writeup->id }})" id="{{ $writeup->id }}" contenteditable >{{ $writeup->writeup }}</td>
+                  <td onblur="update({{ $writeup->id }})" id="{{ $writeup->id }}" contenteditable >{!!  nl2br($writeup->writeup)!!}</td>
                   <td style="width: 50px"><a href="/writeup/{{ $writeup->id }}"><i class="material-icons">delete</i></a></td>
 
                 </tr>

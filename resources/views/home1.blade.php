@@ -230,8 +230,12 @@
                 <div class="form-group">
 
                   <label for="comment">Caption (Max 50 characters)</label>
+                  @if(!empty(Auth::user()->view_self))
+                  <textarea name="motto" id="icon_prefix2" class="form-control" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50" rows="2" id="comment">{{Auth::user()->view_self}}</textarea>
+                  @else
+                  <textarea name="motto" id="icon_prefix2" class="form-control" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50" rows="2" id="comment"></textarea>
+                  @endif
 
-                  <textarea name="motto" id="icon_prefix2" class="form-control" placeholder="Enter Your Caption Here (Max 50 characters)" style="text-align: center;color: black;" maxlength="50" rows="2" id="comment"><?php if (!empty(Auth::user()->view_self)) { echo Auth::user()->view_self;}else {echo 'Enter Your Caption Here';}?></textarea>
 
                 </div>
 
@@ -322,7 +326,8 @@
 
     <footer class="footer text-faded text-center py-5">
       <div class="container">
-        <p class="m-0 small">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 small">Copyright &copy; Yearbook 2018</p>
+        <p class="m-0 small"><a target="_blank" href="http://www.sac.iitkgp.ac.in/team.php">Contact Us</a></p>
       </div>
     </footer>
   </body>

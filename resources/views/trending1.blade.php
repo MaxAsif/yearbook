@@ -34,51 +34,51 @@
   <style type="text/css">
   .pagination {
    justify-content: center;
-}
+ }
 
+ .dropdown-menu{
+  top: 60px;
+  right: 0px;
+  left: unset;
+  width: 460px;
+  box-shadow: 0px 5px 7px -1px #c1c1c1;
+  padding-bottom: 0px;
+  padding: 0px;
+}
+.dropdown-menu:before{
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 12px;
+  border:10px solid #343A40;
+  border-color: transparent transparent #343A40 transparent;
+}
+.head{
+  padding:5px 15px;
+  border-radius: 3px 3px 0px 0px;
+}
+.notification-box{
+  padding: 10px 0px; 
+}
+.bg-gray{
+  background-color: #eee;
+}
+@media (max-width: 640px) {
   .dropdown-menu{
-    top: 60px;
-    right: 0px;
-    left: unset;
-    width: 460px;
-    box-shadow: 0px 5px 7px -1px #c1c1c1;
-    padding-bottom: 0px;
-    padding: 0px;
+    top: 50px;
+    left: -16px;  
+    width: 290px;
+  } 
+  .nav{
+    display: block;
   }
-  .dropdown-menu:before{
-    content: "";
-    position: absolute;
-    top: -20px;
-    right: 12px;
-    border:10px solid #343A40;
-    border-color: transparent transparent #343A40 transparent;
+  .nav .nav-item,.nav .nav-item a{
+    padding-left: 0px;
   }
-  .head{
-    padding:5px 15px;
-    border-radius: 3px 3px 0px 0px;
+  .message{
+    font-size: 13px;
   }
-  .notification-box{
-    padding: 10px 0px; 
-  }
-  .bg-gray{
-    background-color: #eee;
-  }
-  @media (max-width: 640px) {
-    .dropdown-menu{
-      top: 50px;
-      left: -16px;  
-      width: 290px;
-    } 
-    .nav{
-      display: block;
-    }
-    .nav .nav-item,.nav .nav-item a{
-      padding-left: 0px;
-    }
-    .message{
-      font-size: 13px;
-    }
-  }
+}
 </style>
 </head>
 
@@ -121,139 +121,139 @@
 </div>
 <body>
 
-    <!-- Navigation--> 
-    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav" style="background-color: rgba(67,100,107,0.55);">
-      <a class="navbar-brand text-light" href="http://www.sac.iitkgp.ac.in"><img height="90" width="250" src="sac.png" alt="someimg"/></a>
-      <div class="container">
-        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="http://www.sac.iitkgp.ac.in">Yearbook</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item px-lg-4">
+  <!-- Navigation--> 
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav" style="background-color: rgba(67,100,107,0.55);">
+    <a class="navbar-brand text-light" href="http://www.sac.iitkgp.ac.in"><img height="90" width="250" src="sac.png" alt="someimg"/></a>
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="http://www.sac.iitkgp.ac.in">Yearbook</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-lg-4">
 
-              <form action="search/" method="POST" class="form-inline">
-                {{ csrf_field() }}
-                <div class="form-group" >
-                  <input type="text" name="search" required="required" id="search" class="form-control" placeholder="Search your friend here">
-                </div>
-                <div class="form-group" style="margin-left: 8px;">
-                  <button type="submit" class="btn btn-default" style="margin-top: 0px;">Search</button>
-                </div>
-              </form>
-            </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/home">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/trending">Trending</a>
-            </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/profile_index">{{Auth::user()->name}}</a>
-            </li>
-            <li class="nav-item px-lg-4 dropdown">
-              <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-cog"></i>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-right" >
-                <li class="head text-dark bg-light">
-                  <a class="nav-link text-dark" href="/details">Edit Details</a>
+            <form action="search/" method="POST" class="form-inline">
+              {{ csrf_field() }}
+              <div class="form-group" >
+                <input type="text" name="search" required="required" id="search" class="form-control" placeholder="Search your friend here">
+              </div>
+              <div class="form-group" style="margin-left: 8px;">
+                <button type="submit" class="btn btn-default" style="margin-top: 0px;">Search</button>
+              </div>
+            </form>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/home">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/trending">Trending</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/profile_index">{{Auth::user()->name}}</a>
+          </li>
+          <li class="nav-item px-lg-4 dropdown">
+            <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-cog"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" >
+              <li class="head text-dark bg-light">
+                <a class="nav-link text-dark" href="/details">Edit Details</a>
+              </li>
+              <li class="head text-dark bg-light">
+                <a class="nav-link text-dark" href="#">Change Password </a>
+              </li>
+              <li class="head text-dark bg-light">
+                <a class="nav-link text-dark" href="/logout">Logout </a>
+              </li>
+
+            </ul>
+          </li>
+          <li class="nav-item px-lg-4 dropdown">
+            <a class="nav-link text-light" href="#" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" >
+
+              @if(count($notifications))
+              <i class="fa fa-bell" style="color: blue;">
+                <span lass="badge" style="position: relative; top: 6px; left: -6px;color: white; font-size: 19px;">{{count($notifications)}}</span>
+              </i>
+              @else
+              <i class="fa fa-bell"></i>
+              @endif
+
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="head text-light bg-dark">
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 col-12">
+                    <span>Notifications ({{count($notifications)}})</span>
+
+                  </div>
                 </li>
-                <li class="head text-dark bg-light">
-                  <a class="nav-link text-dark" href="#">Change Password </a>
-                </li>
-                <li class="head text-dark bg-light">
-                  <a class="nav-link text-dark" href="/logout">Logout </a>
-                </li>
-
-              </ul>
-            </li>
-            <li class="nav-item px-lg-4 dropdown">
-              <a class="nav-link text-light" href="#" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" >
-
-                @if(count($notifications))
-                <i class="fa fa-bell" style="color: blue;">
-                  <span lass="badge" style="position: relative; top: 6px; left: -6px;color: white; font-size: 19px;">{{count($notifications)}}</span>
-                </i>
-                @else
-                <i class="fa fa-bell"></i>
-                @endif
-
-              </a>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li class="head text-light bg-dark">
-                  <div class="row">
-                    <div class="col-lg-12 col-sm-12 col-12">
-                      <span>Notifications ({{count($notifications)}})</span>
-
+                @foreach($notifications as $notification)
+                <a href="/read/{{$notification['id']}}">
+                  <li class="notification-box">
+                    <div class="row">
+                      @php
+                      $pic = App\User::where('name',$notification['user'])->pluck('pro_pic');
+                      @endphp  
+                      <div class="col-lg-3 col-sm-3 col-3 text-center">
+                        <img src="../{{$pic[0]}}" class="w-50 rounded-circle">
+                      </div> 
+                      <div class="col-lg-8 col-sm-8 col-8">
+                        <strong class="text-info">{{$notification['user']}}</strong>
+                        <div>
+                          {{$notification['views']}}
+                        </div>
+                        <small class="text-warning">{{$notification['created_at']}}</small>
+                      </div>    
                     </div>
                   </li>
-                  @foreach($notifications as $notification)
-                  <a href="/read/{{$notification['id']}}">
-                    <li class="notification-box">
-                      <div class="row">
-                        @php
-                        $pic = App\User::where('name',$notification['user'])->pluck('pro_pic');
-                        @endphp  
-                        <div class="col-lg-3 col-sm-3 col-3 text-center">
-                          <img src="../{{$pic[0]}}" class="w-50 rounded-circle">
-                        </div> 
-                        <div class="col-lg-8 col-sm-8 col-8">
-                          <strong class="text-info">{{$notification['user']}}</strong>
-                          <div>
-                            {{$notification['views']}}
-                          </div>
-                          <small class="text-warning">{{$notification['created_at']}}</small>
-                        </div>    
-                      </div>
-                    </li>
-                  </a>
-                  @endforeach           
-                </ul>
-              </li>
-            </ul>
-          </div>
+                </a>
+                @endforeach           
+              </ul>
+            </li>
+          </ul>
         </div>
-      </nav>
-      <br>
-{{ $images->links('vendor.pagination.bootstrap-4')}}
-@php
-$count= 0;
-@endphp
+      </div>
+    </nav>
+    <br>
+    {{ $images->links('vendor.pagination.bootstrap-4')}}
+    @php
+    $count= 0;
+    @endphp
 
-      @foreach($images as $image)
-      @if(file_exists($image['url']))
-      <section class="page-section">
-        <div class="container">
-          <div class="product-item">
-            <div class="product-item-title d-flex">
-              <div class="bg-faded p-5 d-flex ml-auto rounded">
-                <h2 class="section-heading mb-0">
-                  <!--<span class="section-heading-upper">Blended to Perfection</span>-->
+    @foreach($images as $image)
+    @if(file_exists($image['url']))
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex ml-auto rounded">
+              <h2 class="section-heading mb-0">
+                <!--<span class="section-heading-upper">Blended to Perfection</span>-->
+                @php
+                $name = App\User::where('rollno',$image['rollno'])->get()->toArray();
+
+                @endphp
+
+                <strong>
                   @php
-                  $name = App\User::where('rollno',$image['rollno'])->get()->toArray();
-
+                  echo '#';
+                  $count1 = $count + ($currentpage*$perpage ) -($perpage-1);
+                  echo $count1 ;
+                  $count++;
                   @endphp
+                </strong>
+                <span class="section-heading-lower">{{$name[0]['name']}}</span>
+                <span class="section-heading-upper">"{{$image['caption']}}"</span>
 
-            <strong>
-      @php
-      echo '#';
-      $count1 = $count + ($currentpage*$perpage ) -($perpage-1);
-      echo $count1 ;
-      $count++;
-      @endphp
-    </strong>
-                     <span class="section-heading-lower">{{$name[0]['name']}}</span>
-                      <span class="section-heading-upper">"{{$image['caption']}}"</span>
-
-                </h2>
-        <strong>{{$image['created_at']->diffForHumans() }}</strong>
-              </div>
+              </h2>
+              <strong>{{$image['created_at']->diffForHumans() }}</strong>
             </div>
-            <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{$image['url']}}" id="{{$image['id']}}"  data-toggle="tooltip" data-placement="top" title="Click the image!" >
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{$image['url']}}" id="{{$image['id']}}"  data-toggle="tooltip" data-placement="top" title="Click the image!" style="cursor: pointer;">
        <!-- <div class="product-item-description d-flex mr-auto">
           <div class="bg-faded p-5 rounded">
             <p class="mb-0">{{$image['caption']}}</p>
@@ -265,7 +265,7 @@ $count= 0;
   @endif
   @endforeach
 
-{{ $images->links('vendor.pagination.bootstrap-4')}}
+  {{ $images->links('vendor.pagination.bootstrap-4')}}
   <!--
   <section class="page-section">
     <div class="container">
