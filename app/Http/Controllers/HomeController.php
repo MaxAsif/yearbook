@@ -49,7 +49,7 @@ class HomeController extends Controller
 
             $name = request('search');
             $user = User::where('name',$name)->get();
-        
+            
             if( $user->isNotEmpty()){
                 $roll = $user[0]['rollno']; 
                 return redirect("/profile_index/".$roll);
@@ -72,17 +72,21 @@ class HomeController extends Controller
         public function edit(Request $request)
         {
 
+           $this->validate(request(),[
+           
+            'phone' => 'required|min:10|max:10',
 
-            $user = Auth::user();
-            $user->email = request('email');
-            $user->hor = request('HOR');
-            $user->course = request('course');
-            $user->department = request('department');
-            $user->phone = request('phone');
-            $user->save();
-            return redirect ('/home');
-            
+        ]);
+           $user = Auth::user();
+           $user->email = request('email');
+           $user->HOR = request('HOR');
+           $user->course = request('course');
+           $user->department = request('department');
+           $user->phone = request('phone');
+           $user->save();
+           return back();
+           
 
-        }
-    }
+       }
+   }
 

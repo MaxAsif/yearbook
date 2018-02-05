@@ -419,7 +419,7 @@ crossorigin="anonymous"></script>
         <ul class="navbar-nav mx-auto">
           <li class="nav-item px-lg-6">
 
-            <form action="search/" method="POST" class="form-inline">
+            <form action="../search/" method="POST" class="form-inline">
               {{ csrf_field() }}
               <div class="form-group" >
                 <input type="text" name="search" required="required" id="search" class="form-control" placeholder="Search your friend here">
@@ -594,7 +594,7 @@ crossorigin="anonymous"></script>
                         <form action="/writetestimony/{{$data['rollno']}}" onSubmit="alert('Your views will be added in his yearbook after his registration and approval');" method="POST" style="padding-top: 0;">
                           {{csrf_field()}}
                           <input id="ratings-hidden" name="rating" type="hidden"> 
-                          <textarea class="form-control animated" cols="50" id="new-review" name="viewf" placeholder="Enter your review here..." rows="5" ></textarea>
+                          <textarea class="form-control animated" cols="50" id="new-review" name="viewf" placeholder="Enter your review here...(max 144 character)" rows="5" maxlength="144" ></textarea>
                           
                           <div class="text-right">
                             <div class="stars starrr" data-rating="0"></div>

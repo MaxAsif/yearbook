@@ -56,7 +56,7 @@ FileController
 		$roll = Auth::user()->rollno;
 		$notifications = App\views::where('depmate',$roll)->where('read','1')->get()->toArray();
 
-		return view('details',compact('user','notifications'));
+		return view('details1',compact('user','notifications'));
 	});
 	Route::post('/details','HomeController@edit');
 
