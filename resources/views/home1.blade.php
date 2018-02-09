@@ -10,6 +10,8 @@
 
   <title>YB|Home</title>
 
+
+
   <!-- Bootstrap core CSS -->
 
   <link rel="stylesheet" type="text/css" href="../css/animate.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -78,6 +80,10 @@
     }
   }
 </style>
+
+ <!--for tutorial introjs file -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css">
+
 </head>
 
 <body>
@@ -92,7 +98,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item px-lg-6">
+          <li class="nav-item px-lg-6" data-step="4" data-intro="<center> Search and write about your friends </center> ">
 
             <form action="search/" method="POST" class="form-inline">
               {{ csrf_field() }}
@@ -100,7 +106,7 @@
                 <input type="text" name="search" required="required" id="search" class="form-control" placeholder="Search your friend here">
               </div>
               <div class="form-group" style="margin-left: 8px;">
-                <button type="submit" class="btn btn-default" style="margin-top: 0px;">Search</button>
+                <button type="submit" class="btn btn-default" style="margin-top: 0px;" >Search</button>
               </div>
             </form>
           </li>
@@ -110,12 +116,12 @@
             </a>
           </li>
           <li class="nav-item px-lg-3">
-            <a class="nav-link text-uppercase text-expanded" href="/trending">Trending</a>
+            <a class="nav-link text-uppercase text-expanded" href="/trending" data-step="5" data-intro="<center> See the most popular photos of Kgpians </center> ">Trending</a>
           </li>
           <li class="nav-item px-lg-3">
-            <a class="nav-link text-uppercase text-expanded" href="/profile_index">{{Auth::user()->name}}</a>
+            <a class="nav-link text-uppercase text-expanded" href="/profile_index" data-step="6" data-intro="<center> See your profile and know what your friends think about you </center> ">{{Auth::user()->name}}</a>
           </li>
-          <li class="nav-item px-lg-3 dropdown">
+          <li class="nav-item px-lg-3 dropdown" data-step="8" data-intro="<center> Update info ,Logout </center> ">
             <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
               <i class="fa fa-cog"></i>
             </a>
@@ -132,7 +138,7 @@
 
             </ul>
           </li>
-          <li class="nav-item px-lg-3 dropdown">
+          <li class="nav-item px-lg-3 dropdown" data-step="7" data-intro="<center> See notifications here</center> ">
             <a class="nav-link text-light" href="#" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" >
 
               @if(count($notifications))
@@ -175,6 +181,12 @@
                 @endforeach           
               </ul>
             </li>
+
+            <!-- tutorial  just add data-step and data -intro in any html element to include it in tutorial-->
+            
+           <li class="nav-item px-lg-3">
+                  <a class="nav-link text-uppercase text-expanded"  href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Tutorial <i class="fa fa-question-circle" style="font-size:18px"></i></a>
+           </li>
           </ul>
         </div>
       </div>
@@ -279,10 +291,10 @@
             @endif
             <div class="intro-button mx-auto">
 
-              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal2" >Upload Picture and Caption
+              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal2" data-step="1" data-intro="<center> Upload your profile picture and write a caption here </center> "  >Upload Picture and Caption
               </button>
-              <button type="button" class="btn btn-primary btn-md" onclick="location.href='/writeup'">Write Article</button>
-              <button type="button" class="btn btn-primary btn-md" onclick="location.href='/upload'" >Upload Photo
+              <button type="button" class="btn btn-primary btn-md" onclick="location.href='/writeup'" data-step="2" data-intro="<center> Share your interesting memories with us</center> ">Write Article</button>
+              <button type="button" class="btn btn-primary btn-md" onclick="location.href='/upload'" data-step="3" data-intro="<center> Upload some Funny photos of you and your friend </center> "  >Upload Photo
               </button>
 
               
@@ -330,6 +342,10 @@
         <p class="m-0 small"><a target="_blank" href="http://www.sac.iitkgp.ac.in/team.php">Contact Us</a></p>
       </div>
     </footer>
+
+
+<!-- for intro js in tutorial-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>  
   </body>
 
 
